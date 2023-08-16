@@ -19,8 +19,60 @@ statNumberInputs.forEach((inputElement) => {
         const totalPoints = calculateTotalPoints();
         const rank = calculateRank(average);
         updateRank(rank, average, totalPoints);
+
+        // Calcula e atualiza o total de Alma
+        const almaInput = document.querySelector('#Alma input');
+        const totalAlma = calculateTotalAlma(parseInt(almaInput.value));
+        updateTotalAlma(totalAlma);
+
+        // Calcula e atualiza o total de Mana
+        const manaInput = document.querySelector('#Mana input');
+        const totalMana = calculateTotalMana(parseInt(manaInput.value));
+        updateTotalMana(totalMana);
     });
 });
+
+// Função para calcular o total de Alma
+function calculateTotalAlma(xp) {
+    if (xp >= 480) {
+        return 200 * xp;
+    } else {
+        return 150 * xp;
+    }
+}
+
+// Função para atualizar o total de Alma no HTML
+function updateTotalAlma(totalAlma) {
+    const almaDiv = document.querySelector('#Alma');
+    let almaH2 = almaDiv.querySelector('.total-value');
+    if (!almaH2) {
+        almaH2 = document.createElement('h2');
+        almaH2.classList.add('total-value');
+        almaDiv.insertBefore(almaH2, almaDiv.querySelector('input'));
+    }
+    almaH2.textContent = `${totalAlma} HP`;
+}
+
+// Função para calcular o total de Mana
+function calculateTotalMana(xp) {
+    if (xp >= 480) {
+        return 200 * xp;
+    } else {
+        return 150 * xp;
+    }
+}
+
+// Função para atualizar o total de Mana no HTML
+function updateTotalMana(totalMana) {
+    const manaDiv = document.querySelector('#Mana');
+    let manaH2 = manaDiv.querySelector('.total-value');
+    if (!manaH2) {
+        manaH2 = document.createElement('h2');
+        manaH2.classList.add('total-value');
+        manaDiv.insertBefore(manaH2, manaDiv.querySelector('input'));
+    }
+    manaH2.textContent = `${totalMana} MP`;
+}
 
 function calculateAverage() {
     let sum = 0;
@@ -66,3 +118,5 @@ function calculateRank(average) {
 function updateRank(rank, average, totalPoints) {
     rankElement.textContent = `Rank ${rank} - Total de ${totalPoints} - Média de ${average.toFixed(2)}`;
 }
+
+
