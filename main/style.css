@@ -16,22 +16,23 @@ body {
   backdrop-filter: blur(10px);
   border-radius: 10px;
   padding: 20px;
-  max-width: 500px;
+  max-width: 600px; /* Defina o máximo de largura para 600px */
+  margin: 0 auto; /* Centraliza horizontalmente */
 }
 
 .container > h1 {
-  font-size: 32px;
+  font-size: 28px; /* Reduzido o tamanho da fonte para telas menores */
   color: black;
   margin-bottom: 2px;
 }
 
 .container > h2 {
-  font-size: 19px;
+  font-size: 16px; /* Reduzido o tamanho da fonte para telas menores */
 }
 
 /* Input Container Styles */
 .input-container {
-  margin-top: 20px;
+  margin-top: 10px; /* Reduzido o espaçamento para telas menores */
   display: flex;
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.5);
@@ -39,14 +40,16 @@ body {
   border-radius: 10px;
   padding: 10px;
   font-weight: bold;
+  font-size: 14px;
 }
 
 input {
   border: none;
   background: none;
-  font-size: 20px;
+  font-size: 16px; /* Reduzido o tamanho da fonte para telas menores */
   outline: none;
   text-align: right;
+  width: 50px; /* Definindo uma largura fixa para os inputs */
 }
 
 /* Results Container Styles */
@@ -62,7 +65,7 @@ input {
 }
 
 #stat-container > h2 {
-  font-size: 22px;
+  font-size: 20px; /* Reduzido o tamanho da fonte para telas menores */
 }
 
 .stat {
@@ -70,11 +73,15 @@ input {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding: 5px 0; /* Adicionado espaçamento vertical entre os stats */
+  flex-wrap: wrap; /* Quebra para a próxima linha em telas menores */
 }
 
 .stat > h3 {
-  font-size: 19px;
+  font-size: 16px; /* Reduzido o tamanho da fonte para telas menores */
   text-align: left;
+  flex: 1; /* Distribui espaço igualmente entre h3 e input */
+  margin-right: 5px; /* Espaçamento à direita para os h3 */
 }
 
 ul {
@@ -85,12 +92,12 @@ ul {
 }
 
 li {
-  font-size: 18px;
+  font-size: 16px; /* Reduzido o tamanho da fonte para telas menores */
 }
 
 /* Tutorial Container Styles */
 .tutorial-container {
-  margin-top: 20px;
+  margin-top: 10px; /* Reduzido o espaçamento para telas menores */
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
   border-radius: 10px;
@@ -99,6 +106,7 @@ li {
 
 .tutorial-container p {
   text-align: justify;
+  font-size: 14px; /* Reduzido o tamanho da fonte para telas menores */
 }
 
 /* Paragraph Styles */
@@ -122,32 +130,15 @@ body {
   }
 }
 
+/* Estilos personalizados */
+.total-value {
+  font-size: 14px;
+  margin-left: 10px;
+  justify-content: center;
+}
 
 
-  #stat-container,
-  .tutorial-container {
-    padding: 10px;
-    margin-top: 10px;
-  }
-
-  /* Adjust font sizes for smaller screens */
-  .container > h1 {
-    font-size: 28px;
-  }
-
-  .container > h2,
-  .stat > h3,
-  li {
-    font-size: 16px;
-  }
-
-  .tutorial-container p {
-    font-size: 15px;
-  }
-
-
-  .total-value {
-    font-size: 16px;
-    margin-left: 10px;
-    justify-content: center;
-  }
+.tutorial-container li {
+  font-size: 14px;
+  text-align: justify;
+}
