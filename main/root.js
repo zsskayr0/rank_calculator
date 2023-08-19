@@ -247,5 +247,5 @@ function calculateRank(average) {
 }
 
 function updateRank(rank, average, totalPoints) {
-    rankElement.textContent = `Rank ${rank} - Total de ${totalPoints} - Média de ${average.toFixed(2)}`;
+    rankElement.textContent = `Rank ${rank} – Total de ${totalPoints} – Média de ${average.toFixed(2)}`;
 }
