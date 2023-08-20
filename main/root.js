@@ -15,10 +15,12 @@ statNumberInputs.forEach((inputElement) => {
         }
 
         // Recalcula a média, o total de pontos e atualiza o rank
-        const average = calculateAverage();
+        const averageMain = calculateAverageMain();
+        const averageAll = calculateAverageAll();
         const totalPoints = calculateTotalPoints();
-        const rank = calculateRank(average);
-        updateRank(rank, average, totalPoints);
+        const rankMain = calculateRank(averageMain);
+        const rankAll = calculateRank(averageAll);
+        updateRank(rankMain, averageMain, totalPoints, rankAll, averageAll);
 
         // Calcula e atualiza o total de Alma
         const almaInput = document.querySelector('#Alma input');
@@ -29,6 +31,11 @@ statNumberInputs.forEach((inputElement) => {
         const manaInput = document.querySelector('#Mana input');
         const totalMana = calculateTotalMana(parseInt(manaInput.value));
         updateTotalMana(totalMana);
+
+        // Calcula e atualiza o total de Força
+        const forcaInput = document.querySelector('#Forca input');
+        const totalForca = calculateTotalForca(parseInt(forcaInput.value));
+        updateTotalForca(totalForca);
 
         // Calcula e atualiza o total de Corrida
         const corridaInput = document.querySelector('#Corrida input');
@@ -89,6 +96,50 @@ function updateTotalMana(totalMana) {
     manaH2.textContent = `${totalMana} MP`;
 }
 
+// Função para calcular o total de Força
+function calculateTotalForca(xp) {
+    let totalForca = 0;
+
+    if (xp <= 80) {
+        totalForca = (xp * 6);
+    } else if (xp <= 160) {
+        totalForca = (xp * 6);
+    } else if (xp <= 240) {
+        totalForca = (xp * 8);
+    } else if (xp <= 320) {
+        totalForca = (xp * 8);
+    } else if (xp <= 400) {
+        totalForca = (xp * 10);
+    } else if (xp <= 480) {
+        totalForca = (xp * 12);
+    } else if (xp <= 560) {
+        totalForca = (xp * 14);
+    } else if (xp <= 640) {
+        totalForca = (xp * 14);
+    } else if (xp <= 740) {
+        totalForca = (xp * 16);
+    } else if (xp <= 840) {
+        totalForca = (xp * 16);
+    } else {
+        totalForca = (xp * 64);
+    }
+
+    return parseFloat(totalForca.toFixed(1));
+}
+
+// Função para atualizar o total de Força no HTML
+function updateTotalForca(totalForca) {
+    const forcaDiv = document.querySelector('#Forca');
+    let forcaH2 = forcaDiv.querySelector('.total-value');
+    if (!forcaH2) {
+        forcaH2 = document.createElement('h2');
+        forcaH2.classList.add('total-value');
+        const inputElement = forcaDiv.querySelector('input');
+        forcaDiv.insertBefore(forcaH2, inputElement);
+    }
+    forcaH2.textContent = `${totalForca} N`;
+}
+
 // Função para calcular o total de Corrida
 function calculateTotalCorrida(xp) {
     let totalCorrida = 0;
@@ -118,7 +169,6 @@ function calculateTotalCorrida(xp) {
     }
 
     return parseFloat(totalCorrida.toFixed(1));
-
 }
 
 // Função para atualizar o total de Corrida no HTML
@@ -133,10 +183,6 @@ function updateTotalCorrida(totalCorrida) {
     }
     corridaH2.textContent = `${totalCorrida} Km/h`;
 }
-
-
-
-
 
 // Função para calcular o total de Mente
 function calculateTotalMente(xp) {
@@ -189,7 +235,6 @@ function calculateTotalConcentracao(xp) {
     }
 
     return parseFloat(totalConcentracao.toFixed(1));
-
 }
 
 // Função para atualizar o total de Concentração no HTML
@@ -204,6 +249,33 @@ function updateTotalConcentracao(totalConcentracao) {
     concentracaoH2.textContent = `${totalConcentracao} CT`; // Alterado "Mi" para "Concentração"
 }
 
+function calculateAverageMain() {
+    let sum = 0;
+    let count = 0;
+
+    // Somente considera os "stats main" para a média
+    for (let i = 0; i < statNumberInputs.length; i++) {
+        const value = parseInt(statNumberInputs[i].value);
+        if (i < 6) { // Considera apenas os primeiros 6 inputs para "stats main"
+            sum += value;
+            count++;
+        }
+    }
+    const average = sum / count;
+    return average;
+}
+
+function calculateAverageAll() {
+    let sum = 0;
+
+    // Considera todos os inputs para a média
+    for (let i = 0; i < statNumberInputs.length; i++) {
+        const value = parseInt(statNumberInputs[i].value);
+        sum += value;
+    }
+    const average = sum / statNumberInputs.length;
+    return average;
+}
 
 function calculateAverage() {
     let sum = 0;
@@ -246,6 +318,35 @@ function calculateRank(average) {
     }
 }
 
-function updateRank(rank, average, totalPoints) {
-    rankElement.textContent = `Rank ${rank} – Total de ${totalPoints} – Média de ${average.toFixed(2)}`;
+function updateRank(rankMain, averageMain, totalPoints, rankAll, averageAll) {
+    rankElement.textContent = `Rank ${rankMain} – Total de ${totalPoints} – Média de ${averageMain.toFixed(2)}\n`;
 }
+
+// Chamadas iniciais para calcular e exibir valores
+const averageMain = calculateAverageMain();
+const averageAll = calculateAverageAll();
+const totalPoints = calculateTotalPoints();
+const rankMain = calculateRank(averageMain);
+const rankAll = calculateRank(averageAll);
+updateRank(rankMain, averageMain, totalPoints, rankAll, averageAll);
+
+// Chamadas iniciais para calcular e exibir os totais
+const almaInput = document.querySelector('#Alma input');
+const totalAlma = calculateTotalAlma(parseInt(almaInput.value));
+updateTotalAlma(totalAlma);
+
+const manaInput = document.querySelector('#Mana input');
+const totalMana = calculateTotalMana(parseInt(manaInput.value));
+updateTotalMana(totalMana);
+
+const corridaInput = document.querySelector('#Corrida input');
+const totalCorrida = calculateTotalCorrida(parseInt(corridaInput.value));
+updateTotalCorrida(totalCorrida);
+
+const menteInput = document.querySelector('#Mente input');
+const totalMente = calculateTotalMente(parseInt(menteInput.value));
+updateTotalMente(totalMente);
+
+const concentracaoInput = document.querySelector('#Concentracao input');
+const totalConcentracao = calculateTotalConcentracao(parseInt(concentracaoInput.value));
+updateTotalConcentracao(totalConcentracao);
