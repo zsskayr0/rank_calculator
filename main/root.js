@@ -66,9 +66,9 @@ statNumberInputs.forEach((inputElement) => {
 // Função para calcular o total de Alma
 function calculateTotalAlma(xp) {
     if (xp >= 480) {
-        return 200 * xp;
+        return (200 * xp);
     } else {
-        return 150 * xp;
+        return (150 * xp) + 150;
     }
 }
 
@@ -89,7 +89,7 @@ function calculateTotalMana(xp) {
     if (xp >= 480) {
         return 200 * xp;
     } else {
-        return 150 * xp;
+        return (150 * xp) + 150;
     }
 }
 
@@ -110,7 +110,7 @@ function calculateTotalForca(xp) {
     let totalForca = 0;
 
     if (xp <= 80) {
-        totalForca = (xp * 6);
+        totalForca = (xp * 6 +300);
     } else if (xp <= 160) {
         totalForca = (xp * 6);
     } else if (xp <= 240) {
@@ -197,9 +197,9 @@ function updateTotalCorrida(totalCorrida) {
 function calculateTotalMente(xp) {
     // Substitua a lógica abaixo pelo cálculo real do total de Mente com base na experiência (xp)
     if (xp >= 500) {
-        return 4.5 * xp;
+        return (4.5 * xp);
     } else {
-        return 6 * xp;
+        return (6 * xp) + 15;
     }
 }
 
@@ -220,7 +220,7 @@ function calculateTotalConcentracao(xp) {
     let totalConcentracao = 0;
 
     if (xp <= 80) {
-        totalConcentracao = (xp * 1.2);
+        totalConcentracao = (xp * 1.2) + 10;
     } else if (xp <= 160) {
         totalConcentracao = (xp * 1.2);
     } else if (xp <= 240) {
