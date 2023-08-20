@@ -51,6 +51,15 @@ statNumberInputs.forEach((inputElement) => {
         const concentracaoInput = document.querySelector('#Concentracao input');
         const totalConcentracao = calculateTotalConcentracao(parseInt(concentracaoInput.value));
         updateTotalConcentracao(totalConcentracao);
+
+        // Calcula e atualiza o total de Constituição
+        const constituicaoInput = document.querySelector('#Constituicao input');
+        const totalConstituicao = calculateTotalConstituicao(
+            parseInt(constituicaoInput.value),
+            parseInt(almaInput.value),
+            parseInt(forcaInput.value)
+        );
+        updateTotalConstituicao(totalConstituicao);
     });
 });
 
@@ -249,6 +258,25 @@ function updateTotalConcentracao(totalConcentracao) {
     concentracaoH2.textContent = `${totalConcentracao} CT`; // Alterado "Mi" para "Concentração"
 }
 
+// Função para calcular o total de Constituição
+function calculateTotalConstituicao(constituicao, pontosAlma, pontosForca) {
+    const totalConstituicao = constituição + (pontosAlma + pontosForca) / 2.285;
+    return parseFloat(totalConstituicao.toFixed(1));
+}
+
+// Função para atualizar o total de Constituição no HTML
+function updateTotalConstituicao(totalConstituicao) {
+    const constituicaoDiv = document.querySelector('#Constituicao');
+    let constituicaoH2 = constituicaoDiv.querySelector('.total-value');
+    if (!constituicaoH2) {
+        constituicaoH2 = document.createElement('h2');
+        constituicaoH2.classList.add('total-value');
+        const inputElement = constituicaoDiv.querySelector('input');
+        constituicaoDiv.insertBefore(constituicaoH2, inputElement);
+    }
+    constituicaoH2.textContent = `${totalConstituicao} pts`;
+}
+
 function calculateAverageMain() {
     let sum = 0;
     let count = 0;
@@ -328,9 +356,11 @@ const averageAll = calculateAverageAll();
 const totalPoints = calculateTotalPoints();
 const rankMain = calculateRank(averageMain);
 const rankAll = calculateRank(averageAll);
-updateRank(rankMain, averageMain, totalPoints, rankAll, averageAll);
 
-// Chamadas iniciais para calcular e exibir os totais
+const forcaInput = document.querySelector('#Forca input');
+const totalForca = calculateTotalForca(parseInt(forcaInput.value));
+updateTotalForca(totalForca);
+
 const almaInput = document.querySelector('#Alma input');
 const totalAlma = calculateTotalAlma(parseInt(almaInput.value));
 updateTotalAlma(totalAlma);
@@ -350,3 +380,5 @@ updateTotalMente(totalMente);
 const concentracaoInput = document.querySelector('#Concentracao input');
 const totalConcentracao = calculateTotalConcentracao(parseInt(concentracaoInput.value));
 updateTotalConcentracao(totalConcentracao);
+
+updateRank(rankMain, averageMain, totalPoints, rankAll, averageAll);
