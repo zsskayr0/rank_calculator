@@ -15,12 +15,10 @@ statNumberInputs.forEach((inputElement) => {
         }
 
         // Recalcula a média, o total de pontos e atualiza o rank
-        const averageMain = calculateAverageMain();
-        const averageAll = calculateAverageAll();
+        const average = calculateAverage();
         const totalPoints = calculateTotalPoints();
-        const rankMain = calculateRank(averageMain);
-        const rankAll = calculateRank(averageAll);
-        updateRank(rankMain, averageMain, totalPoints, rankAll, averageAll);
+        const rank = calculateRank(average);
+        updateRank(rank, average, totalPoints);
 
         // Calcula e atualiza o total de Alma
         const almaInput = document.querySelector('#Alma input');
@@ -277,33 +275,6 @@ function updateTotalConstituicao(totalConstituicao) {
     constituicaoH2.textContent = `${totalConstituicao} pts`;
 }
 
-function calculateAverageMain() {
-    let sum = 0;
-    let count = 0;
-
-    // Somente considera os "stats main" para a média
-    for (let i = 0; i < statNumberInputs.length; i++) {
-        const value = parseInt(statNumberInputs[i].value);
-        if (i < 6) { // Considera apenas os primeiros 6 inputs para "stats main"
-            sum += value;
-            count++;
-        }
-    }
-    const average = sum / count;
-    return average;
-}
-
-function calculateAverageAll() {
-    let sum = 0;
-
-    // Considera todos os inputs para a média
-    for (let i = 0; i < statNumberInputs.length; i++) {
-        const value = parseInt(statNumberInputs[i].value);
-        sum += value;
-    }
-    const average = sum / statNumberInputs.length;
-    return average;
-}
 
 function calculateAverage() {
     let sum = 0;
@@ -311,9 +282,10 @@ function calculateAverage() {
         const value = parseInt(statNumberInputs[i].value);
         sum += value;
     }
-    const average = sum / statNumberInputs.length;
+    const average = sum / 6; // Dividir pela quantidade desejada (6)
     return average;
 }
+
 
 function calculateTotalPoints() {
     let total = 0;
@@ -346,16 +318,14 @@ function calculateRank(average) {
     }
 }
 
-function updateRank(rankMain, averageMain, totalPoints, rankAll, averageAll) {
-    rankElement.textContent = `Rank ${rankMain} – Total de ${totalPoints} – Média de ${averageMain.toFixed(2)}\n`;
+function updateRank(rank, average, totalPoints) {
+    rankElement.textContent = `Rank ${rank} – Total de ${totalPoints} – Média de ${average.toFixed(2)}\n`;
 }
 
 // Chamadas iniciais para calcular e exibir valores
-const averageMain = calculateAverageMain();
-const averageAll = calculateAverageAll();
 const totalPoints = calculateTotalPoints();
-const rankMain = calculateRank(averageMain);
-const rankAll = calculateRank(averageAll);
+const rank = calculateRank(average);
+const average = calculateTotalPoints()/6;
 
 const forcaInput = document.querySelector('#Forca input');
 const totalForca = calculateTotalForca(parseInt(forcaInput.value));
@@ -381,4 +351,4 @@ const concentracaoInput = document.querySelector('#Concentracao input');
 const totalConcentracao = calculateTotalConcentracao(parseInt(concentracaoInput.value));
 updateTotalConcentracao(totalConcentracao);
 
-updateRank(rankMain, averageMain, totalPoints, rankAll, averageAll);
+updateRank(rank, average, totalPoints, rankAll, averageAll);
