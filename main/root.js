@@ -13,7 +13,12 @@ statNumberInputs.forEach((inputElement) => {
         if (this.value.length > 3) {
             this.value = this.value.slice(0, 3);
         }
-
+        // Ensure attributes don't exceed certain values
+        const attributeName = inputElement.parentElement.id; // Get the attribute name from the parent element's ID
+        const maxLimit = attributeName === 'Constituicao' ? 120 : 960;
+        if (parseInt(this.value) > maxLimit) {
+            this.value = maxLimit.toString();
+        }
         // Recalcula a média, o total de pontos e atualiza o rank
         const average = calculateAverage();
         const totalPoints = calculateTotalPoints();
@@ -351,4 +356,4 @@ const concentracaoInput = document.querySelector('#Concentracao input');
 const totalConcentracao = calculateTotalConcentracao(parseInt(concentracaoInput.value));
 updateTotalConcentracao(totalConcentracao);
 
-updateRank(rank, average, totalPoints, rankAll, averageAll);
+updateRank(rank, average, totalPoints);
