@@ -29,8 +29,6 @@ body {
     z-index: 1000;
 }
 
-
-
 /* Container Styles */
 .container {
   text-align: center;
@@ -80,7 +78,7 @@ input {
 }
 
 /* Results Container Styles */
-.stat-container {
+.stat-container,.chart-container {
   margin-top: 10px;
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
@@ -89,6 +87,7 @@ input {
   align-items: center;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #stat-container > h2 {
@@ -152,6 +151,11 @@ p {
 .tutorial-container li {
   font-size: 14px;
   text-align: justify;
+}
+
+#legenda {
+  text-align: center;
+  align-items: center;
 }
 
 /* Media Query for PC-sized screens */

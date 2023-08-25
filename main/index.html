@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rank Calculator</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <div class="container">
@@ -42,6 +43,10 @@
                 <input class="statnumber" type="number" value="0" max="960">
             </div>
 
+        </div>
+
+        <div class="chart-container">
+            <canvas id="chartMain" width="400" height="300"></canvas>
         </div>
 
         <div class="stat-container" id="stat-container-plus">
@@ -114,7 +119,101 @@
             <p>
                 Lembre-se, insira apenas números válidos nas caixas de entrada e observe como suas escolhas afetam médias, ranking e atributos específicos. Experimente combinações diferentes para alcançar o resultado desejado. Divirta-se calculando seu Rank!
             </p>
+            <div id="Legenda">
+            <h3>Legenda de Mínimo e Média</h3>
+            <p><strong>Rank E:</strong> Rank inicial, sem pontos mínimos</p>
+            <p><strong>Rank D:</strong> Média de <strong>87</strong> com <strong>522</strong> pontos totais</p>
+            <p><strong>Rank C:</strong> Média de <strong>174</strong> com <strong>1044</strong> pontos totais</p>
+            <p><strong>Rank B:</strong> Média de <strong>261</strong> com <strong>1566</strong> pontos totais</p>
+            <p><strong>Rank A:</strong> Média de <strong>348</strong> com <strong>2088</strong> pontos totais</p>
+            <p><strong>Rank S:</strong> Média de <strong>435</strong> com <strong>2610</strong> pontos totais</p>
+            <p><strong>Rank SS:</strong> Média de <strong>522</strong> com <strong>3132</strong> pontos totais</p>
+            <p><strong>Rank SSS:</strong> Média de <strong>609</strong> com <strong>3654</strong> pontos totais</p>
+            <p><strong>Rank Z:</strong> Média de <strong>696</strong> com <strong>4176</strong> pontos totais</p>
+        </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="root.js"></script>
+
+    <script>
+        // Function to get values from input elements
+        function getInputValues() {
+            return [
+                document.getElementById('Alma').querySelector('.statnumber').value,
+                document.getElementById('Mana').querySelector('.statnumber').value,
+                document.getElementById('Forca').querySelector('.statnumber').value,
+                document.getElementById('Corrida').querySelector('.statnumber').value,
+                document.getElementById('Mente').querySelector('.statnumber').value,
+                document.getElementById('Concentracao').querySelector('.statnumber').value
+            ];
+        }
+    
+// Função para atualizar o gráfico com novos valores
+function updateChart() {
+    const values = getInputValues();
+
+    const ctx = document.getElementById('chartMain').getContext('2d');
+
+    if (window.chart) {
+        window.chart.destroy();
+    }
+
+    window.chart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ['Alma', 'Mana', 'Forca', 'Corrida', 'Mente', 'Concentracao'],
+            datasets: [{
+                label: 'XP Total',
+                data: values,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 0.7,
+                pointBackgroundColor: 'rgba(75, 192, 192, 1)', // Cor dos pontos
+                pointBorderColor: '#fff', // Cor da borda dos pontos
+                pointRadius: 4, // Tamanho dos pontos
+            }]
+        },
+        options: {
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    suggestedMax: 100, // Valor máximo do eixo
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.1)' // Cor das linhas de grade
+                    },
+                    angleLines: {
+                        color: 'rgba(0, 0, 0, 0.1)' // Cor das linhas que conectam os pontos
+                    }
+                }
+            },
+            elements: {
+                line: {
+                    borderWidth: 2 // Espessura da linha que conecta os pontos
+                }
+            }
+        }
+    });
+}
+
+document.querySelectorAll('.statnumber').forEach(input => {
+    input.addEventListener('input', updateChart);
+});
+
+updateChart();
+
+
+// Adicione ouvintes de eventos aos campos de entrada
+document.querySelectorAll('.statnumber').forEach(input => {
+    input.addEventListener('input', updateChart);
+});
+
+// Chame a função updateChart() inicialmente para criar o gráfico
+updateChart();
+
+    
+        // Call the updateChart function to initialize the chart
+        updateChart();
+    </script>
+    
 </html>

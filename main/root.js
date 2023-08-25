@@ -357,3 +357,4 @@ const totalConcentracao = calculateTotalConcentracao(parseInt(concentracaoInput.
 updateTotalConcentracao(totalConcentracao);
 
 updateRank(rank, average, totalPoints);
+
