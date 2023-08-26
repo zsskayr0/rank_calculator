@@ -141,6 +141,17 @@ p {
   font-size: 14px;
 }
 
+.config-container {
+  margin-top: 10px; /* Reduzido o espaçamento para telas menores */
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 10px 20px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
 /* Estilos personalizados */
 .total-value {
   font-size: 14px;
@@ -251,4 +262,189 @@ p {
 .stat {
   width: 100%; /* Full width for smaller screens */
   margin-bottom: 10px; /* Add margin between .stat containers */
+}
+
+
+
+
+
+
+
+
+
+
+.toggleDarkMode {
+  display: flex;
+  align-items: center;
+}
+
+.toggleDarkMode li {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.toggleDarkMode label {
+  margin-right: 5px;
+}
+
+.toggleDarkMode .switch {
+  cursor: pointer;
+  width: 40px;
+  /* 20% do tamanho normal (200px) */
+  height: 20px;
+  /* 20% do tamanho normal (100px) */
+  background: grey;
+  display: block;
+  border-radius: 10px;
+  /* Metade da altura para manter a proporção */
+  position: relative;
+}
+
+.toggleDarkMode .switch:after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  /* 20% do tamanho normal (10px) */
+  left: 1px;
+  /* 20% do tamanho normal (10px) */
+  width: 18px;
+  /* 20% do tamanho normal (80px) */
+  height: 18px;
+  /* 20% do tamanho normal (80px) */
+  background: #fff;
+  border-radius: 50%;
+  /* Metade do tamanho para manter a proporção */
+  transition: 0.3s;
+}
+
+.toggleDarkMode input:checked+.switch {
+  background: #5584da;
+}
+
+.toggleDarkMode input:checked+.switch:after {
+  left: calc(100% - 1px);
+  /* 20% do tamanho normal (10px) */
+  transform: translateX(-100%);
+}
+
+.toggleDarkMode .switch:active:after {
+  width: 19px;
+  /* 20% do tamanho normal (130px) */
+  height: 19px;
+  /* 20% do tamanho normal (130px) */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Modo Escuro */
+.darkmode, .darkmode body {
+  background-color: #121212;
+  color: #d3d2d2;
+}
+
+.darkmode input,
+.darkmode input::placeholder {
+  color: #d3d2d2;
+}
+
+.darkmode .input-container,
+.darkmode .tutorial-container,
+.darkmode .config-container,
+.darkmode .stat-container,
+.darkmode .chart-container {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.darkmode .input-container input,
+.darkmode .tutorial-container p,
+.darkmode .config-container li,
+.darkmode .stat-container h3,
+.darkmode .chart-container {
+  color: #d3d2d2;
+}
+
+.darkmode .toggleDarkMode label {
+  color: #d3d2d2; /* Altere a cor do texto do label */
+}
+
+.darkmode .toggleDarkMode .switch {
+  background: #d3d2d2;
+}
+
+.darkmode .toggleDarkMode .switch:after {
+  background: #121212;
+}
+
+.darkmode .toggleDarkMode input:checked + .switch {
+  background: #121212;
+}
+
+.darkmode .toggleDarkMode input:checked + .switch:after {
+  background: #d3d2d2;
+}
+
+/* Ajuste a cor do título */
+.darkmode .container > h1 {
+  color: #d3d2d2;
+}
+
+/* Ajuste a cor do subtítulo */
+.darkmode .container > h2 {
+  color: #d3d2d2;
 }

@@ -358,3 +358,28 @@ updateTotalConcentracao(totalConcentracao);
 
 updateRank(rank, average, totalPoints);
 
+// Function to toggle between light mode and dark mode
+function toggleDarkMode() {
+    const body = document.querySelector('body'); // Seleciona o elemento <body>
+    body.classList.toggle('darkmode'); // Adiciona ou remove a classe 'darkmode' do elemento <body>
+
+    // Store dark mode state in localStorage
+    const darkModeOn = body.classList.contains('darkmode');
+    localStorage.setItem('DarkModeON', darkModeOn);
+
+    // Update dark mode switch state
+    const switchDarkMode = document.getElementById('switch-DarkMode'); // ID atualizado
+    switchDarkMode.checked = darkModeOn;
+}
+
+// Check the localStorage on page load and apply dark mode if previously enabled
+window.addEventListener('load', () => {
+    const darkModeOn = localStorage.getItem('DarkModeON') === 'true';
+    const body = document.querySelector('body'); // Seleciona o elemento <body>
+    const switchDarkMode = document.getElementById('switch-DarkMode');
+
+    if (darkModeOn) {
+        body.classList.add('darkmode'); // Adiciona a classe 'darkmode' ao elemento <body>
+        switchDarkMode.checked = true;
+    }
+});
