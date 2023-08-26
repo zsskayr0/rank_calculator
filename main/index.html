@@ -48,6 +48,10 @@
             <canvas id="chartMain"></canvas>
         </div>
 
+        <div class="chart-container">
+            <canvas id="chartRadar"></canvas>
+        </div>
+
         <div class="stat-container" id="stat-container-plus">
             <div class="stat" id="Constituicao">
                 <h3>Constituição</h3>
@@ -97,9 +101,7 @@
 
 
 
-        <div class="chart-container">
-            <canvas id="chartRadar"></canvas>
-        </div>
+
 
         <div class="chart-container">
             <canvas id="chartSub"></canvas>
@@ -149,12 +151,12 @@
         // Function to get values from input elements
         function getInputValuesMain() {
             return [
-                document.getElementById('Concentracao').querySelector('.statnumber').value,
                 document.getElementById('Alma').querySelector('.statnumber').value,
-                document.getElementById('Corrida').querySelector('.statnumber').value,
-                document.getElementById('Forca').querySelector('.statnumber').value,
-                document.getElementById('Mente').querySelector('.statnumber').value,
                 document.getElementById('Mana').querySelector('.statnumber').value,
+                document.getElementById('Forca').querySelector('.statnumber').value,
+                document.getElementById('Corrida').querySelector('.statnumber').value,
+                document.getElementById('Mente').querySelector('.statnumber').value,
+                document.getElementById('Concentracao').querySelector('.statnumber').value,
             ];
         }
     
@@ -186,12 +188,12 @@ function updateChart() {
         type: 'bar',
         data: {
             labels: [
-            'Concentracao',
-            'Alma',
-            'Corrida',
-            'Forca',
-            'Mente',
-            'Mana',
+                'Alma',
+                'Mana',
+                'Forca',
+                'Corrida',
+                'Mente',
+                'Concentracao',
 
         ],
             datasets: [{
@@ -231,12 +233,12 @@ function updateChart() {
 
  // Função para atualizar o gráfico de radar com novos valores
  function updateRadarChart() {
-            const valuesMain = getInputValuesMain();
-            const ctx = document.getElementById('chartRadar').getContext('2d');
+    const valuesMain = getInputValuesMain();
+    const ctx = document.getElementById('chartRadar').getContext('2d');
 
-            if (window.radarChart) {
-                window.radarChart.destroy();
-            }
+    if (window.radarChart) {
+        window.radarChart.destroy();
+    }
 
             window.radarChart = new Chart(ctx, {
                 type: 'radar',
@@ -295,7 +297,7 @@ function updateChart() {
             }
 
             window.SubChart = new Chart(ctx, {
-                type: 'radar',
+                type: 'line',
                 data: {
                     labels: [
                         'Constituicao',
@@ -345,6 +347,8 @@ function updateChart() {
 // Adicione ouvintes de eventos aos campos de entrada
 document.querySelectorAll('.statnumber').forEach(input => {
     input.addEventListener('input', updateChart);
+    input.addEventListener('input', updateRadarChart);
+    input.addEventListener('input', updateSubChart);
 });
 
 // Chame a função updateChart() inicialmente para criar o gráfico
