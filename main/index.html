@@ -16,42 +16,48 @@
         <div class="input-container">
             <div id="rankdisplay">Rank: </div>
         </div>
-        <div class="stat-container" id="stat-container-main">
-            <div class="stat" id="Alma">
-                <h3>Alma</h3>
-                <input class="statnumber" type="number" value="0" max="960">
-            </div>
-            <div class="stat" id="Mana">
-                <h3>Mana</h3>
-                <input class="statnumber" type="number" value="0" max="960">
-            </div>
-            <div class="stat" id="Forca">
-                <h3>Força</h3>
-                <input class="statnumber" type="number" value="0" max="960">
-            </div>
-            <div class="stat" id="Corrida">
-                <h3>Corrida</h3>
-                <input class="statnumber" type="number" value="0" max="960">
-            </div>
+        <div id="stat_display">
+            <div id="stat1" class="statwide">
 
-            <div class="stat" id="Mente">
-                <h3>Mente</h3>
-                <input class="statnumber" type="number" value="0" max="960">
+            <div class="stat-container" id="stat-container-main">
+                <div class="stat" id="Alma">
+                    <h3>Alma</h3>
+                    <input class="statnumber" type="number" value="0" max="960">
+                </div>
+                <div class="stat" id="Mana">
+                    <h3>Mana</h3>
+                    <input class="statnumber" type="number" value="0" max="960">
+                </div>
+                <div class="stat" id="Forca">
+                    <h3>Força</h3>
+                    <input class="statnumber" type="number" value="0" max="960">
+                </div>
+                <div class="stat" id="Corrida">
+                    <h3>Corrida</h3>
+                    <input class="statnumber" type="number" value="0" max="960">
+                </div>
+    
+                <div class="stat" id="Mente">
+                    <h3>Mente</h3>
+                    <input class="statnumber" type="number" value="0" max="960">
+                </div>
+                <div class="stat" id="Concentracao">
+                    <h3>Concentração</h3>
+                    <input class="statnumber" type="number" value="0" max="960">
+                </div>
             </div>
-            <div class="stat" id="Concentracao">
-                <h3>Concentração</h3>
-                <input class="statnumber" type="number" value="0" max="960">
+    
+            <div class="chart-container">
+                <canvas id="chartMain"></canvas>
             </div>
+    
+            <div class="chart-container">
+                <canvas id="chartRadar"></canvas>
+            </div>
+            
         </div>
 
-        <div class="chart-container">
-            <canvas id="chartMain"></canvas>
-        </div>
-
-        <div class="chart-container">
-            <canvas id="chartRadar"></canvas>
-        </div>
-
+        <div id="stat2" class="statwide">
         <div class="stat-container" id="stat-container-plus">
             <div class="stat" id="Constituicao">
                 <h3>Constituição</h3>
@@ -98,15 +104,20 @@
                 <input class="statnumber" type="number" value="0" max="120">
             </div>
         </div>
-
-
-
-
-
         <div class="chart-container">
             <canvas id="chartSub"></canvas>
         </div>
-        
+
+        <div class="chart-container">
+            <canvas id="chartResult" height="262px"></canvas>
+        </div>
+    </div>
+</div>
+
+
+
+
+
         <div class="tutorial-container">
             <h2>Guia Rápido</h2>
             <p>
@@ -244,12 +255,12 @@ function updateChart() {
                 type: 'radar',
                 data: {
                     labels: [
-                        'Concentracao',
                         'Alma',
-                        'Corrida',
-                        'Forca',
-                        'Mente',
                         'Mana',
+                        'Forca',
+                        'Corrida',
+                        'Mente',
+                        'Concentracao',
                     ],
                     datasets: [{
                 label: 'XP Total',
