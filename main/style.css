@@ -216,6 +216,7 @@ p {
     justify-content: space-between;
     align-items: center; /* Vertically center the entire .stat-container */
     margin-top: 10px; /* Add margin to separate containers */
+    width: 600px;
   }
 
   .stat {
@@ -251,6 +252,11 @@ p {
     text-align: center;
     width: 100%;
   }
+
+  #chartRadar canvas {
+    width: 200px;
+  }
+
 }
 
 /* Additional styles for smaller screens */
@@ -263,12 +269,6 @@ p {
   width: 100%; /* Full width for smaller screens */
   margin-bottom: 10px; /* Add margin between .stat containers */
 }
-
-
-
-
-
-
 
 
 
@@ -339,63 +339,6 @@ p {
 .config-container {
   visibility: hidden;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Modo Escuro */
 .darkmode, .darkmode body {
