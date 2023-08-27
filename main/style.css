@@ -195,10 +195,10 @@ p {
 
   #stat_display {
     display: flex;
+    flex-direction:row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
-    padding: 20px 0; /* Adicione um espaçamento superior e inferior para melhor visualização */
   }
 
 .container {
@@ -333,6 +333,11 @@ p {
   /* 20% do tamanho normal (130px) */
   height: 19px;
   /* 20% do tamanho normal (130px) */
+}
+
+
+.config-container {
+  visibility: hidden;
 }
 
 
