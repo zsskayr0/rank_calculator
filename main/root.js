@@ -63,6 +63,63 @@ statNumberInputs.forEach((inputElement) => {
             parseInt(forcaInput.value)
         );
         updateTotalConstituicao(totalConstituicao);
+
+        // Calcula e atualiza o total de Potência
+        const potenciaInput = document.querySelector('#Potencia input');
+        const totalPotencia = calculateTotalPotencia(
+            parseInt(potenciaInput.value),
+            parseInt(forcaInput.value),
+            parseInt(corridaInput.value),
+            parseInt(concentracaoInput.value)
+        );
+        updateTotalPotencia(totalPotencia);
+
+
+        const agilidadeInput = document.querySelector('#Agilidade input');
+        const totalAgilidade = calculateTotalAgilidade(
+            parseInt(corridaInput.value),
+            parseInt(concentracaoInput.value)
+        );
+        updateTotalAgilidade(totalAgilidade);
+        
+
+
+        const recuperacaoInput = document.querySelector('#Recuperacao input');        
+        const totalRecuperacao = calculateTotalRecuperacao(
+            parseInt(recuperacaoInput.value),
+            parseInt(menteInput.value),
+            parseInt(concentracaoInput.value)
+        );
+        updateTotalRecuperacao(totalRecuperacao);
+        
+
+        const imaterialInput = document.querySelector('#Imaterial input');        
+        const totalImaterial = calculateTotalImaterial(
+            parseInt(imaterialInput.value),
+            parseInt(menteInput.value),
+            parseInt(concentracaoInput.value)
+        );
+        updateTotalImaterial(totalImaterial);
+        
+        const espiritoInput = document.querySelector('#Espirito input');        
+        const totalEspirito = calculateTotalEspirito(
+            parseInt(menteInput.value),
+            parseInt(concentracaoInput.value)
+        );
+        updateTotalEspirito(totalEspirito);
+        
+
+
+
+
+
+
+
+
+
+
+
+
     });
 });
 
@@ -131,9 +188,9 @@ function calculateTotalForca(xp) {
     } else if (xp <= 740) {
         totalForca = (xp * 16);
     } else if (xp <= 840) {
-        totalForca = (xp * 16);
+        totalForca = (xp * 24);
     } else {
-        totalForca = (xp * 64);
+        totalForca = (xp * 32);
     }
 
     return parseFloat(totalForca.toFixed(1));
@@ -262,8 +319,8 @@ function updateTotalConcentracao(totalConcentracao) {
 }
 
 // Função para calcular o total de Constituição
-function calculateTotalConstituicao(constituicao, pontosAlma, pontosForca) {
-    const totalConstituicao = constituição + (pontosAlma + pontosForca) / 2.285;
+function calculateTotalConstituicao(constituicaoInput, almaInput, forcaInput) {
+    const totalConstituicao = constituicaoInput + (almaInput + forcaInput) / 2.285;
     return parseFloat(totalConstituicao.toFixed(1));
 }
 
@@ -279,6 +336,103 @@ function updateTotalConstituicao(totalConstituicao) {
     }
     constituicaoH2.textContent = `${totalConstituicao} pts`;
 }
+
+// Função para calcular o total de Potência
+function calculateTotalPotencia(potenciaInput, forcaInput, corridaInput, concentracaoInput) {
+    const totalPotencia = potenciaInput + (forcaInput + corridaInput + concentracaoInput) / 3.427;
+    return parseFloat(totalPotencia.toFixed(1));
+}
+
+// Função para atualizar o total de Potência no HTML
+function updateTotalPotencia(totalPotencia) {
+    const potenciaDiv = document.querySelector('#Potencia');
+    let potenciaH2 = potenciaDiv.querySelector('.total-value');
+    if (!potenciaH2) {
+        potenciaH2 = document.createElement('h2');
+        potenciaH2.classList.add('total-value');
+        const inputElement = potenciaDiv.querySelector('input');
+        potenciaDiv.insertBefore(potenciaH2, inputElement);
+    }
+    potenciaH2.textContent = `${totalPotencia} pts`;
+}
+
+function calculateTotalAgilidade(corridaInput, concentracaoInput) {
+    const totalAgilidade = corridaInput + concentracaoInput;
+    return totalAgilidade;
+}
+
+function updateTotalAgilidade(totalAgilidade) {
+    const agilidadeDiv = document.querySelector('#Agilidade');
+    let agilidadeH2 = agilidadeDiv.querySelector('.total-value');
+    if (!agilidadeH2) {
+        agilidadeH2 = document.createElement('h2');
+        agilidadeH2.classList.add('total-value');
+        const inputElement = agilidadeDiv.querySelector('input');
+        agilidadeDiv.insertBefore(agilidadeH2, inputElement);
+    }
+    agilidadeH2.textContent = `${totalAgilidade} pts`;
+}
+
+
+
+function calculateTotalRecuperacao(recuperacaoInput, menteInput, concentracaoInput) {
+    const totalRecuperacao = recuperacaoInput + (menteInput + concentracaoInput) / 3.427;
+    return parseFloat(totalRecuperacao.toFixed(1));
+}
+
+function updateTotalRecuperacao(totalRecuperacao) {
+    const recuperacaoDiv = document.querySelector('#Recuperacao');
+    let recuperacaoH2 = recuperacaoDiv.querySelector('.total-value');
+    if (!recuperacaoH2) {
+        recuperacaoH2 = document.createElement('h2');
+        recuperacaoH2.classList.add('total-value');
+        const inputElement = recuperacaoDiv.querySelector('input');
+        recuperacaoDiv.insertBefore(recuperacaoH2, inputElement);
+    }
+    recuperacaoH2.textContent = `${totalRecuperacao} pts`;
+}
+
+function calculateTotalImaterial(imaterialInput, menteInput, concentracaoInput) {
+    const totalImaterial = imaterialInput + (menteInput + concentracaoInput) / 3.427;
+    return parseFloat(totalImaterial.toFixed(1));
+}
+
+function updateTotalImaterial(totalImaterial) {
+    const imaterialDiv = document.querySelector('#Imaterial');
+    let imaterialH2 = imaterialDiv.querySelector('.total-value');
+    if (!imaterialH2) {
+        imaterialH2 = document.createElement('h2');
+        imaterialH2.classList.add('total-value');
+        const inputElement = imaterialDiv.querySelector('input');
+        imaterialDiv.insertBefore(imaterialH2, inputElement);
+    }
+    imaterialH2.textContent = `${totalImaterial} pts`;
+}
+
+function calculateTotalEspirito(espiritoInput, menteInput, concentracaoInput) {
+    const totalEspirito = espiritoInput + (menteInput + concentracaoInput) / 2.285;
+    return parseFloat(totalEspirito.toFixed(1));
+}
+
+function updateTotalEspirito(totalEspirito) {
+    const espiritoDiv = document.querySelector('#Espirito');
+    let espiritoH2 = espiritoDiv.querySelector('.total-value');
+    if (!espiritoH2) {
+        espiritoH2 = document.createElement('h2');
+        espiritoH2.classList.add('total-value');
+        const inputElement = espiritoDiv.querySelector('input');
+        espiritoDiv.insertBefore(espiritoH2, inputElement);
+    }
+    espiritoH2.textContent = `${totalEspirito} pts`;
+}
+
+
+
+
+
+
+
+
 
 
 function calculateAverage() {
@@ -383,3 +537,4 @@ window.addEventListener('load', () => {
         switchDarkMode.checked = true;
     }
 });
+
