@@ -6,6 +6,7 @@ const totalPointsElement = document.querySelector('#totalpoints'); // Element to
 // Adiciona evento de escuta para cada input de estatística
 statNumberInputs.forEach((inputElement) => {
     inputElement.addEventListener("input", function() {
+
         // Limpa qualquer caractere que não seja número
         this.value = this.value.replace(/[^\d]/g, '');
 
@@ -15,11 +16,24 @@ statNumberInputs.forEach((inputElement) => {
         }
         // Ensure attributes don't exceed certain values
         const attributeName = inputElement.parentElement.id; // Get the attribute name from the parent element's ID
-        const maxLimit = attributeName === 'Constituicao' ? 120 : 960;
+        let maxLimit = 960; // Default maxLimit
+        
+        if (attributeName === 'Constituicao' ||
+            attributeName === 'Potencia' ||
+            attributeName === 'Agilidade' ||
+            attributeName === 'Recuperacao' ||
+            attributeName === 'Imaterial' ||
+            attributeName === 'Espirito' ||
+            attributeName === 'visao' ||
+            attributeName === 'Audicao' ||
+            attributeName === 'Olfato' ||
+            attributeName === 'Tato') {
+            maxLimit = 120;
+        }
+        
         if (parseInt(this.value) > maxLimit) {
             this.value = maxLimit.toString();
-        }
-
+        }        
 
         // Recalcula a média, o total de pontos e atualiza o rank
         const average = calculateAverage();
@@ -76,51 +90,45 @@ statNumberInputs.forEach((inputElement) => {
         );
         updateTotalPotencia(totalPotencia);
 
-
+        // Calcula e atualiza o total de Agilidade
         const agilidadeInput = document.querySelector('#Agilidade input');
         const totalAgilidade = calculateTotalAgilidade(
+            parseInt(agilidadeInput.value),
             parseInt(corridaInput.value),
             parseInt(concentracaoInput.value)
         );
         updateTotalAgilidade(totalAgilidade);
         
 
-
+        // Calcula e atualiza o total de Recuperação
         const recuperacaoInput = document.querySelector('#Recuperacao input');        
         const totalRecuperacao = calculateTotalRecuperacao(
             parseInt(recuperacaoInput.value),
+            parseInt(almaInput.value),  
             parseInt(menteInput.value),
             parseInt(concentracaoInput.value)
         );
         updateTotalRecuperacao(totalRecuperacao);
         
-
+        // Calcula e atualiza o total de Imaterial
         const imaterialInput = document.querySelector('#Imaterial input');        
         const totalImaterial = calculateTotalImaterial(
             parseInt(imaterialInput.value),
+            parseInt(manaInput.value),
             parseInt(menteInput.value),
             parseInt(concentracaoInput.value)
         );
         updateTotalImaterial(totalImaterial);
-        
+
+        // Calcula e atualiza o total de Espírito
         const espiritoInput = document.querySelector('#Espirito input');        
         const totalEspirito = calculateTotalEspirito(
+            parseInt(espiritoInput.value),
             parseInt(menteInput.value),
             parseInt(concentracaoInput.value)
         );
         updateTotalEspirito(totalEspirito);
         
-
-
-
-
-
-
-
-
-
-
-
 
     });
 });
@@ -237,6 +245,7 @@ function calculateTotalCorrida(xp) {
         totalCorrida = (((xp - 740) * 13) + 2400);
     } else {
         totalCorrida = (((xp - 840) * 13) + 3700);
+        
     }
 
     return parseFloat(totalCorrida.toFixed(1));
@@ -323,7 +332,14 @@ function updateTotalConcentracao(totalConcentracao) {
 // Função para calcular o total de Constituição
 function calculateTotalConstituicao(constituicaoInput, almaInput, forcaInput) {
     const totalConstituicao = constituicaoInput + (almaInput + forcaInput) / 2.285;
-    return parseFloat(totalConstituicao.toFixed(1));
+    if (totalConstituicao > 840){
+        return parseFloat(totalConstituicao.toFixed(0));
+    }
+
+    else {
+        return parseFloat(totalConstituicao.toFixed(1));
+    }
+
 }
 
 // Função para atualizar o total de Constituição no HTML
@@ -342,7 +358,13 @@ function updateTotalConstituicao(totalConstituicao) {
 // Função para calcular o total de Potência
 function calculateTotalPotencia(potenciaInput, forcaInput, corridaInput, concentracaoInput) {
     const totalPotencia = potenciaInput + (forcaInput + corridaInput + concentracaoInput) / 3.427;
-    return parseFloat(totalPotencia.toFixed(1));
+    if (totalPotencia > 840){
+        return parseFloat(totalPotencia.toFixed(0));
+    }
+
+    else {
+        return parseFloat(totalPotencia.toFixed(1));
+    }
 }
 
 // Função para atualizar o total de Potência no HTML
@@ -358,11 +380,19 @@ function updateTotalPotencia(totalPotencia) {
     potenciaH2.textContent = `${totalPotencia} pts`;
 }
 
-function calculateTotalAgilidade(corridaInput, concentracaoInput) {
-    const totalAgilidade = corridaInput + concentracaoInput;
-    return totalAgilidade;
+// Função para calcular o total de Agilidade
+function calculateTotalAgilidade(agilidadeInput, corridaInput, concentracaoInput) {
+    const totalAgilidade = agilidadeInput + (corridaInput + concentracaoInput) / 2.285;
+    if (totalAgilidade > 840){
+        return parseFloat(totalAgilidade.toFixed(0));
+    }
+
+    else {
+        return parseFloat(totalAgilidade.toFixed(1));
+    }
 }
 
+// Função para atualizar o total de Agilidade no HTML
 function updateTotalAgilidade(totalAgilidade) {
     const agilidadeDiv = document.querySelector('#Agilidade');
     let agilidadeH2 = agilidadeDiv.querySelector('.total-value');
@@ -376,12 +406,19 @@ function updateTotalAgilidade(totalAgilidade) {
 }
 
 
+// Função para calcular o total de Recuperação
+function calculateTotalRecuperacao(recuperacaoInput, almaInput, menteInput, concentracaoInput) {
+    const totalRecuperacao = recuperacaoInput + (almaInput + menteInput + concentracaoInput) / 3.427;
+    if (totalRecuperacao > 840){
+        return parseFloat(totalRecuperacao.toFixed(0));
+    }
 
-function calculateTotalRecuperacao(recuperacaoInput, menteInput, concentracaoInput) {
-    const totalRecuperacao = recuperacaoInput + (menteInput + concentracaoInput) / 3.427;
-    return parseFloat(totalRecuperacao.toFixed(1));
+    else {
+        return parseFloat(totalRecuperacao.toFixed(1));
+    }
 }
 
+// Função para atualizar o total de Recuperação no HTML
 function updateTotalRecuperacao(totalRecuperacao) {
     const recuperacaoDiv = document.querySelector('#Recuperacao');
     let recuperacaoH2 = recuperacaoDiv.querySelector('.total-value');
@@ -394,11 +431,19 @@ function updateTotalRecuperacao(totalRecuperacao) {
     recuperacaoH2.textContent = `${totalRecuperacao} pts`;
 }
 
-function calculateTotalImaterial(imaterialInput, menteInput, concentracaoInput) {
-    const totalImaterial = imaterialInput + (menteInput + concentracaoInput) / 3.427;
-    return parseFloat(totalImaterial.toFixed(1));
+// Função para calcular o total de Imaterial
+function calculateTotalImaterial(imaterialInput,manaInput, menteInput, concentracaoInput) {
+    const totalImaterial = imaterialInput + (manaInput + menteInput + concentracaoInput) / 3.427;
+    if (totalImaterial > 840){
+        return parseFloat(totalImaterial.toFixed(0));
+    }
+
+    else {
+        return parseFloat(totalImaterial.toFixed(1));
+    }
 }
 
+// Função para atualizar o total de Imaterial no HTML
 function updateTotalImaterial(totalImaterial) {
     const imaterialDiv = document.querySelector('#Imaterial');
     let imaterialH2 = imaterialDiv.querySelector('.total-value');
@@ -411,11 +456,19 @@ function updateTotalImaterial(totalImaterial) {
     imaterialH2.textContent = `${totalImaterial} pts`;
 }
 
+// Função para calcular o total de Espirito
 function calculateTotalEspirito(espiritoInput, menteInput, concentracaoInput) {
     const totalEspirito = espiritoInput + (menteInput + concentracaoInput) / 2.285;
-    return parseFloat(totalEspirito.toFixed(1));
+    if (totalEspirito > 840){
+        return parseFloat(totalEspirito.toFixed(0));
+    }
+
+    else {
+        return parseFloat(totalEspirito.toFixed(1));
+    }
 }
 
+// Função para atualizar o total de Espirito no HTML
 function updateTotalEspirito(totalEspirito) {
     const espiritoDiv = document.querySelector('#Espirito');
     let espiritoH2 = espiritoDiv.querySelector('.total-value');
@@ -427,14 +480,6 @@ function updateTotalEspirito(totalEspirito) {
     }
     espiritoH2.textContent = `${totalEspirito} pts`;
 }
-
-
-
-
-
-
-
-
 
 
 function calculateAverage() {
@@ -539,4 +584,24 @@ window.addEventListener('load', () => {
         switchDarkMode.checked = true;
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
