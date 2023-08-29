@@ -19,6 +19,8 @@ statNumberInputs.forEach((inputElement) => {
         if (parseInt(this.value) > maxLimit) {
             this.value = maxLimit.toString();
         }
+
+
         // Recalcula a média, o total de pontos e atualiza o rank
         const average = calculateAverage();
         const totalPoints = calculateTotalPoints();

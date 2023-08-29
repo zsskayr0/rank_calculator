@@ -121,15 +121,7 @@ li {
   font-size: 16px; /* Reduzido o tamanho da fonte para telas menores */
 }
 
-/* Tutorial Container Styles */
-.tutorial-container {
-  margin-top: 10px; /* Reduzido o espaçamento para telas menores */
-  background-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  padding: 10px 20px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+
 
 .tutorial-container p {
   text-align: justify;
@@ -164,9 +156,24 @@ p {
   text-align: justify;
 }
 
-#legenda {
-  text-align: center;
-  align-items: center;
+#caption-container {
+  margin-top: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 10px 20px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tutorialtext {
+  margin-top: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 10px 20px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+
 }
 
 /* Media Query for PC-sized screens */
@@ -187,7 +194,24 @@ p {
   .tutorial-container  {
     max-width: 1080px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
   }
+
+.tutorialtext {
+  margin: 30px;
+  margin-top: 10px;
+  max-width: 625px;
+}
+
+
+
+
+
+
+
+
   .statwide {
     margin: 25px auto;
   }
@@ -268,6 +292,27 @@ p {
   width: 100%; /* Full width for smaller screens */
   margin-bottom: 10px; /* Add margin between .stat containers */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -354,7 +399,7 @@ p {
 .darkmode .tutorial-container,
 .darkmode .config-container,
 .darkmode .stat-container,
-.darkmode .chart-container {
+.darkmode .chart-container, .darkmode #rankdisplay {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
