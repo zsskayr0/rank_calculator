@@ -1,11 +1,5 @@
-/*
-const totalConstituicao = document.querySelector('#Constituicao .stat-value').value;
-const totalPotencia = document.querySelector('#Potencia .stat-value').value;
-const totalAgilidade = document.querySelector('#Agilidade .stat-value').value;
-const totalRecuperacao = document.querySelector('#Recuperacao .stat-value').value;
-const totalImaterial = document.querySelector('#Imaterial .stat-value').value;
-const totalEspirito = document.querySelector('#Espirito .stat-value').value;    
-*/
+   
+
 
 
 // Function to get values from input elements
@@ -35,16 +29,19 @@ function getInputValuesSub() {
     ];
 }
 
+/*
 function getValuesPlus() {
-return [
-document.getElementById('Constituicao').querySelector('.stat-value'),
-document.getElementById('Potencia').querySelector('.stat-value'),
-document.getElementById('Agilidade').querySelector('.stat-value'),
-document.getElementById('Recuperacao').querySelector('.stat-value'),
-document.getElementById('Imaterial').querySelector('.stat-value'),
-document.getElementById('Espirito').querySelector('.stat-value')
-];
+    return [
+        parseFloat(document.getElementById('Constituicao').querySelector('.stat-value').textContent),
+        parseFloat(document.getElementById('Potencia').querySelector('.stat-value').textContent),
+        parseFloat(document.getElementById('Agilidade').querySelector('.stat-value').textContent),
+        parseFloat(document.getElementById('Recuperacao').querySelector('.stat-value').textContent),
+        parseFloat(document.getElementById('Imaterial').querySelector('.stat-value').textContent),
+        parseFloat(document.getElementById('Espirito').querySelector('.stat-value').textContent)
+    ];
 }
+
+*/
 
 //Constituicao,Potencia,Agilidade,Recuperacao,Imaterial,Espirito
 
@@ -177,61 +174,67 @@ return sum / values.length;
 
 // Função para atualizar o gráfico Sub com novos valores
 function updateSubChart() {
-const valuesSub = getValuesPlus();
-const ctx = document.getElementById('chartSub').getContext('2d');
+    const ctx = document.getElementById('chartSub').getContext('2d');
 
-if (window.SubChart) {
-window.SubChart.destroy();
-}
+    // Obtendo os valores das variáveis aqui, dentro da função
+    const totalConstituicao = parseFloat(document.querySelector('#Constituicao .total-value').textContent);
+    const totalPotencia = parseFloat(document.querySelector('#Potencia .total-value').textContent);
+    const totalAgilidade = parseFloat(document.querySelector('#Agilidade .total-value').textContent);
+    const totalRecuperacao = parseFloat(document.querySelector('#Recuperacao .total-value').textContent);
+    const totalImaterial = parseFloat(document.querySelector('#Imaterial .total-value').textContent);
+    const totalEspirito = parseFloat(document.querySelector('#Espirito .total-value').textContent);
 
-window.SubChart = new Chart(ctx, {
-type: 'line',
-data: {
-    labels: [
-        'Constituição',
-        'Potência',
-        'Agilidade',
-        'Recuperação',
-        'Imaterial',
-        'Espírito',
+    if (window.SubChart) {
+        window.SubChart.destroy();
+    }
 
-    ],
-    datasets: [{
-        label: 'XP Total',
-        data: [totalConstituicao,totalPotencia,totalAgilidade,totalRecuperacao,totalImaterial,totalEspirito],
-        backgroundColor: 'rgba(168, 130, 200, 0.2)',
-        borderColor: 'rgba(168, 130, 200, 1)',
-        borderWidth: 0.7,
-        pointBackgroundColor: 'rgba(168, 130, 200, 1)',
-        pointBorderColor: '#fff',
-        pointRadius: 4,
-        pointHoverRadius: 6,
-        tension: 0.3,
-        fill: true, 
-        backgroundColor: 'rgba(168, 130, 200, 0.2)',
-    }]
-},
-options: {
-    scales: {
-        r: {
-            beginAtZero: true,
-            suggestedMax:Math.max(...valuesSub) + 5,
-            grid: {
-                color: 'rgba(0, 0, 0, 0.1)'
+    window.SubChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [
+                'Constituição',
+                'Potência',
+                'Agilidade',
+                'Recuperação',
+                'Imaterial',
+                'Espírito',
+            ],
+            datasets: [{
+                label: 'XP Total',
+                data: [totalConstituicao, totalPotencia, totalAgilidade, totalRecuperacao, totalImaterial, totalEspirito],
+                backgroundColor: 'rgba(168, 130, 200, 0.2)',
+                borderColor: 'rgba(168, 130, 200, 1)',
+                borderWidth: 0.7,
+                pointBackgroundColor: 'rgba(168, 130, 200, 1)',
+                pointBorderColor: '#fff',
+                pointRadius: 4,
+                pointHoverRadius: 6,
+                tension: 0.3,
+                fill: true,
+                backgroundColor: 'rgba(168, 130, 200, 0.2)',
+            }]
+        },
+        options: {
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.1)'
+                    },
+                    angleLines: {
+                        color: 'rgba(0, 0, 0, 0.1)'
+                    }
+                }
             },
-            angleLines: {
-                color: 'rgba(0, 0, 0, 0.1)'
+            elements: {
+                line: {
+                    borderWidth: 2
+                }
             }
         }
-    },
-    elements: {
-        line: {
-            borderWidth: 2
-        }
-    }
+    });
 }
-});
-}
+
 
 // Adicione ouvintes de eventos aos campos de entrada
 document.querySelectorAll('.statnumber').forEach(input => {

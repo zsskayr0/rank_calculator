@@ -352,7 +352,7 @@ function updateTotalConstituicao(totalConstituicao) {
         const inputElement = constituicaoDiv.querySelector('input');
         constituicaoDiv.insertBefore(constituicaoH2, inputElement);
     }
-    constituicaoH2.textContent = `${totalConstituicao} pts`;
+    constituicaoH2.textContent = totalConstituicao;
 }
 
 // Função para calcular o total de Potência
@@ -377,7 +377,7 @@ function updateTotalPotencia(totalPotencia) {
         const inputElement = potenciaDiv.querySelector('input');
         potenciaDiv.insertBefore(potenciaH2, inputElement);
     }
-    potenciaH2.textContent = `${totalPotencia} pts`;
+    potenciaH2.textContent = totalPotencia;
 }
 
 // Função para calcular o total de Agilidade
@@ -402,7 +402,7 @@ function updateTotalAgilidade(totalAgilidade) {
         const inputElement = agilidadeDiv.querySelector('input');
         agilidadeDiv.insertBefore(agilidadeH2, inputElement);
     }
-    agilidadeH2.textContent = `${totalAgilidade} pts`;
+    agilidadeH2.textContent = totalAgilidade;
 }
 
 
@@ -428,7 +428,7 @@ function updateTotalRecuperacao(totalRecuperacao) {
         const inputElement = recuperacaoDiv.querySelector('input');
         recuperacaoDiv.insertBefore(recuperacaoH2, inputElement);
     }
-    recuperacaoH2.textContent = `${totalRecuperacao} pts`;
+    recuperacaoH2.textContent = totalRecuperacao;
 }
 
 // Função para calcular o total de Imaterial
@@ -453,7 +453,7 @@ function updateTotalImaterial(totalImaterial) {
         const inputElement = imaterialDiv.querySelector('input');
         imaterialDiv.insertBefore(imaterialH2, inputElement);
     }
-    imaterialH2.textContent = `${totalImaterial} pts`;
+    imaterialH2.textContent = totalImaterial;
 }
 
 // Função para calcular o total de Espirito
@@ -478,7 +478,7 @@ function updateTotalEspirito(totalEspirito) {
         const inputElement = espiritoDiv.querySelector('input');
         espiritoDiv.insertBefore(espiritoH2, inputElement);
     }
-    espiritoH2.textContent = `${totalEspirito} pts`;
+    espiritoH2.textContent = totalEspirito;
 }
 
 
