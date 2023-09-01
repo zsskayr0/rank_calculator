@@ -1,7 +1,3 @@
-   
-
-
-
 // Function to get values from input elements
 function getInputValuesMain() {
     return [
@@ -13,37 +9,6 @@ function getInputValuesMain() {
         document.getElementById('Concentracao').querySelector('.statnumber').value,
     ];
 }
-
-function getInputValuesSub() {
-    return [
-        document.getElementById('Constituicao').querySelector('.statnumber').value,
-        document.getElementById('Potencia').querySelector('.statnumber').value,
-        document.getElementById('Agilidade').querySelector('.statnumber').value,
-        document.getElementById('Recuperacao').querySelector('.statnumber').value,
-        document.getElementById('Imaterial').querySelector('.statnumber').value,
-        document.getElementById('Espirito').querySelector('.statnumber').value,
-        document.getElementById('visao').querySelector('.statnumber').value,
-        document.getElementById('Audicao').querySelector('.statnumber').value,
-        document.getElementById('Olfato').querySelector('.statnumber').value,
-        document.getElementById('Tato').querySelector('.statnumber').value,
-    ];
-}
-
-/*
-function getValuesPlus() {
-    return [
-        parseFloat(document.getElementById('Constituicao').querySelector('.stat-value').textContent),
-        parseFloat(document.getElementById('Potencia').querySelector('.stat-value').textContent),
-        parseFloat(document.getElementById('Agilidade').querySelector('.stat-value').textContent),
-        parseFloat(document.getElementById('Recuperacao').querySelector('.stat-value').textContent),
-        parseFloat(document.getElementById('Imaterial').querySelector('.stat-value').textContent),
-        parseFloat(document.getElementById('Espirito').querySelector('.stat-value').textContent)
-    ];
-}
-
-*/
-
-//Constituicao,Potencia,Agilidade,Recuperacao,Imaterial,Espirito
 
 // Função para atualizar o gráfico com novos valores
 function updateChart() {
@@ -148,7 +113,7 @@ options: {
     scales: {
         r: {
             beginAtZero: true,
-            suggestedMax: 120,
+            suggestedMax: 10,
             grid: {
                 color: 'rgba(0, 0, 0, 0.1)',
             },
@@ -218,6 +183,7 @@ function updateSubChart() {
             scales: {
                 r: {
                     beginAtZero: true,
+                    suggestedMax: 120,
                     grid: {
                         color: 'rgba(0, 0, 0, 0.1)'
                     },
@@ -235,7 +201,6 @@ function updateSubChart() {
     });
 }
 
-
 // Adicione ouvintes de eventos aos campos de entrada
 document.querySelectorAll('.statnumber').forEach(input => {
 input.addEventListener('input', updateChart);
@@ -247,3 +212,4 @@ input.addEventListener('input', updateSubChart);
 updateChart();
 updateRadarChart();
 updateSubChart();
+updateResultChart();
