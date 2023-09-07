@@ -30,6 +30,10 @@ data: {
     'Mente',
     'Concentração',
 ],
+title:{
+    display: true,
+    text: 'Stats Base',
+  },
     datasets: [{
         label: 'XP Total',
         data: valuesMain,
@@ -61,8 +65,6 @@ options: {
     }
 }
 });
-
-
 }
 
 // Função para atualizar o gráfico de radar com novos valores
@@ -148,7 +150,7 @@ function updateSubChart() {
     const totalRecuperacao = parseFloat(document.querySelector('#Recuperacao .total-value').textContent);
     const totalImaterial = parseFloat(document.querySelector('#Imaterial .total-value').textContent);
     const totalEspirito = parseFloat(document.querySelector('#Espirito .total-value').textContent);
-
+    
     if (window.SubChart) {
         window.SubChart.destroy();
     }

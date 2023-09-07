@@ -205,7 +205,9 @@ p {
   max-width: 625px;
 }
 
-
+#caption-container {
+  width: 1000px;
+}
 
 
 
