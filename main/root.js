@@ -183,7 +183,7 @@
                 parseInt(olfatoInput.value),
                 parseInt(TatoInput.value),
             );
-            updateTotaPowerRating(powerRating);
+            updateTotalPowerRating(powerRating);
 
         });
     });
@@ -199,7 +199,7 @@
 
 // Função para calcular o Tier com base no valor total da Alma
 function calculateTier(almaInput) {
-    if (almaInput >= 960) {
+    if (almaInput > 960) {
         return 'Tier -1';
     } else if (almaInput >= 840) {
         return 'Tier 0';
@@ -266,7 +266,7 @@ function updateTotalAlma() {
 
     // Função para calcular o Tier com base no valor total da Mana
 function calculateTier(manaInput) {
-    if (manaInput >= 960) {
+    if (manaInput > 960) {
         return 'Tier -1';
     } else if (manaInput >= 840) {
         return 'Tier 0';
@@ -352,7 +352,7 @@ function updateTotalMana() {
 
     // Função para calcular o Tier com base no valor total da Força
     function calculateTier(forcaInput) {
-        if (forcaInput >= 960) {
+        if (forcaInput > 960) {
             return 'Tier -1';
         } else if (forcaInput >= 840) {
             return 'Tier 0';
@@ -439,7 +439,7 @@ function updateTotalMana() {
 
     // Função para calcular o Tier com base no valor total da Corrida
     function calculateTier(corridaInput) {
-        if (corridaInput >= 960) {
+        if (corridaInput > 960) {
             return 'Tier -1';
         } else if (corridaInput >= 840) {
             return 'Tier 0';
@@ -506,7 +506,7 @@ function updateTotalCorrida() {
 
     // Função para calcular o Tier com base no valor total da Mente
     function calculateTier(menteInput) {
-        if (menteInput >= 960) {
+        if (menteInput > 960) {
             return 'Tier -1';
         } else if (menteInput >= 840) {
             return 'Tier 0';
@@ -593,7 +593,7 @@ function updateTotalMente() {
 
 // Função para calcular o Tier com base no valor total da Concentração
 function calculateTier(concentracaoInput) {
-    if (concentracaoInput >= 960) {
+    if (concentracaoInput > 960) {
         return 'Tier -1';
     } else if (concentracaoInput >= 840) {
         return 'Tier 0';
@@ -662,7 +662,7 @@ function updateTotalConcentracao() {
 
 // Função para calcular o Tier com base no valor total da Constituição
 function calculateTier(totalConstituicao) {
-    if (totalConstituicao >= 960) {
+    if (totalConstituicao > 960) {
         return 'Tier -1';
     } else if (totalConstituicao >= 840) {
         return 'Tier 0';
@@ -727,7 +727,7 @@ function updateTotalConstituicao(totalConstituicao) {
 
 // Função para calcular o Tier com base no valor total da Potência
 function calculateTier(totalPotencia) {
-    if (totalPotencia >= 960) {
+    if (totalPotencia > 960) {
         return 'Tier -1';
     } else if (totalPotencia >= 840) {
         return 'Tier 0';
@@ -793,7 +793,7 @@ function updateTotalPotencia(totalPotencia) {
 
 // Função para calcular o Tier com base no valor total da Agilidade
 function calculateTier(totalAgilidade) {
-    if (totalAgilidade >= 960) {
+    if (totalAgilidade > 960) {
         return 'Tier -1';
     } else if (totalAgilidade >= 840) {
         return 'Tier 0';
@@ -860,7 +860,7 @@ function updateTotalAgilidade(totalAgilidade) {
 
 // Função para calcular o Tier com base no valor total da Recuperação
 function calculateTier(totalRecuperacao) {
-    if (totalRecuperacao >= 960) {
+    if (totalRecuperacao > 960) {
         return 'Tier -1';
     } else if (totalRecuperacao >= 840) {
         return 'Tier 0';
@@ -926,7 +926,7 @@ function updateTotalRecuperacao(totalRecuperacao) {
 
 // Função para calcular o Tier com base no valor total da Imaterial
 function calculateTier(totalImaterial) {
-    if (totalImaterial >= 960) {
+    if (totalImaterial > 960) {
         return 'Tier -1';
     } else if (totalImaterial >= 840) {
         return 'Tier 0';
@@ -992,7 +992,7 @@ function updateTotalImaterial(totalImaterial) {
 
 // Função para calcular o Tier com base no valor total do Espirito
 function calculateTier(totalEspirito) {
-    if (totalEspirito >= 960) {
+    if (totalEspirito > 960) {
         return 'Tier -1';
     } else if (totalEspirito >= 840) {
         return 'Tier 0';
@@ -1056,18 +1056,59 @@ function updateTotalEspirito(totalEspirito) {
         }
     }
 
-    // Função para atualizar o total de Visao no HTML
-    function updateTotalVisao(totalVisao) {
-        const visaoDiv = document.querySelector('#Visao');
-        let visaoH2 = visaoDiv.querySelector('.total-value');
-        if (!visaoH2) {
-            visaoH2 = document.createElement('h2');
-            visaoH2.classList.add('total-value');
-            const inputElement = visaoDiv.querySelector('input');
-            visaoDiv.insertBefore(visaoH2, inputElement);
-        }
-        visaoH2.textContent = totalVisao;
+// Função para calcular o Tier com base no valor total da Visao
+function calculateTier(totalVisao) {
+    if (totalVisao >= 960) {
+        return 'Tier -1';
+    } else if (totalVisao >= 840) {
+        return 'Tier 0';
+    } else if (totalVisao >= 740) {
+        return 'Tier 1';
+    } else if (totalVisao >= 640) {
+        return 'Tier 2';
+    } else if (totalVisao >= 560) {
+        return 'Tier 3';
+    } else if (totalVisao >= 480) {
+        return 'Tier 4';
+    } else if (totalVisao >= 400) {
+        return 'Tier 5';
+    } else if (totalVisao >= 320) {
+        return 'Tier 6';
+    } else if (totalVisao >= 240) {
+        return 'Tier 7';
+    } else if (totalVisao >= 160) {
+        return 'Tier 8';
+    } else if (totalVisao >= 80) {
+        return 'Tier 9';
+    } else {
+        return 'Tier 10';
     }
+}
+
+// Função para atualizar o total da Visao no HTML
+function updateTotalVisao(totalVisao) {
+    const visaoDiv = document.querySelector('#Visao');
+    const tierVisao = calculateTier(totalVisao);
+    let tierH2 = visaoDiv.querySelector('.tier-value');
+    let totalH2 = visaoDiv.querySelector('.total-value');
+
+    if (!tierH2) {
+        tierH2 = document.createElement('h2');
+        tierH2.classList.add('tier-value');
+        visaoDiv.insertBefore(tierH2, visaoDiv.querySelector('input'));
+    }
+
+    if (!totalH2) {
+        totalH2 = document.createElement('h2');
+        totalH2.classList.add('total-value');
+        visaoDiv.insertBefore(totalH2, visaoDiv.querySelector('input'));
+    }
+
+    tierH2.textContent = `${tierVisao} &`;
+    totalH2.textContent = ` ${totalVisao}pt`;
+    tierH2.style.marginRight = '3px';
+}
+
 
     // Função para calcular o total de Audição
     function calculateTotalAudicao(audicaoInput, menteInput, concentracaoInput) {
@@ -1081,18 +1122,59 @@ function updateTotalEspirito(totalEspirito) {
         }
     }
 
-    // Função para atualizar o total de Audição no HTML
-    function updateTotalAudicao(totalAudicao) {
-        const audicaoDiv = document.querySelector('#Audicao');
-        let audicaoH2 = audicaoDiv.querySelector('.total-value');
-        if (!audicaoH2) {
-            audicaoH2 = document.createElement('h2');
-            audicaoH2.classList.add('total-value');
-            const inputElement = audicaoDiv.querySelector('input');
-            audicaoDiv.insertBefore(audicaoH2, inputElement);
-        }
-        audicaoH2.textContent = totalAudicao;
+// Função para calcular o Tier com base no valor total da Audicao
+function calculateTier(totalAudicao) {
+    if (totalAudicao >= 960) {
+        return 'Tier -1';
+    } else if (totalAudicao >= 840) {
+        return 'Tier 0';
+    } else if (totalAudicao >= 740) {
+        return 'Tier 1';
+    } else if (totalAudicao >= 640) {
+        return 'Tier 2';
+    } else if (totalAudicao >= 560) {
+        return 'Tier 3';
+    } else if (totalAudicao >= 480) {
+        return 'Tier 4';
+    } else if (totalAudicao >= 400) {
+        return 'Tier 5';
+    } else if (totalAudicao >= 320) {
+        return 'Tier 6';
+    } else if (totalAudicao >= 240) {
+        return 'Tier 7';
+    } else if (totalAudicao >= 160) {
+        return 'Tier 8';
+    } else if (totalAudicao >= 80) {
+        return 'Tier 9';
+    } else {
+        return 'Tier 10';
     }
+}
+
+// Função para atualizar o total da Audicao no HTML
+function updateTotalAudicao(totalAudicao) {
+    const audicaoDiv = document.querySelector('#Audicao');
+    const tierAudicao = calculateTier(totalAudicao);
+    let tierH2 = audicaoDiv.querySelector('.tier-value');
+    let totalH2 = audicaoDiv.querySelector('.total-value');
+
+    if (!tierH2) {
+        tierH2 = document.createElement('h2');
+        tierH2.classList.add('tier-value');
+        audicaoDiv.insertBefore(tierH2, audicaoDiv.querySelector('input'));
+    }
+
+    if (!totalH2) {
+        totalH2 = document.createElement('h2');
+        totalH2.classList.add('total-value');
+        audicaoDiv.insertBefore(totalH2, audicaoDiv.querySelector('input'));
+    }
+
+    tierH2.textContent = `${tierAudicao} &`;
+    totalH2.textContent = ` ${totalAudicao}pt`;
+    tierH2.style.marginRight = '3px';
+}
+
 
     // Função para calcular o total de Olfato
     function calculateTotalOlfato(olfatoInput, menteInput, concentracaoInput) {
@@ -1106,18 +1188,59 @@ function updateTotalEspirito(totalEspirito) {
         }
     }
 
-    // Função para atualizar o total de Olfato no HTML
-    function updateTotalOlfato(totalOlfato) {
-        const olfatoDiv = document.querySelector('#Olfato');
-        let olfatoH2 = olfatoDiv.querySelector('.total-value');
-        if (!olfatoH2) {
-            olfatoH2 = document.createElement('h2');
-            olfatoH2.classList.add('total-value');
-            const inputElement = olfatoDiv.querySelector('input');
-            olfatoDiv.insertBefore(olfatoH2, inputElement);
-        }
-        olfatoH2.textContent = totalOlfato;
+// Função para calcular o Tier com base no valor total do Olfato
+function calculateTier(totalOlfato) {
+    if (totalOlfato >= 960) {
+        return 'Tier -1';
+    } else if (totalOlfato >= 840) {
+        return 'Tier 0';
+    } else if (totalOlfato >= 740) {
+        return 'Tier 1';
+    } else if (totalOlfato >= 640) {
+        return 'Tier 2';
+    } else if (totalOlfato >= 560) {
+        return 'Tier 3';
+    } else if (totalOlfato >= 480) {
+        return 'Tier 4';
+    } else if (totalOlfato >= 400) {
+        return 'Tier 5';
+    } else if (totalOlfato >= 320) {
+        return 'Tier 6';
+    } else if (totalOlfato >= 240) {
+        return 'Tier 7';
+    } else if (totalOlfato >= 160) {
+        return 'Tier 8';
+    } else if (totalOlfato >= 80) {
+        return 'Tier 9';
+    } else {
+        return 'Tier 10';
     }
+}
+
+// Função para atualizar o total do Olfato no HTML
+function updateTotalOlfato(totalOlfato) {
+    const olfatoDiv = document.querySelector('#Olfato');
+    const tierOlfato = calculateTier(totalOlfato);
+    let tierH2 = olfatoDiv.querySelector('.tier-value');
+    let totalH2 = olfatoDiv.querySelector('.total-value');
+
+    if (!tierH2) {
+        tierH2 = document.createElement('h2');
+        tierH2.classList.add('tier-value');
+        olfatoDiv.insertBefore(tierH2, olfatoDiv.querySelector('input'));
+    }
+
+    if (!totalH2) {
+        totalH2 = document.createElement('h2');
+        totalH2.classList.add('total-value');
+        olfatoDiv.insertBefore(totalH2, olfatoDiv.querySelector('input'));
+    }
+
+    tierH2.textContent = `${tierOlfato} &`;
+    totalH2.textContent = ` ${totalOlfato}pt`;
+    tierH2.style.marginRight = '3px';
+}
+
 
     // Função para calcular o total de Tato
     function calculateTotalTato(tatoInput, menteInput, concentracaoInput) {
@@ -1131,18 +1254,59 @@ function updateTotalEspirito(totalEspirito) {
         }
     }
 
-    // Função para atualizar o total de Olfato no HTML
-    function updateTotalTato(totalTato) {
-        const tatoDiv = document.querySelector('#Tato');
-        let tatoH2 = tatoDiv.querySelector('.total-value');
-        if (!tatoH2) {
-            tatoH2 = document.createElement('h2');
-            tatoH2.classList.add('total-value');
-            const inputElement = tatoDiv.querySelector('input');
-            tatoDiv.insertBefore(tatoH2, inputElement);
-        }
-        tatoH2.textContent = totalTato;
+// Função para calcular o Tier com base no valor total do Tato
+function calculateTier(totalTato) {
+    if (totalTato >= 960) {
+        return 'Tier -1';
+    } else if (totalTato >= 840) {
+        return 'Tier 0';
+    } else if (totalTato >= 740) {
+        return 'Tier 1';
+    } else if (totalTato >= 640) {
+        return 'Tier 2';
+    } else if (totalTato >= 560) {
+        return 'Tier 3';
+    } else if (totalTato >= 480) {
+        return 'Tier 4';
+    } else if (totalTato >= 400) {
+        return 'Tier 5';
+    } else if (totalTato >= 320) {
+        return 'Tier 6';
+    } else if (totalTato >= 240) {
+        return 'Tier 7';
+    } else if (totalTato >= 160) {
+        return 'Tier 8';
+    } else if (totalTato >= 80) {
+        return 'Tier 9';
+    } else {
+        return 'Tier 10';
     }
+}
+
+// Função para atualizar o total do Tato no HTML
+function updateTotalTato(totalTato) {
+    const tatoDiv = document.querySelector('#Tato');
+    const tierTato = calculateTier(totalTato);
+    let tierH2 = tatoDiv.querySelector('.tier-value');
+    let totalH2 = tatoDiv.querySelector('.total-value');
+
+    if (!tierH2) {
+        tierH2 = document.createElement('h2');
+        tierH2.classList.add('tier-value');
+        tatoDiv.insertBefore(tierH2, tatoDiv.querySelector('input'));
+    }
+
+    if (!totalH2) {
+        totalH2 = document.createElement('h2');
+        totalH2.classList.add('total-value');
+        tatoDiv.insertBefore(totalH2, tatoDiv.querySelector('input'));
+    }
+
+    tierH2.textContent = `${tierTato} &`;
+    totalH2.textContent = ` ${totalTato}pt`;
+    tierH2.style.marginRight = '3px';
+}
+
 
     function calculateAverage() {
         let sum = 0;
