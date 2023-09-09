@@ -179,28 +179,28 @@
     }
 
 // Função para calcular o Tier com base no valor total da Alma
-function calculateTier(almaInput) {
-    if (almaInput > 960) {
+function calculateTier(total) {
+    if (total > 960) {
         return 'Tier -1';
-    } else if (almaInput >= 840) {
+    } else if (total >= 840) {
         return 'Tier 0';
-    } else if (almaInput >= 740) {
+    } else if (total >= 740) {
         return 'Tier 1';
-    } else if (almaInput >= 640) {
+    } else if (total >= 640) {
         return 'Tier 2';
-    } else if (almaInput >= 560) {
+    } else if (total >= 560) {
         return 'Tier 3';
-    } else if (almaInput >= 480) {
+    } else if (total >= 480) {
         return 'Tier 4';
-    } else if (almaInput >= 400) {
+    } else if (total >= 400) {
         return 'Tier 5';
-    } else if (almaInput >= 320) {
+    } else if (total >= 320) {
         return 'Tier 6';
-    } else if (almaInput >= 240) {
+    } else if (total >= 240) {
         return 'Tier 7';
-    } else if (almaInput >= 160) {
+    } else if (total >= 160) {
         return 'Tier 8';
-    } else if (almaInput >= 80) {
+    } else if (total >= 80) {
         return 'Tier 9';
     } else {
         return 'Tier 10';
@@ -244,35 +244,6 @@ function updateTotalAlma() {
             return (150 * xp) + 150;
         }
     }
-
-    // Função para calcular o Tier com base no valor total da Mana
-function calculateTier(manaInput) {
-    if (manaInput > 960) {
-        return 'Tier -1';
-    } else if (manaInput >= 840) {
-        return 'Tier 0';
-    } else if (manaInput >= 740) {
-        return 'Tier 1';
-    } else if (manaInput >= 640) {
-        return 'Tier 2';
-    } else if (manaInput >= 560) {
-        return 'Tier 3';
-    } else if (manaInput >= 480) {
-        return 'Tier 4';
-    } else if (manaInput >= 400) {
-        return 'Tier 5';
-    } else if (manaInput >= 320) {
-        return 'Tier 6';
-    } else if (manaInput >= 240) {
-        return 'Tier 7';
-    } else if (manaInput >= 160) {
-        return 'Tier 8';
-    } else if (manaInput >= 80) {
-        return 'Tier 9';
-    } else {
-        return 'Tier 10';
-    }
-}
 
 // Função para atualizar o total de Mana no HTML
 function updateTotalMana() {
@@ -329,35 +300,6 @@ function updateTotalMana() {
         }
 
         return parseFloat(totalForca.toFixed(1));
-    }
-
-    // Função para calcular o Tier com base no valor total da Força
-    function calculateTier(forcaInput) {
-        if (forcaInput > 960) {
-            return 'Tier -1';
-        } else if (forcaInput >= 840) {
-            return 'Tier 0';
-        } else if (forcaInput >= 740) {
-            return 'Tier 1';
-        } else if (forcaInput >= 640) {
-            return 'Tier 2';
-        } else if (forcaInput >= 560) {
-            return 'Tier 3';
-        } else if (forcaInput >= 480) {
-            return 'Tier 4';
-        } else if (forcaInput >= 400) {
-            return 'Tier 5';
-        } else if (forcaInput >= 320) {
-            return 'Tier 6';
-        } else if (forcaInput >= 240) {
-            return 'Tier 7';
-        } else if (forcaInput >= 160) {
-            return 'Tier 8';
-        } else if (forcaInput >= 80) {
-            return 'Tier 9';
-        } else {
-            return 'Tier 10';
-        }
     }
     
     // Função para atualizar o total de Força no HTML
@@ -418,35 +360,6 @@ function updateTotalMana() {
         return parseFloat(totalCorrida.toFixed(1));
     }
 
-    // Função para calcular o Tier com base no valor total da Corrida
-    function calculateTier(corridaInput) {
-        if (corridaInput > 960) {
-            return 'Tier -1';
-        } else if (corridaInput >= 840) {
-            return 'Tier 0';
-        } else if (corridaInput >= 740) {
-            return 'Tier 1';
-        } else if (corridaInput >= 640) {
-            return 'Tier 2';
-        } else if (corridaInput >= 560) {
-            return 'Tier 3';
-        } else if (corridaInput >= 480) {
-            return 'Tier 4';
-        } else if (corridaInput >= 400) {
-            return 'Tier 5';
-        } else if (corridaInput >= 320) {
-            return 'Tier 6';
-        } else if (corridaInput >= 240) {
-            return 'Tier 7';
-        } else if (corridaInput >= 160) {
-            return 'Tier 8';
-        } else if (corridaInput >= 80) {
-            return 'Tier 9';
-        } else {
-            return 'Tier 10';
-        }
-    }
-
 // Função para atualizar o total de Corrida no HTML
 function updateTotalCorrida() {
     const corridaDiv = document.querySelector('#Corrida');
@@ -474,44 +387,9 @@ function updateTotalCorrida() {
     tierH2.style.marginRight = '3px';
 }
 
-
     // Função para calcular o total de Mente
     function calculateTotalMente(xp) {
-        // Substitua a lógica abaixo pelo cálculo real do total de Mente com base na experiência (xp)
-        if (xp >= 500) {
-            return (4.5 * xp);
-        } else {
-            return (6 * xp) + 15;
-        }
-    }
-
-    // Função para calcular o Tier com base no valor total da Mente
-    function calculateTier(menteInput) {
-        if (menteInput > 960) {
-            return 'Tier -1';
-        } else if (menteInput >= 840) {
-            return 'Tier 0';
-        } else if (menteInput >= 740) {
-            return 'Tier 1';
-        } else if (menteInput >= 640) {
-            return 'Tier 2';
-        } else if (menteInput >= 560) {
-            return 'Tier 3';
-        } else if (menteInput >= 480) {
-            return 'Tier 4';
-        } else if (menteInput >= 400) {
-            return 'Tier 5';
-        } else if (menteInput >= 320) {
-            return 'Tier 6';
-        } else if (menteInput >= 240) {
-            return 'Tier 7';
-        } else if (menteInput >= 160) {
-            return 'Tier 8';
-        } else if (menteInput >= 80) {
-            return 'Tier 9';
-        } else {
-            return 'Tier 10';
-        }
+        return xp >= 500 ? 4.5 * xp : 6 * xp + 15;
     }
 
 // Função para atualizar o total de Mente no HTML
@@ -543,63 +421,31 @@ function updateTotalMente() {
 
     // Função para calcular o total de Concentração
     function calculateTotalConcentracao(xp) {
+        const xpMultipliers = [
+            { upperLimit: 80, multiplier: 1.2 },
+            { upperLimit: 160, multiplier: 1.2 },
+            { upperLimit: 240, multiplier: 1.4 },
+            { upperLimit: 320, multiplier: 1.4 },
+            { upperLimit: 400, multiplier: 1.6 },
+            { upperLimit: 480, multiplier: 1.6 },
+            { upperLimit: 560, multiplier: 1.8 },
+            { upperLimit: 640, multiplier: 1.8 },
+            { upperLimit: 740, multiplier: 2 },
+            { upperLimit: 840, multiplier: 2 },
+            { upperLimit: 960, multiplier: 2.4 },
+        ];
+    
         let totalConcentracao = 0;
-
-        if (xp <= 80) {
-            totalConcentracao = (xp * 1.2) + 10;
-        } else if (xp <= 160) {
-            totalConcentracao = (xp * 1.2);
-        } else if (xp <= 240) {
-            totalConcentracao = (xp * 1.4);
-        } else if (xp <= 320) {
-            totalConcentracao = (xp * 1.4);
-        } else if (xp <= 400) {
-            totalConcentracao = (xp * 1.6);
-        } else if (xp <= 480) {
-            totalConcentracao = (xp * 1.6);
-        } else if (xp <= 560) {
-            totalConcentracao = (xp * 1.8);
-        } else if (xp <= 640) {
-            totalConcentracao = (xp * 1.8);
-        } else if (xp <= 740) {
-            totalConcentracao = (xp * 2);
-        } else if (xp <= 840) {
-            totalConcentracao = (xp * 2);
-        } else {
-            totalConcentracao = (xp * 2.4);
+    
+        for (const entry of xpMultipliers) {
+            if (xp <= entry.upperLimit) {
+                totalConcentracao = xp * entry.multiplier;
+                break;
+            }
         }
-
+    
         return parseFloat(totalConcentracao.toFixed(1));
     }
-
-// Função para calcular o Tier com base no valor total da Concentração
-function calculateTier(concentracaoInput) {
-    if (concentracaoInput > 960) {
-        return 'Tier -1';
-    } else if (concentracaoInput >= 840) {
-        return 'Tier 0';
-    } else if (concentracaoInput >= 740) {
-        return 'Tier 1';
-    } else if (concentracaoInput >= 640) {
-        return 'Tier 2';
-    } else if (concentracaoInput >= 560) {
-        return 'Tier 3';
-    } else if (concentracaoInput >= 480) {
-        return 'Tier 4';
-    } else if (concentracaoInput >= 400) {
-        return 'Tier 5';
-    } else if (concentracaoInput >= 320) {
-        return 'Tier 6';
-    } else if (concentracaoInput >= 240) {
-        return 'Tier 7';
-    } else if (concentracaoInput >= 160) {
-        return 'Tier 8';
-    } else if (concentracaoInput >= 80) {
-        return 'Tier 9';
-    } else {
-        return 'Tier 10';
-    }
-}
 
 // Função para atualizar o total de Concentração no HTML
 function updateTotalConcentracao() {
@@ -640,36 +486,6 @@ function updateTotalConcentracao() {
         }
     }
     
-
-// Função para calcular o Tier com base no valor total da Constituição
-function calculateTier(totalConstituicao) {
-    if (totalConstituicao > 960) {
-        return 'Tier -1';
-    } else if (totalConstituicao >= 840) {
-        return 'Tier 0';
-    } else if (totalConstituicao >= 740) {
-        return 'Tier 1';
-    } else if (totalConstituicao >= 640) {
-        return 'Tier 2';
-    } else if (totalConstituicao >= 560) {
-        return 'Tier 3';
-    } else if (totalConstituicao >= 480) {
-        return 'Tier 4';
-    } else if (totalConstituicao >= 400) {
-        return 'Tier 5';
-    } else if (totalConstituicao >= 320) {
-        return 'Tier 6';
-    } else if (totalConstituicao >= 240) {
-        return 'Tier 7';
-    } else if (totalConstituicao >= 160) {
-        return 'Tier 8';
-    } else if (totalConstituicao >= 80) {
-        return 'Tier 9';
-    } else {
-        return 'Tier 10';
-    }
-}
-
 // Função para atualizar o total de Constituição no HTML
 function updateTotalConstituicao(totalConstituicao) {
     const constituicaoDiv = document.querySelector('#Constituicao');
@@ -705,35 +521,6 @@ function updateTotalConstituicao(totalConstituicao) {
             return parseFloat(totalPotencia.toFixed(1));
         }
     }
-
-// Função para calcular o Tier com base no valor total da Potência
-function calculateTier(totalPotencia) {
-    if (totalPotencia > 960) {
-        return 'Tier -1';
-    } else if (totalPotencia >= 840) {
-        return 'Tier 0';
-    } else if (totalPotencia >= 740) {
-        return 'Tier 1';
-    } else if (totalPotencia >= 640) {
-        return 'Tier 2';
-    } else if (totalPotencia >= 560) {
-        return 'Tier 3';
-    } else if (totalPotencia >= 480) {
-        return 'Tier 4';
-    } else if (totalPotencia >= 400) {
-        return 'Tier 5';
-    } else if (totalPotencia >= 320) {
-        return 'Tier 6';
-    } else if (totalPotencia >= 240) {
-        return 'Tier 7';
-    } else if (totalPotencia >= 160) {
-        return 'Tier 8';
-    } else if (totalPotencia >= 80) {
-        return 'Tier 9';
-    } else {
-        return 'Tier 10';
-    }
-}
 
 // Função para atualizar o total de Potência no HTML
 function updateTotalPotencia(totalPotencia) {
@@ -771,35 +558,6 @@ function updateTotalPotencia(totalPotencia) {
             return parseFloat(totalAgilidade.toFixed(1));
         }
     }
-
-// Função para calcular o Tier com base no valor total da Agilidade
-function calculateTier(totalAgilidade) {
-    if (totalAgilidade > 960) {
-        return 'Tier -1';
-    } else if (totalAgilidade >= 840) {
-        return 'Tier 0';
-    } else if (totalAgilidade >= 740) {
-        return 'Tier 1';
-    } else if (totalAgilidade >= 640) {
-        return 'Tier 2';
-    } else if (totalAgilidade >= 560) {
-        return 'Tier 3';
-    } else if (totalAgilidade >= 480) {
-        return 'Tier 4';
-    } else if (totalAgilidade >= 400) {
-        return 'Tier 5';
-    } else if (totalAgilidade >= 320) {
-        return 'Tier 6';
-    } else if (totalAgilidade >= 240) {
-        return 'Tier 7';
-    } else if (totalAgilidade >= 160) {
-        return 'Tier 8';
-    } else if (totalAgilidade >= 80) {
-        return 'Tier 9';
-    } else {
-        return 'Tier 10';
-    }
-}
 
 // Função para atualizar o total de Agilidade no HTML
 function updateTotalAgilidade(totalAgilidade) {
@@ -839,35 +597,6 @@ function updateTotalAgilidade(totalAgilidade) {
         }
     }
 
-// Função para calcular o Tier com base no valor total da Recuperação
-function calculateTier(totalRecuperacao) {
-    if (totalRecuperacao > 960) {
-        return 'Tier -1';
-    } else if (totalRecuperacao >= 840) {
-        return 'Tier 0';
-    } else if (totalRecuperacao >= 740) {
-        return 'Tier 1';
-    } else if (totalRecuperacao >= 640) {
-        return 'Tier 2';
-    } else if (totalRecuperacao >= 560) {
-        return 'Tier 3';
-    } else if (totalRecuperacao >= 480) {
-        return 'Tier 4';
-    } else if (totalRecuperacao >= 400) {
-        return 'Tier 5';
-    } else if (totalRecuperacao >= 320) {
-        return 'Tier 6';
-    } else if (totalRecuperacao >= 240) {
-        return 'Tier 7';
-    } else if (totalRecuperacao >= 160) {
-        return 'Tier 8';
-    } else if (totalRecuperacao >= 80) {
-        return 'Tier 9';
-    } else {
-        return 'Tier 10';
-    }
-}
-
 // Função para atualizar o total de Recuperação no HTML
 function updateTotalRecuperacao(totalRecuperacao) {
     const recuperacaoDiv = document.querySelector('#Recuperacao');
@@ -904,35 +633,6 @@ function updateTotalRecuperacao(totalRecuperacao) {
             return parseFloat(totalImaterial.toFixed(1));
         }
     }
-
-// Função para calcular o Tier com base no valor total da Imaterial
-function calculateTier(totalImaterial) {
-    if (totalImaterial > 960) {
-        return 'Tier -1';
-    } else if (totalImaterial >= 840) {
-        return 'Tier 0';
-    } else if (totalImaterial >= 740) {
-        return 'Tier 1';
-    } else if (totalImaterial >= 640) {
-        return 'Tier 2';
-    } else if (totalImaterial >= 560) {
-        return 'Tier 3';
-    } else if (totalImaterial >= 480) {
-        return 'Tier 4';
-    } else if (totalImaterial >= 400) {
-        return 'Tier 5';
-    } else if (totalImaterial >= 320) {
-        return 'Tier 6';
-    } else if (totalImaterial >= 240) {
-        return 'Tier 7';
-    } else if (totalImaterial >= 160) {
-        return 'Tier 8';
-    } else if (totalImaterial >= 80) {
-        return 'Tier 9';
-    } else {
-        return 'Tier 10';
-    }
-}
 
 // Função para atualizar o total de Imaterial no HTML
 function updateTotalImaterial(totalImaterial) {
@@ -971,35 +671,6 @@ function updateTotalImaterial(totalImaterial) {
         }
     }
 
-// Função para calcular o Tier com base no valor total do Espirito
-function calculateTier(totalEspirito) {
-    if (totalEspirito > 960) {
-        return 'Tier -1';
-    } else if (totalEspirito >= 840) {
-        return 'Tier 0';
-    } else if (totalEspirito >= 740) {
-        return 'Tier 1';
-    } else if (totalEspirito >= 640) {
-        return 'Tier 2';
-    } else if (totalEspirito >= 560) {
-        return 'Tier 3';
-    } else if (totalEspirito >= 480) {
-        return 'Tier 4';
-    } else if (totalEspirito >= 400) {
-        return 'Tier 5';
-    } else if (totalEspirito >= 320) {
-        return 'Tier 6';
-    } else if (totalEspirito >= 240) {
-        return 'Tier 7';
-    } else if (totalEspirito >= 160) {
-        return 'Tier 8';
-    } else if (totalEspirito >= 80) {
-        return 'Tier 9';
-    } else {
-        return 'Tier 10';
-    }
-}
-
 // Função para atualizar o total do Espirito no HTML
 function updateTotalEspirito(totalEspirito) {
     const espiritoDiv = document.querySelector('#Espirito');
@@ -1036,35 +707,6 @@ function updateTotalEspirito(totalEspirito) {
             return parseFloat(totalVisao.toFixed(1));
         }
     }
-
-// Função para calcular o Tier com base no valor total da Visao
-function calculateTier(totalVisao) {
-    if (totalVisao >= 960) {
-        return 'Tier -1';
-    } else if (totalVisao >= 840) {
-        return 'Tier 0';
-    } else if (totalVisao >= 740) {
-        return 'Tier 1';
-    } else if (totalVisao >= 640) {
-        return 'Tier 2';
-    } else if (totalVisao >= 560) {
-        return 'Tier 3';
-    } else if (totalVisao >= 480) {
-        return 'Tier 4';
-    } else if (totalVisao >= 400) {
-        return 'Tier 5';
-    } else if (totalVisao >= 320) {
-        return 'Tier 6';
-    } else if (totalVisao >= 240) {
-        return 'Tier 7';
-    } else if (totalVisao >= 160) {
-        return 'Tier 8';
-    } else if (totalVisao >= 80) {
-        return 'Tier 9';
-    } else {
-        return 'Tier 10';
-    }
-}
 
 // Função para atualizar o total da Visao no HTML
 function updateTotalVisao(totalVisao) {
@@ -1103,35 +745,6 @@ function updateTotalVisao(totalVisao) {
         }
     }
 
-// Função para calcular o Tier com base no valor total da Audicao
-function calculateTier(totalAudicao) {
-    if (totalAudicao >= 960) {
-        return 'Tier -1';
-    } else if (totalAudicao >= 840) {
-        return 'Tier 0';
-    } else if (totalAudicao >= 740) {
-        return 'Tier 1';
-    } else if (totalAudicao >= 640) {
-        return 'Tier 2';
-    } else if (totalAudicao >= 560) {
-        return 'Tier 3';
-    } else if (totalAudicao >= 480) {
-        return 'Tier 4';
-    } else if (totalAudicao >= 400) {
-        return 'Tier 5';
-    } else if (totalAudicao >= 320) {
-        return 'Tier 6';
-    } else if (totalAudicao >= 240) {
-        return 'Tier 7';
-    } else if (totalAudicao >= 160) {
-        return 'Tier 8';
-    } else if (totalAudicao >= 80) {
-        return 'Tier 9';
-    } else {
-        return 'Tier 10';
-    }
-}
-
 // Função para atualizar o total da Audicao no HTML
 function updateTotalAudicao(totalAudicao) {
     const audicaoDiv = document.querySelector('#Audicao');
@@ -1169,35 +782,6 @@ function updateTotalAudicao(totalAudicao) {
         }
     }
 
-// Função para calcular o Tier com base no valor total do Olfato
-function calculateTier(totalOlfato) {
-    if (totalOlfato >= 960) {
-        return 'Tier -1';
-    } else if (totalOlfato >= 840) {
-        return 'Tier 0';
-    } else if (totalOlfato >= 740) {
-        return 'Tier 1';
-    } else if (totalOlfato >= 640) {
-        return 'Tier 2';
-    } else if (totalOlfato >= 560) {
-        return 'Tier 3';
-    } else if (totalOlfato >= 480) {
-        return 'Tier 4';
-    } else if (totalOlfato >= 400) {
-        return 'Tier 5';
-    } else if (totalOlfato >= 320) {
-        return 'Tier 6';
-    } else if (totalOlfato >= 240) {
-        return 'Tier 7';
-    } else if (totalOlfato >= 160) {
-        return 'Tier 8';
-    } else if (totalOlfato >= 80) {
-        return 'Tier 9';
-    } else {
-        return 'Tier 10';
-    }
-}
-
 // Função para atualizar o total do Olfato no HTML
 function updateTotalOlfato(totalOlfato) {
     const olfatoDiv = document.querySelector('#Olfato');
@@ -1234,35 +818,6 @@ function updateTotalOlfato(totalOlfato) {
             return parseFloat(totalTato.toFixed(1));
         }
     }
-
-// Função para calcular o Tier com base no valor total do Tato
-function calculateTier(totalTato) {
-    if (totalTato >= 960) {
-        return 'Tier -1';
-    } else if (totalTato >= 840) {
-        return 'Tier 0';
-    } else if (totalTato >= 740) {
-        return 'Tier 1';
-    } else if (totalTato >= 640) {
-        return 'Tier 2';
-    } else if (totalTato >= 560) {
-        return 'Tier 3';
-    } else if (totalTato >= 480) {
-        return 'Tier 4';
-    } else if (totalTato >= 400) {
-        return 'Tier 5';
-    } else if (totalTato >= 320) {
-        return 'Tier 6';
-    } else if (totalTato >= 240) {
-        return 'Tier 7';
-    } else if (totalTato >= 160) {
-        return 'Tier 8';
-    } else if (totalTato >= 80) {
-        return 'Tier 9';
-    } else {
-        return 'Tier 10';
-    }
-}
 
 // Função para atualizar o total do Tato no HTML
 function updateTotalTato(totalTato) {
@@ -1312,8 +867,6 @@ function calculateID(almaInput, forcaInput, corridaInput, menteInput, concentrac
     return id;
 }
 
-
-
     function calculateAverage() {
         let sum = 0;
         for (let i = 0; i < statNumberInputs.length; i++) {
@@ -1335,26 +888,26 @@ function calculateID(almaInput, forcaInput, corridaInput, menteInput, concentrac
     }
 
     function calculateRank(average) {
-        if (average >= 0 && average < 87) {
-            return "E";
-        } else if (average < 174) {
-            return "D";
-        } else if (average < 261) {
-            return "C";
-        } else if (average < 348) {
-            return "B";
-        } else if (average < 435) {
-            return "A";
-        } else if (average < 522) {
-            return "S";
-        } else if (average < 609) {
-            return "SS";
-        } else if (average < 696) {
-            return "SSS";
-        } else {
-            return "Z";
+        const rankMap = [
+            { min: 0, max: 86, rank: "E" },
+            { min: 87, max: 173, rank: "D" },
+            { min: 174, max: 260, rank: "C" },
+            { min: 261, max: 347, rank: "B" },
+            { min: 348, max: 434, rank: "A" },
+            { min: 435, max: 521, rank: "S" },
+            { min: 522, max: 608, rank: "SS" },
+            { min: 609, max: 695, rank: "SSS" },
+        ];
+    
+        for (const item of rankMap) {
+            if (average >= item.min && average <= item.max) {
+                return item.rank;
+            }
         }
+    
+        return "Z";
     }
+    
 
     function formatNumberWithCommas(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
