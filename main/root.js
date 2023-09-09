@@ -1,4 +1,4 @@
-    // Obtém todas as tags <input> com a classe 'statnumber'
+   // Obtém todas as tags <input> com a classe 'statnumber'
     const statNumberInputs = document.querySelectorAll('.statnumber');
     const rankElement = document.querySelector('#rankdisplay'); // Corrected ID
     const totalPointsElement = document.querySelector('#totalpoints'); // Element to display total points
@@ -843,30 +843,6 @@ function updateTotalTato(totalTato) {
     tierH2.style.marginRight = '3px';
 }
 
-function calculateID(almaInput, forcaInput, corridaInput, menteInput, concentracaoInput, totalConstituicao, totalAgilidade, totalRecuperacao, totalImaterial, totalEspirito, totalVisao, totalAudicao, totalOlfato, totalTato) {
-    
-    // Converter as entradas em números inteiros
-    almaInput = parseInt(almaInput);
-    forcaInput = parseInt(forcaInput);
-    corridaInput = parseInt(corridaInput);
-    menteInput = parseInt(menteInput);
-    concentracaoInput = parseInt(concentracaoInput);
-    totalConstituicao = parseInt(totalConstituicao);
-    totalAgilidade = parseInt(totalAgilidade);
-    totalRecuperacao = parseInt(totalRecuperacao);
-    totalImaterial = parseInt(totalImaterial);
-    totalEspirito = parseInt(totalEspirito);
-    totalVisao = parseInt(totalVisao);
-    totalAudicao = parseInt(totalAudicao);
-    totalOlfato = parseInt(totalOlfato);
-    totalTato = parseInt(totalTato);
-
-    // Calcular o ID
-    const id = almaInput + forcaInput + corridaInput + menteInput + concentracaoInput + totalConstituicao + totalAgilidade + totalRecuperacao + totalImaterial + totalEspirito + totalVisao + totalAudicao + totalOlfato + totalTato;
-
-    return id;
-}
-
     function calculateAverage() {
         let sum = 0;
         for (let i = 0; i < statNumberInputs.length; i++) {
@@ -913,24 +889,12 @@ function calculateID(almaInput, forcaInput, corridaInput, menteInput, concentrac
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     }
 
-    function updateRank(rank, average, totalPoints, id) {
-        if (window.innerWidth <= 768) {
-            rankElement.innerHTML = `Rank ${rank} – Total de ${formatNumberWithCommas(totalPoints)}
-             – Média de ${average.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}
-            <br>Poder de Luta Base de ${formatNumberWithCommas((totalPoints * 29.56989247).toFixed(0))}
-            <br>id: ${id}`;
-        } else {
-            rankElement.textContent = `Rank ${rank} – Total de ${formatNumberWithCommas(totalPoints)}
-             – Média de ${average.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}
-             \n – Poder de Luta Base de ${formatNumberWithCommas((totalPoints * 29.56989247).toFixed(0))}
-             \nid: ${rank+totalPoints}`;
-        }
-    }
+
 
     // Chamadas iniciais para calcular e exibir valores
     const totalPoints = calculateTotalPoints();
-    const rank = calculateRank(average);
     const average = calculateTotalPoints()/6;
+    const rank = calculateRank(average);
 
     const forcaInput = document.querySelector('#Forca input');
     const totalForca = calculateTotalForca(parseInt(forcaInput.value));
@@ -956,5 +920,19 @@ function calculateID(almaInput, forcaInput, corridaInput, menteInput, concentrac
     const totalConcentracao = calculateTotalConcentracao(parseInt(concentracaoInput.value));
     updateTotalConcentracao(totalConcentracao);
 
+    function updateRank(rank, average, totalPoints, statID) {
+        if (window.innerWidth <= 768) {
+            rankElement.innerHTML = `Rank ${rank} – Total de ${formatNumberWithCommas(totalPoints)}
+             – Média de ${average.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}
+            <br>Poder de Luta Base de ${formatNumberWithCommas((totalPoints * 29.56989247).toFixed(0))}
+            <br>id: ${rank+totalPoints}`;
+        } else {
+            rankElement.textContent = `Rank ${rank} – Total de ${formatNumberWithCommas(totalPoints)}
+             – Média de ${average.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}
+             \n – Poder de Luta Base de ${formatNumberWithCommas((totalPoints * 29.56989247).toFixed(0))}
+             \nid: ${rank+totalPoints}`;
+        }
+    }
+
     // Chame a função para calcular o powerRating inicialmente
-    updateRank(rank, average, totalPoints, id);
+    updateRank(rank, average, totalPoints);
