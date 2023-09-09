@@ -197,17 +197,63 @@
         }
     }
 
-    // Função para atualizar o total de Alma no HTML
-    function updateTotalAlma(totalAlma) {
-        const almaDiv = document.querySelector('#Alma');
-        let almaH2 = almaDiv.querySelector('.total-value');
-        if (!almaH2) {
-            almaH2 = document.createElement('h2');
-            almaH2.classList.add('total-value');
-            almaDiv.insertBefore(almaH2, almaDiv.querySelector('input'));
-        }
-        almaH2.textContent = `${totalAlma} HP`;
+// Função para calcular o Tier com base no valor total da Alma
+function calculateTier(almaInput) {
+    if (almaInput >= 960) {
+        return 'Tier -1';
+    } else if (almaInput >= 840) {
+        return 'Tier 0';
+    } else if (almaInput >= 740) {
+        return 'Tier 1';
+    } else if (almaInput >= 640) {
+        return 'Tier 2';
+    } else if (almaInput >= 560) {
+        return 'Tier 3';
+    } else if (almaInput >= 480) {
+        return 'Tier 4';
+    } else if (almaInput >= 400) {
+        return 'Tier 5';
+    } else if (almaInput >= 320) {
+        return 'Tier 6';
+    } else if (almaInput >= 240) {
+        return 'Tier 7';
+    } else if (almaInput >= 160) {
+        return 'Tier 8';
+    } else if (almaInput >= 80) {
+        return 'Tier 9';
+    } else {
+        return 'Tier 10';
     }
+}
+
+// Função para atualizar o total de Alma no HTML
+function updateTotalAlma() {
+    const almaDiv = document.querySelector('#Alma');
+    const almaInput = document.querySelector('#Alma input');
+    const totalAlma = calculateTotalAlma(parseInt(almaInput.value));
+    const tierAlma = calculateTier(parseInt(almaInput.value));
+    let almaH2 = almaDiv.querySelector('.total-value');
+    let tierH2 = almaDiv.querySelector('.tier-value');
+
+    if (!tierH2) {
+        tierH2 = document.createElement('h2');
+        tierH2.classList.add('tier-value');
+        almaDiv.insertBefore(tierH2, almaDiv.querySelector('input'));
+    }
+
+    if (!almaH2) {
+        almaH2 = document.createElement('h2');
+        almaH2.classList.add('total-value');
+        almaDiv.insertBefore(almaH2, almaDiv.querySelector('input'));
+    }
+
+    tierH2.textContent = `${tierAlma} &`;
+    almaH2.textContent = `${totalAlma} HP`;
+    tierH2.style.marginRight = '3px';
+}
+
+
+
 
     // Função para calcular o total de Mana
     function calculateTotalMana(xp) {
@@ -218,17 +264,60 @@
         }
     }
 
-    // Função para atualizar o total de Mana no HTML
-    function updateTotalMana(totalMana) {
-        const manaDiv = document.querySelector('#Mana');
-        let manaH2 = manaDiv.querySelector('.total-value');
-        if (!manaH2) {
-            manaH2 = document.createElement('h2');
-            manaH2.classList.add('total-value');
-            manaDiv.insertBefore(manaH2, manaDiv.querySelector('input'));
-        }
-        manaH2.textContent = `${totalMana} MP`;
+    // Função para calcular o Tier com base no valor total da Mana
+function calculateTier(manaInput) {
+    if (manaInput >= 960) {
+        return 'Tier -1';
+    } else if (manaInput >= 840) {
+        return 'Tier 0';
+    } else if (manaInput >= 740) {
+        return 'Tier 1';
+    } else if (manaInput >= 640) {
+        return 'Tier 2';
+    } else if (manaInput >= 560) {
+        return 'Tier 3';
+    } else if (manaInput >= 480) {
+        return 'Tier 4';
+    } else if (manaInput >= 400) {
+        return 'Tier 5';
+    } else if (manaInput >= 320) {
+        return 'Tier 6';
+    } else if (manaInput >= 240) {
+        return 'Tier 7';
+    } else if (manaInput >= 160) {
+        return 'Tier 8';
+    } else if (manaInput >= 80) {
+        return 'Tier 9';
+    } else {
+        return 'Tier 10';
     }
+}
+
+// Função para atualizar o total de Mana no HTML
+function updateTotalMana() {
+    const manaDiv = document.querySelector('#Mana');
+    const manaInput = document.querySelector('#Mana input');
+    const totalMana = calculateTotalMana(parseInt(manaInput.value));
+    const tierMana = calculateTier(parseInt(manaInput.value));
+    let manaH2 = manaDiv.querySelector('.total-value');
+    let tierH2 = manaDiv.querySelector('.tier-value');
+
+    if (!tierH2) {
+        tierH2 = document.createElement('h2');
+        tierH2.classList.add('tier-value');
+        manaDiv.insertBefore(tierH2, manaDiv.querySelector('input'));
+    }
+
+    if (!manaH2) {
+        manaH2 = document.createElement('h2');
+        manaH2.classList.add('total-value');
+        manaDiv.insertBefore(manaH2, manaDiv.querySelector('input'));
+    }
+
+    tierH2.textContent = `${tierMana} &`;
+    manaH2.textContent = `${totalMana} MP`;
+    tierH2.style.marginRight = '3px';
+}
 
     // Função para calcular o total de Força
     function calculateTotalForca(xp) {
@@ -261,17 +350,59 @@
         return parseFloat(totalForca.toFixed(1));
     }
 
+    // Função para calcular o Tier com base no valor total da Força
+    function calculateTier(forcaInput) {
+        if (forcaInput >= 960) {
+            return 'Tier -1';
+        } else if (forcaInput >= 840) {
+            return 'Tier 0';
+        } else if (forcaInput >= 740) {
+            return 'Tier 1';
+        } else if (forcaInput >= 640) {
+            return 'Tier 2';
+        } else if (forcaInput >= 560) {
+            return 'Tier 3';
+        } else if (forcaInput >= 480) {
+            return 'Tier 4';
+        } else if (forcaInput >= 400) {
+            return 'Tier 5';
+        } else if (forcaInput >= 320) {
+            return 'Tier 6';
+        } else if (forcaInput >= 240) {
+            return 'Tier 7';
+        } else if (forcaInput >= 160) {
+            return 'Tier 8';
+        } else if (forcaInput >= 80) {
+            return 'Tier 9';
+        } else {
+            return 'Tier 10';
+        }
+    }
+    
     // Função para atualizar o total de Força no HTML
-    function updateTotalForca(totalForca) {
+    function updateTotalForca() {
         const forcaDiv = document.querySelector('#Forca');
+        const forcaInput = document.querySelector('#Forca input');
+        const totalForca = calculateTotalForca(parseInt(forcaInput.value));
+        const tierForca = calculateTier(parseInt(forcaInput.value));
         let forcaH2 = forcaDiv.querySelector('.total-value');
+        let tierH2 = forcaDiv.querySelector('.tier-value');
+    
+        if (!tierH2) {
+            tierH2 = document.createElement('h2');
+            tierH2.classList.add('tier-value');
+            forcaDiv.insertBefore(tierH2, forcaDiv.querySelector('input'));
+        }
+    
         if (!forcaH2) {
             forcaH2 = document.createElement('h2');
             forcaH2.classList.add('total-value');
-            const inputElement = forcaDiv.querySelector('input');
-            forcaDiv.insertBefore(forcaH2, inputElement);
+            forcaDiv.insertBefore(forcaH2, forcaDiv.querySelector('input'));
         }
+    
+        tierH2.textContent = `${tierForca} &`;
         forcaH2.textContent = `${totalForca} N`;
+        tierH2.style.marginRight = '3px';
     }
 
     // Função para calcular o total de Corrida
@@ -306,18 +437,62 @@
         return parseFloat(totalCorrida.toFixed(1));
     }
 
-    // Função para atualizar o total de Corrida no HTML
-    function updateTotalCorrida(totalCorrida) {
-        const corridaDiv = document.querySelector('#Corrida');
-        let corridaH2 = corridaDiv.querySelector('.total-value');
-        if (!corridaH2) {
-            corridaH2 = document.createElement('h2');
-            corridaH2.classList.add('total-value');
-            const inputElement = corridaDiv.querySelector('input');
-            corridaDiv.insertBefore(corridaH2, inputElement); // Insert before the input element
+    // Função para calcular o Tier com base no valor total da Corrida
+    function calculateTier(corridaInput) {
+        if (corridaInput >= 960) {
+            return 'Tier -1';
+        } else if (corridaInput >= 840) {
+            return 'Tier 0';
+        } else if (corridaInput >= 740) {
+            return 'Tier 1';
+        } else if (corridaInput >= 640) {
+            return 'Tier 2';
+        } else if (corridaInput >= 560) {
+            return 'Tier 3';
+        } else if (corridaInput >= 480) {
+            return 'Tier 4';
+        } else if (corridaInput >= 400) {
+            return 'Tier 5';
+        } else if (corridaInput >= 320) {
+            return 'Tier 6';
+        } else if (corridaInput >= 240) {
+            return 'Tier 7';
+        } else if (corridaInput >= 160) {
+            return 'Tier 8';
+        } else if (corridaInput >= 80) {
+            return 'Tier 9';
+        } else {
+            return 'Tier 10';
         }
-        corridaH2.textContent = `${totalCorrida} Km/h`;
     }
+
+// Função para atualizar o total de Corrida no HTML
+function updateTotalCorrida() {
+    const corridaDiv = document.querySelector('#Corrida');
+    const corridaInput = document.querySelector('#Corrida input');
+    const totalCorrida = calculateTotalCorrida(parseInt(corridaInput.value));
+    const tierCorrida = calculateTier(parseInt(corridaInput.value));
+    
+    let corridaH2 = corridaDiv.querySelector('.total-value');
+    let tierH2 = corridaDiv.querySelector('.tier-value');
+
+    if (!tierH2) {
+        tierH2 = document.createElement('h2');
+        tierH2.classList.add('tier-value');
+        corridaDiv.insertBefore(tierH2, corridaDiv.querySelector('input'));
+    }
+
+    if (!corridaH2) {
+        corridaH2 = document.createElement('h2');
+        corridaH2.classList.add('total-value');
+        corridaDiv.insertBefore(corridaH2, corridaDiv.querySelector('input'));
+    }
+
+    tierH2.textContent = `${tierCorrida} &`;
+    corridaH2.textContent = `${totalCorrida} Km/h`;
+    tierH2.style.marginRight = '3px';
+}
+
 
     // Função para calcular o total de Mente
     function calculateTotalMente(xp) {
@@ -329,17 +504,61 @@
         }
     }
 
-    // Função para atualizar o total de Mente no HTML
-    function updateTotalMente(totalMente) {
-        const menteDiv = document.querySelector('#Mente');
-        let menteH2 = menteDiv.querySelector('.total-value');
-        if (!menteH2) {
-            menteH2 = document.createElement('h2');
-            menteH2.classList.add('total-value');
-            menteDiv.insertBefore(menteH2, menteDiv.querySelector('input'));
+    // Função para calcular o Tier com base no valor total da Mente
+    function calculateTier(menteInput) {
+        if (menteInput >= 960) {
+            return 'Tier -1';
+        } else if (menteInput >= 840) {
+            return 'Tier 0';
+        } else if (menteInput >= 740) {
+            return 'Tier 1';
+        } else if (menteInput >= 640) {
+            return 'Tier 2';
+        } else if (menteInput >= 560) {
+            return 'Tier 3';
+        } else if (menteInput >= 480) {
+            return 'Tier 4';
+        } else if (menteInput >= 400) {
+            return 'Tier 5';
+        } else if (menteInput >= 320) {
+            return 'Tier 6';
+        } else if (menteInput >= 240) {
+            return 'Tier 7';
+        } else if (menteInput >= 160) {
+            return 'Tier 8';
+        } else if (menteInput >= 80) {
+            return 'Tier 9';
+        } else {
+            return 'Tier 10';
         }
-        menteH2.textContent = `${totalMente} Mi`;
     }
+
+// Função para atualizar o total de Mente no HTML
+function updateTotalMente() {
+    const menteDiv = document.querySelector('#Mente');
+    const menteInput = document.querySelector('#Mente input');
+    const totalMente = calculateTotalMente(parseInt(menteInput.value));
+    const tierMente = calculateTier(parseInt(menteInput.value));
+    
+    let menteH2 = menteDiv.querySelector('.total-value');
+    let tierH2 = menteDiv.querySelector('.tier-value');
+
+    if (!tierH2) {
+        tierH2 = document.createElement('h2');
+        tierH2.classList.add('tier-value');
+        menteDiv.insertBefore(tierH2, menteDiv.querySelector('input'));
+    }
+
+    if (!menteH2) {
+        menteH2 = document.createElement('h2');
+        menteH2.classList.add('total-value');
+        menteDiv.insertBefore(menteH2, menteDiv.querySelector('input'));
+    }
+
+    tierH2.textContent = `${tierMente} &`;
+    menteH2.textContent = `${totalMente} Mi`;
+    tierH2.style.marginRight = '3px';
+}
 
     // Função para calcular o total de Concentração
     function calculateTotalConcentracao(xp) {
@@ -372,43 +591,127 @@
         return parseFloat(totalConcentracao.toFixed(1));
     }
 
-    // Função para atualizar o total de Concentração no HTML
-    function updateTotalConcentracao(totalConcentracao) {
-        const concentracaoDiv = document.querySelector('#Concentracao');
-        let concentracaoH2 = concentracaoDiv.querySelector('.total-value');
-        if (!concentracaoH2) {
-            concentracaoH2 = document.createElement('h2');
-            concentracaoH2.classList.add('total-value');
-            concentracaoDiv.insertBefore(concentracaoH2, concentracaoDiv.querySelector('input'));
-        }
-        concentracaoH2.textContent = `${totalConcentracao} CT`; // Alterado "Mi" para "Concentração"
+// Função para calcular o Tier com base no valor total da Concentração
+function calculateTier(concentracaoInput) {
+    if (concentracaoInput >= 960) {
+        return 'Tier -1';
+    } else if (concentracaoInput >= 840) {
+        return 'Tier 0';
+    } else if (concentracaoInput >= 740) {
+        return 'Tier 1';
+    } else if (concentracaoInput >= 640) {
+        return 'Tier 2';
+    } else if (concentracaoInput >= 560) {
+        return 'Tier 3';
+    } else if (concentracaoInput >= 480) {
+        return 'Tier 4';
+    } else if (concentracaoInput >= 400) {
+        return 'Tier 5';
+    } else if (concentracaoInput >= 320) {
+        return 'Tier 6';
+    } else if (concentracaoInput >= 240) {
+        return 'Tier 7';
+    } else if (concentracaoInput >= 160) {
+        return 'Tier 8';
+    } else if (concentracaoInput >= 80) {
+        return 'Tier 9';
+    } else {
+        return 'Tier 10';
     }
+}
+
+// Função para atualizar o total de Concentração no HTML
+function updateTotalConcentracao() {
+    const concentracaoDiv = document.querySelector('#Concentracao');
+    const concentracaoInput = document.querySelector('#Concentracao input');
+    const totalConcentracao = calculateTotalConcentracao(parseInt(concentracaoInput.value));
+    const tierConcentracao = calculateTier(parseInt(concentracaoInput.value));
+
+    let concentracaoH2 = concentracaoDiv.querySelector('.total-value');
+    let tierH2 = concentracaoDiv.querySelector('.tier-value');
+
+    if (!tierH2) {
+        tierH2 = document.createElement('h2');
+        tierH2.classList.add('tier-value');
+        concentracaoDiv.insertBefore(tierH2, concentracaoDiv.querySelector('input'));
+    }
+
+    if (!concentracaoH2) {
+        concentracaoH2 = document.createElement('h2');
+        concentracaoH2.classList.add('total-value');
+        concentracaoDiv.insertBefore(concentracaoH2, concentracaoDiv.querySelector('input'));
+    }
+
+    tierH2.textContent = `${tierConcentracao} &`;
+    concentracaoH2.textContent = `${totalConcentracao} CT`;
+    tierH2.style.marginRight = '3px';
+}
+
 
     // Função para calcular o total de Constituição
     function calculateTotalConstituicao(constituicaoInput, almaInput, forcaInput) {
         const totalConstituicao = constituicaoInput + (almaInput + forcaInput) / 2.285;
+        
         if (totalConstituicao > 840){
             return parseFloat(totalConstituicao.toFixed(0));
-        }
-
-        else {
+        } else {
             return parseFloat(totalConstituicao.toFixed(1));
         }
+    }
+    
 
+// Função para calcular o Tier com base no valor total da Constituição
+function calculateTier(totalConstituicao) {
+    if (totalConstituicao >= 960) {
+        return 'Tier -1';
+    } else if (totalConstituicao >= 840) {
+        return 'Tier 0';
+    } else if (totalConstituicao >= 740) {
+        return 'Tier 1';
+    } else if (totalConstituicao >= 640) {
+        return 'Tier 2';
+    } else if (totalConstituicao >= 560) {
+        return 'Tier 3';
+    } else if (totalConstituicao >= 480) {
+        return 'Tier 4';
+    } else if (totalConstituicao >= 400) {
+        return 'Tier 5';
+    } else if (totalConstituicao >= 320) {
+        return 'Tier 6';
+    } else if (totalConstituicao >= 240) {
+        return 'Tier 7';
+    } else if (totalConstituicao >= 160) {
+        return 'Tier 8';
+    } else if (totalConstituicao >= 80) {
+        return 'Tier 9';
+    } else {
+        return 'Tier 10';
+    }
+}
+
+// Função para atualizar o total de Constituição no HTML
+function updateTotalConstituicao(totalConstituicao) {
+    const constituicaoDiv = document.querySelector('#Constituicao');
+    const tierConstituicao = calculateTier(totalConstituicao);
+    let tierH2 = constituicaoDiv.querySelector('.tier-value');
+    let totalH2 = constituicaoDiv.querySelector('.total-value');
+
+    if (!tierH2) {
+        tierH2 = document.createElement('h2');
+        tierH2.classList.add('tier-value');
+        constituicaoDiv.insertBefore(tierH2, constituicaoDiv.querySelector('input'));
     }
 
-    // Função para atualizar o total de Constituição no HTML
-    function updateTotalConstituicao(totalConstituicao) {
-        const constituicaoDiv = document.querySelector('#Constituicao');
-        let constituicaoH2 = constituicaoDiv.querySelector('.total-value');
-        if (!constituicaoH2) {
-            constituicaoH2 = document.createElement('h2');
-            constituicaoH2.classList.add('total-value');
-            const inputElement = constituicaoDiv.querySelector('input');
-            constituicaoDiv.insertBefore(constituicaoH2, inputElement);
-        }
-        constituicaoH2.textContent = totalConstituicao;
+    if (!totalH2) {
+        totalH2 = document.createElement('h2');
+        totalH2.classList.add('total-value');
+        constituicaoDiv.insertBefore(totalH2, constituicaoDiv.querySelector('input'));
     }
+
+    tierH2.textContent = `${tierConstituicao} &`;
+    totalH2.textContent = ` ${totalConstituicao}pt`;
+    tierH2.style.marginRight = '3px';
+}
 
     // Função para calcular o total de Potência
     function calculateTotalPotencia(potenciaInput, forcaInput, corridaInput, concentracaoInput) {
@@ -422,18 +725,59 @@
         }
     }
 
-    // Função para atualizar o total de Potência no HTML
-    function updateTotalPotencia(totalPotencia) {
-        const potenciaDiv = document.querySelector('#Potencia');
-        let potenciaH2 = potenciaDiv.querySelector('.total-value');
-        if (!potenciaH2) {
-            potenciaH2 = document.createElement('h2');
-            potenciaH2.classList.add('total-value');
-            const inputElement = potenciaDiv.querySelector('input');
-            potenciaDiv.insertBefore(potenciaH2, inputElement);
-        }
-        potenciaH2.textContent = totalPotencia;
+// Função para calcular o Tier com base no valor total da Potência
+function calculateTier(totalPotencia) {
+    if (totalPotencia >= 960) {
+        return 'Tier -1';
+    } else if (totalPotencia >= 840) {
+        return 'Tier 0';
+    } else if (totalPotencia >= 740) {
+        return 'Tier 1';
+    } else if (totalPotencia >= 640) {
+        return 'Tier 2';
+    } else if (totalPotencia >= 560) {
+        return 'Tier 3';
+    } else if (totalPotencia >= 480) {
+        return 'Tier 4';
+    } else if (totalPotencia >= 400) {
+        return 'Tier 5';
+    } else if (totalPotencia >= 320) {
+        return 'Tier 6';
+    } else if (totalPotencia >= 240) {
+        return 'Tier 7';
+    } else if (totalPotencia >= 160) {
+        return 'Tier 8';
+    } else if (totalPotencia >= 80) {
+        return 'Tier 9';
+    } else {
+        return 'Tier 10';
     }
+}
+
+// Função para atualizar o total de Potência no HTML
+function updateTotalPotencia(totalPotencia) {
+    const potenciaDiv = document.querySelector('#Potencia');
+    const tierPotencia = calculateTier(totalPotencia);
+    let tierH2 = potenciaDiv.querySelector('.tier-value');
+    let totalH2 = potenciaDiv.querySelector('.total-value');
+
+    if (!tierH2) {
+        tierH2 = document.createElement('h2');
+        tierH2.classList.add('tier-value');
+        potenciaDiv.insertBefore(tierH2, potenciaDiv.querySelector('input'));
+    }
+
+    if (!totalH2) {
+        totalH2 = document.createElement('h2');
+        totalH2.classList.add('total-value');
+        potenciaDiv.insertBefore(totalH2, potenciaDiv.querySelector('input'));
+    }
+
+    tierH2.textContent = `${tierPotencia} &`;
+    totalH2.textContent = ` ${totalPotencia}pt`;
+    tierH2.style.marginRight = '3px';
+}
+
 
     // Função para calcular o total de Agilidade
     function calculateTotalAgilidade(agilidadeInput, corridaInput, concentracaoInput) {
@@ -447,18 +791,59 @@
         }
     }
 
-    // Função para atualizar o total de Agilidade no HTML
-    function updateTotalAgilidade(totalAgilidade) {
-        const agilidadeDiv = document.querySelector('#Agilidade');
-        let agilidadeH2 = agilidadeDiv.querySelector('.total-value');
-        if (!agilidadeH2) {
-            agilidadeH2 = document.createElement('h2');
-            agilidadeH2.classList.add('total-value');
-            const inputElement = agilidadeDiv.querySelector('input');
-            agilidadeDiv.insertBefore(agilidadeH2, inputElement);
-        }
-        agilidadeH2.textContent = totalAgilidade;
+// Função para calcular o Tier com base no valor total da Agilidade
+function calculateTier(totalAgilidade) {
+    if (totalAgilidade >= 960) {
+        return 'Tier -1';
+    } else if (totalAgilidade >= 840) {
+        return 'Tier 0';
+    } else if (totalAgilidade >= 740) {
+        return 'Tier 1';
+    } else if (totalAgilidade >= 640) {
+        return 'Tier 2';
+    } else if (totalAgilidade >= 560) {
+        return 'Tier 3';
+    } else if (totalAgilidade >= 480) {
+        return 'Tier 4';
+    } else if (totalAgilidade >= 400) {
+        return 'Tier 5';
+    } else if (totalAgilidade >= 320) {
+        return 'Tier 6';
+    } else if (totalAgilidade >= 240) {
+        return 'Tier 7';
+    } else if (totalAgilidade >= 160) {
+        return 'Tier 8';
+    } else if (totalAgilidade >= 80) {
+        return 'Tier 9';
+    } else {
+        return 'Tier 10';
     }
+}
+
+// Função para atualizar o total de Agilidade no HTML
+function updateTotalAgilidade(totalAgilidade) {
+    const agilidadeDiv = document.querySelector('#Agilidade');
+    const tierAgilidade = calculateTier(totalAgilidade);
+    let tierH2 = agilidadeDiv.querySelector('.tier-value');
+    let totalH2 = agilidadeDiv.querySelector('.total-value');
+
+    if (!tierH2) {
+        tierH2 = document.createElement('h2');
+        tierH2.classList.add('tier-value');
+        agilidadeDiv.insertBefore(tierH2, agilidadeDiv.querySelector('input'));
+    }
+
+    if (!totalH2) {
+        totalH2 = document.createElement('h2');
+        totalH2.classList.add('total-value');
+        agilidadeDiv.insertBefore(totalH2, agilidadeDiv.querySelector('input'));
+    }
+
+    tierH2.textContent = `${tierAgilidade} &`;
+    totalH2.textContent = ` ${totalAgilidade}pt`;
+    tierH2.style.marginRight = '3px';
+}
+
 
 
     // Função para calcular o total de Recuperação
@@ -473,18 +858,59 @@
         }
     }
 
-    // Função para atualizar o total de Recuperação no HTML
-    function updateTotalRecuperacao(totalRecuperacao) {
-        const recuperacaoDiv = document.querySelector('#Recuperacao');
-        let recuperacaoH2 = recuperacaoDiv.querySelector('.total-value');
-        if (!recuperacaoH2) {
-            recuperacaoH2 = document.createElement('h2');
-            recuperacaoH2.classList.add('total-value');
-            const inputElement = recuperacaoDiv.querySelector('input');
-            recuperacaoDiv.insertBefore(recuperacaoH2, inputElement);
-        }
-        recuperacaoH2.textContent = totalRecuperacao;
+// Função para calcular o Tier com base no valor total da Recuperação
+function calculateTier(totalRecuperacao) {
+    if (totalRecuperacao >= 960) {
+        return 'Tier -1';
+    } else if (totalRecuperacao >= 840) {
+        return 'Tier 0';
+    } else if (totalRecuperacao >= 740) {
+        return 'Tier 1';
+    } else if (totalRecuperacao >= 640) {
+        return 'Tier 2';
+    } else if (totalRecuperacao >= 560) {
+        return 'Tier 3';
+    } else if (totalRecuperacao >= 480) {
+        return 'Tier 4';
+    } else if (totalRecuperacao >= 400) {
+        return 'Tier 5';
+    } else if (totalRecuperacao >= 320) {
+        return 'Tier 6';
+    } else if (totalRecuperacao >= 240) {
+        return 'Tier 7';
+    } else if (totalRecuperacao >= 160) {
+        return 'Tier 8';
+    } else if (totalRecuperacao >= 80) {
+        return 'Tier 9';
+    } else {
+        return 'Tier 10';
     }
+}
+
+// Função para atualizar o total de Recuperação no HTML
+function updateTotalRecuperacao(totalRecuperacao) {
+    const recuperacaoDiv = document.querySelector('#Recuperacao');
+    const tierRecuperacao = calculateTier(totalRecuperacao);
+    let tierH2 = recuperacaoDiv.querySelector('.tier-value');
+    let totalH2 = recuperacaoDiv.querySelector('.total-value');
+
+    if (!tierH2) {
+        tierH2 = document.createElement('h2');
+        tierH2.classList.add('tier-value');
+        recuperacaoDiv.insertBefore(tierH2, recuperacaoDiv.querySelector('input'));
+    }
+
+    if (!totalH2) {
+        totalH2 = document.createElement('h2');
+        totalH2.classList.add('total-value');
+        recuperacaoDiv.insertBefore(totalH2, recuperacaoDiv.querySelector('input'));
+    }
+
+    tierH2.textContent = `${tierRecuperacao} &`;
+    totalH2.textContent = ` ${totalRecuperacao}pt`;
+    tierH2.style.marginRight = '3px';
+}
+
 
     // Função para calcular o total de Imaterial
     function calculateTotalImaterial(imaterialInput,manaInput, menteInput, concentracaoInput) {
@@ -498,18 +924,59 @@
         }
     }
 
-    // Função para atualizar o total de Imaterial no HTML
-    function updateTotalImaterial(totalImaterial) {
-        const imaterialDiv = document.querySelector('#Imaterial');
-        let imaterialH2 = imaterialDiv.querySelector('.total-value');
-        if (!imaterialH2) {
-            imaterialH2 = document.createElement('h2');
-            imaterialH2.classList.add('total-value');
-            const inputElement = imaterialDiv.querySelector('input');
-            imaterialDiv.insertBefore(imaterialH2, inputElement);
-        }
-        imaterialH2.textContent = totalImaterial;
+// Função para calcular o Tier com base no valor total da Imaterial
+function calculateTier(totalImaterial) {
+    if (totalImaterial >= 960) {
+        return 'Tier -1';
+    } else if (totalImaterial >= 840) {
+        return 'Tier 0';
+    } else if (totalImaterial >= 740) {
+        return 'Tier 1';
+    } else if (totalImaterial >= 640) {
+        return 'Tier 2';
+    } else if (totalImaterial >= 560) {
+        return 'Tier 3';
+    } else if (totalImaterial >= 480) {
+        return 'Tier 4';
+    } else if (totalImaterial >= 400) {
+        return 'Tier 5';
+    } else if (totalImaterial >= 320) {
+        return 'Tier 6';
+    } else if (totalImaterial >= 240) {
+        return 'Tier 7';
+    } else if (totalImaterial >= 160) {
+        return 'Tier 8';
+    } else if (totalImaterial >= 80) {
+        return 'Tier 9';
+    } else {
+        return 'Tier 10';
     }
+}
+
+// Função para atualizar o total de Imaterial no HTML
+function updateTotalImaterial(totalImaterial) {
+    const imaterialDiv = document.querySelector('#Imaterial');
+    const tierImaterial = calculateTier(totalImaterial);
+    let tierH2 = imaterialDiv.querySelector('.tier-value');
+    let totalH2 = imaterialDiv.querySelector('.total-value');
+
+    if (!tierH2) {
+        tierH2 = document.createElement('h2');
+        tierH2.classList.add('tier-value');
+        imaterialDiv.insertBefore(tierH2, imaterialDiv.querySelector('input'));
+    }
+
+    if (!totalH2) {
+        totalH2 = document.createElement('h2');
+        totalH2.classList.add('total-value');
+        imaterialDiv.insertBefore(totalH2, imaterialDiv.querySelector('input'));
+    }
+
+    tierH2.textContent = `${tierImaterial} &`;
+    totalH2.textContent = ` ${totalImaterial}pt`;
+    tierH2.style.marginRight = '3px';
+}
+
 
     // Função para calcular o total de Espirito
     function calculateTotalEspirito(espiritoInput, menteInput, concentracaoInput) {
@@ -523,18 +990,59 @@
         }
     }
 
-    // Função para atualizar o total de Espirito no HTML
-    function updateTotalEspirito(totalEspirito) {
-        const espiritoDiv = document.querySelector('#Espirito');
-        let espiritoH2 = espiritoDiv.querySelector('.total-value');
-        if (!espiritoH2) {
-            espiritoH2 = document.createElement('h2');
-            espiritoH2.classList.add('total-value');
-            const inputElement = espiritoDiv.querySelector('input');
-            espiritoDiv.insertBefore(espiritoH2, inputElement);
-        }
-        espiritoH2.textContent = totalEspirito;
+// Função para calcular o Tier com base no valor total do Espirito
+function calculateTier(totalEspirito) {
+    if (totalEspirito >= 960) {
+        return 'Tier -1';
+    } else if (totalEspirito >= 840) {
+        return 'Tier 0';
+    } else if (totalEspirito >= 740) {
+        return 'Tier 1';
+    } else if (totalEspirito >= 640) {
+        return 'Tier 2';
+    } else if (totalEspirito >= 560) {
+        return 'Tier 3';
+    } else if (totalEspirito >= 480) {
+        return 'Tier 4';
+    } else if (totalEspirito >= 400) {
+        return 'Tier 5';
+    } else if (totalEspirito >= 320) {
+        return 'Tier 6';
+    } else if (totalEspirito >= 240) {
+        return 'Tier 7';
+    } else if (totalEspirito >= 160) {
+        return 'Tier 8';
+    } else if (totalEspirito >= 80) {
+        return 'Tier 9';
+    } else {
+        return 'Tier 10';
     }
+}
+
+// Função para atualizar o total do Espirito no HTML
+function updateTotalEspirito(totalEspirito) {
+    const espiritoDiv = document.querySelector('#Espirito');
+    const tierEspirito = calculateTier(totalEspirito);
+    let tierH2 = espiritoDiv.querySelector('.tier-value');
+    let totalH2 = espiritoDiv.querySelector('.total-value');
+
+    if (!tierH2) {
+        tierH2 = document.createElement('h2');
+        tierH2.classList.add('tier-value');
+        espiritoDiv.insertBefore(tierH2, espiritoDiv.querySelector('input'));
+    }
+
+    if (!totalH2) {
+        totalH2 = document.createElement('h2');
+        totalH2.classList.add('total-value');
+        espiritoDiv.insertBefore(totalH2, espiritoDiv.querySelector('input'));
+    }
+
+    tierH2.textContent = `${tierEspirito} &`;
+    totalH2.textContent = ` ${totalEspirito}pt`;
+    tierH2.style.marginRight = '3px';
+}
+
 
     // Função para calcular o total de Visao
     function calculateTotalVisao(visaoInput, menteInput, concentracaoInput) {
@@ -749,24 +1257,3 @@
             switchDarkMode.checked = true;
         }
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

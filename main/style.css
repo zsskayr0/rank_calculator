@@ -145,7 +145,7 @@ p {
 
 
 /* Estilos personalizados */
-.total-value {
+.total-value,.tier-value {
   font-size: 14px;
   justify-content: center;
 }
