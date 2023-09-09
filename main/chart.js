@@ -1,4 +1,20 @@
-// Function to get values from input elements
+//Apenas para fins de estudo.
+/*
+    const totalAlma = document.getElementById('Alma').querySelector('.statnumber').value;
+    const totalMana = document.getElementById('Mana').querySelector('.statnumber').value;
+    const totalForca = document.getElementById('Forca').querySelector('.statnumber').value;
+    const totalCorrida = document.getElementById('Corrida').querySelector('.statnumber').value;
+    const totalMente = document.getElementById('Mente').querySelector('.statnumber').value;
+    const totalConcentracao = document.getElementById('Concentracao').querySelector('.statnumber').value;
+    const totalConstituicao = parseFloat(document.querySelector('#Constituicao .total-value').textContent);
+    const totalPotencia = parseFloat(document.querySelector('#Potencia .total-value').textContent);
+    const totalAgilidade = parseFloat(document.querySelector('#Agilidade .total-value').textContent);
+    const totalRecuperacao = parseFloat(document.querySelector('#Recuperacao .total-value').textContent);
+    const totalImaterial = parseFloat(document.querySelector('#Imaterial .total-value').textContent);
+    const totalEspirito = parseFloat(document.querySelector('#Espirito .total-value').textContent);
+*/
+
+// Functions to get values from input elements
 function getInputValuesMain() {
     return [
         document.getElementById('Alma').querySelector('.statnumber').value,
@@ -7,6 +23,42 @@ function getInputValuesMain() {
         document.getElementById('Corrida').querySelector('.statnumber').value,
         document.getElementById('Mente').querySelector('.statnumber').value,
         document.getElementById('Concentracao').querySelector('.statnumber').value,
+    ];
+}
+
+function getInputValuesSub() {
+    return [
+        parseFloat(document.querySelector('#Constituicao .total-value').textContent),
+        parseFloat(document.querySelector('#Potencia .total-value').textContent),
+        parseFloat(document.querySelector('#Agilidade .total-value').textContent),
+        parseFloat(document.querySelector('#Recuperacao .total-value').textContent),
+        parseFloat(document.querySelector('#Imaterial .total-value').textContent),
+        parseFloat(document.querySelector('#Espirito .total-value').textContent),
+        parseFloat(document.querySelector('#Visao .total-value').textContent),
+        parseFloat(document.querySelector('#Audicao .total-value').textContent),
+        parseFloat(document.querySelector('#Olfato .total-value').textContent),
+        parseFloat(document.querySelector('#Tato .total-value').textContent),
+    ];
+}
+
+function getInputValuesAll() {
+    return [
+        document.getElementById('Alma').querySelector('.statnumber').value,
+        document.getElementById('Mana').querySelector('.statnumber').value,
+        document.getElementById('Forca').querySelector('.statnumber').value,
+        document.getElementById('Corrida').querySelector('.statnumber').value,
+        document.getElementById('Mente').querySelector('.statnumber').value,
+        document.getElementById('Concentracao').querySelector('.statnumber').value,
+        parseFloat(document.querySelector('#Constituicao .total-value').textContent),
+        parseFloat(document.querySelector('#Potencia .total-value').textContent),
+        parseFloat(document.querySelector('#Agilidade .total-value').textContent),
+        parseFloat(document.querySelector('#Recuperacao .total-value').textContent),
+        parseFloat(document.querySelector('#Imaterial .total-value').textContent),
+        parseFloat(document.querySelector('#Espirito .total-value').textContent),
+        parseFloat(document.querySelector('#Visao .total-value').textContent),
+        parseFloat(document.querySelector('#Audicao .total-value').textContent),
+        parseFloat(document.querySelector('#Olfato .total-value').textContent),
+        parseFloat(document.querySelector('#Tato .total-value').textContent),
     ];
 }
 
@@ -101,7 +153,7 @@ data: {
         },
         {
             label: 'Média',
-            data: [averageValue, averageValue, averageValue, averageValue, averageValue, averageValue], // Usa a média para todos os valores
+            data: Array(6).fill(averageValue),
             backgroundColor: 'rgba(255, 0, 0, 0.2)',
             borderColor: 'rgba(255, 0, 0, 1)',
             borderWidth: 0.7,
@@ -142,14 +194,7 @@ return sum / values.length;
 // Função para atualizar o gráfico Sub com novos valores
 function updateSubChart() {
     const ctx = document.getElementById('chartSub').getContext('2d');
-
-    // Obtendo os valores das variáveis aqui, dentro da função
-    const totalConstituicao = parseFloat(document.querySelector('#Constituicao .total-value').textContent);
-    const totalPotencia = parseFloat(document.querySelector('#Potencia .total-value').textContent);
-    const totalAgilidade = parseFloat(document.querySelector('#Agilidade .total-value').textContent);
-    const totalRecuperacao = parseFloat(document.querySelector('#Recuperacao .total-value').textContent);
-    const totalImaterial = parseFloat(document.querySelector('#Imaterial .total-value').textContent);
-    const totalEspirito = parseFloat(document.querySelector('#Espirito .total-value').textContent);
+    const valuesSub = getInputValuesSub();
     
     if (window.SubChart) {
         window.SubChart.destroy();
@@ -165,10 +210,15 @@ function updateSubChart() {
                 'Recuperação',
                 'Imaterial',
                 'Espírito',
+                'Visão',
+                'Audição',
+                'Olfato',
+                'Tato',
             ],
-            datasets: [{
+            datasets: [
+                {
                 label: 'XP Total',
-                data: [totalConstituicao, totalPotencia, totalAgilidade, totalRecuperacao, totalImaterial, totalEspirito],
+                data: valuesSub,
                 backgroundColor: 'rgba(168, 130, 200, 0.2)',
                 borderColor: 'rgba(168, 130, 200, 1)',
                 borderWidth: 0.7,
@@ -179,7 +229,8 @@ function updateSubChart() {
                 tension: 0.3,
                 fill: true,
                 backgroundColor: 'rgba(168, 130, 200, 0.2)',
-            }]
+            },
+        ]
         },
         options: {
             scales: {
@@ -203,11 +254,95 @@ function updateSubChart() {
     });
 }
 
+// Function to update the Result Chart
+function updateResultChart() {
+    const ctx = document.getElementById('chartResult').getContext('2d');
+    const valuesAll = getInputValuesAll();
+    const averageValue = calculateAverageValue(valuesAll); // Calcula a média dos valores
+
+    if (window.resultChart) {
+        window.resultChart.destroy();
+    }
+
+    window.resultChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: [
+                'Alma',
+                'Mana',
+                'Força',
+                'Corrida',
+                'Mente',
+                'Concentração',
+                'Constituição',
+                'Potência',
+                'Agilidade',
+                'Recuperação',
+                'Imaterial',
+                'Espírito',
+                'Visão',
+                'Audição',
+                'Olfato',
+                'Tato',
+            ],
+            datasets: [
+                {
+                    label: 'XP Total',
+                    data: valuesAll,
+                    backgroundColor: 'rgba(168, 130, 200, 0.2)',
+                    borderColor: 'rgba(168, 130, 200, 1)',
+                    borderWidth: 0.7,
+                    pointBackgroundColor: 'rgba(168, 130, 200, 1)',
+                    pointBorderColor: '#fff',
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    tension: 0.1,
+                    fill: true,
+                    backgroundColor: 'rgba(168, 130, 200, 0.2)',
+                },
+                {
+                    label: 'Média',
+                    data: Array(16).fill(averageValue),
+                    backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                    borderColor: 'rgba(255, 0, 0, 1)',
+                    borderWidth: 0.7,
+                    pointBackgroundColor: 'rgba(255, 0, 0, 1)',
+                    pointBorderColor: '#fff',
+                    pointRadius: 4,
+                },
+            ]
+            },
+            options: {
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        suggestedMax: 120,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        },
+                        angleLines: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        }
+                    }
+                },
+                elements: {
+                    line: {
+                        borderWidth: 2
+                    }
+                }
+            }
+    });
+}
+
+
+
+
 // Adicione ouvintes de eventos aos campos de entrada
 document.querySelectorAll('.statnumber').forEach(input => {
 input.addEventListener('input', updateChart);
 input.addEventListener('input', updateRadarChart);
 input.addEventListener('input', updateSubChart);
+input.addEventListener('input', updateResultChart);
 });
 
 // Chame a função updateChart() inicialmente para criar o gráfico

@@ -166,25 +166,6 @@
             );
             updateTotalTato(totalTato);
 
-            // Calcula e atualiza o Poder de Luta Total
-            const powerRating = calculatePowerating(
-                parseInt(almaInput.value),  
-                parseInt(forcaInput.value),
-                parseInt(corridaInput.value),
-                parseInt(menteInput.value),
-                parseInt(concentracaoInput.value),
-                parseInt(constituicaoInput),
-                parseInt(potenciaInput.value),
-                parseInt(agilidadeInput.value),
-                parseInt(recuperacaoInput.value),
-                parseInt(imaterialInput.value),
-                parseInt(espiritoInput.value),
-                parseInt(audicaoInput.value),
-                parseInt(olfatoInput.value),
-                parseInt(TatoInput.value),
-            );
-            updateTotalPowerRating(powerRating);
-
         });
     });
 
@@ -1307,6 +1288,31 @@ function updateTotalTato(totalTato) {
     tierH2.style.marginRight = '3px';
 }
 
+function calculateID(almaInput, forcaInput, corridaInput, menteInput, concentracaoInput, totalConstituicao, totalAgilidade, totalRecuperacao, totalImaterial, totalEspirito, totalVisao, totalAudicao, totalOlfato, totalTato) {
+    
+    // Converter as entradas em números inteiros
+    almaInput = parseInt(almaInput);
+    forcaInput = parseInt(forcaInput);
+    corridaInput = parseInt(corridaInput);
+    menteInput = parseInt(menteInput);
+    concentracaoInput = parseInt(concentracaoInput);
+    totalConstituicao = parseInt(totalConstituicao);
+    totalAgilidade = parseInt(totalAgilidade);
+    totalRecuperacao = parseInt(totalRecuperacao);
+    totalImaterial = parseInt(totalImaterial);
+    totalEspirito = parseInt(totalEspirito);
+    totalVisao = parseInt(totalVisao);
+    totalAudicao = parseInt(totalAudicao);
+    totalOlfato = parseInt(totalOlfato);
+    totalTato = parseInt(totalTato);
+
+    // Calcular o ID
+    const id = almaInput + forcaInput + corridaInput + menteInput + concentracaoInput + totalConstituicao + totalAgilidade + totalRecuperacao + totalImaterial + totalEspirito + totalVisao + totalAudicao + totalOlfato + totalTato;
+
+    return id;
+}
+
+
 
     function calculateAverage() {
         let sum = 0;
@@ -1354,11 +1360,17 @@ function updateTotalTato(totalTato) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     }
 
-    function updateRank(rank, average, totalPoints) {
+    function updateRank(rank, average, totalPoints, id) {
         if (window.innerWidth <= 768) {
-            rankElement.innerHTML = `Rank ${rank} – Total de ${formatNumberWithCommas(totalPoints)} – Média de ${average.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}<br>Poder de Luta Base de ${formatNumberWithCommas((totalPoints * 29.56989247).toFixed(0))}`;
+            rankElement.innerHTML = `Rank ${rank} – Total de ${formatNumberWithCommas(totalPoints)}
+             – Média de ${average.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}
+            <br>Poder de Luta Base de ${formatNumberWithCommas((totalPoints * 29.56989247).toFixed(0))}
+            <br>id: ${id}`;
         } else {
-            rankElement.textContent = `Rank ${rank} – Total de ${formatNumberWithCommas(totalPoints)} – Média de ${average.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}\n – Poder de Luta Base de ${formatNumberWithCommas((totalPoints * 29.56989247).toFixed(0))}`;
+            rankElement.textContent = `Rank ${rank} – Total de ${formatNumberWithCommas(totalPoints)}
+             – Média de ${average.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}
+             \n – Poder de Luta Base de ${formatNumberWithCommas((totalPoints * 29.56989247).toFixed(0))}
+             \nid: ${rank+totalPoints}`;
         }
     }
 
@@ -1392,32 +1404,4 @@ function updateTotalTato(totalTato) {
     updateTotalConcentracao(totalConcentracao);
 
     // Chame a função para calcular o powerRating inicialmente
-    calculatePowerRating();
-
-    updateRank(rank, average, totalPoints);
-
-    // Function to toggle between light mode and dark mode
-    function toggleDarkMode() {
-        const body = document.querySelector('body'); // Seleciona o elemento <body>
-        body.classList.toggle('darkmode'); // Adiciona ou remove a classe 'darkmode' do elemento <body>
-
-        // Store dark mode state in localStorage
-        const darkModeOn = body.classList.contains('darkmode');
-        localStorage.setItem('DarkModeON', darkModeOn);
-
-        // Update dark mode switch state
-        const switchDarkMode = document.getElementById('switch-DarkMode'); // ID atualizado
-        switchDarkMode.checked = darkModeOn;
-    }
-
-    // Check the localStorage on page load and apply dark mode if previously enabled
-    window.addEventListener('load', () => {
-        const darkModeOn = localStorage.getItem('DarkModeON') === 'true';
-        const body = document.querySelector('body'); // Seleciona o elemento <body>
-        const switchDarkMode = document.getElementById('switch-DarkMode');
-
-        if (darkModeOn) {
-            body.classList.add('darkmode'); // Adiciona a classe 'darkmode' ao elemento <body>
-            switchDarkMode.checked = true;
-        }
-    });
+    updateRank(rank, average, totalPoints, id);
