@@ -1,7 +1,8 @@
    // Obtém todas as tags <input> com a classe 'statnumber'
     const statNumberInputs = document.querySelectorAll('.statnumber');
-    const rankElement = document.querySelector('#rankdisplay'); // Corrected ID
-    const totalPointsElement = document.querySelector('#totalpoints'); // Element to display total points
+    const rankElement = document.querySelector('#rankdisplay');
+    const idElement = document.querySelector('#displayid');
+    const totalPointsElement = document.querySelector('#totalpoints');
 
     // Adiciona evento de escuta para cada input de estatística
     statNumberInputs.forEach((inputElement) => {
@@ -15,7 +16,7 @@
                 this.value = this.value.slice(0, 3);
             }
             // Ensure attributes don't exceed certain values
-            const attributeName = inputElement.parentElement.id; // Get the attribute name from the parent element's ID
+            const attributeName = inputElement.parentElement.id;
             let maxLimit = 960; // Default maxLimit
             
             if (attributeName === 'Constituicao' ||
@@ -41,6 +42,10 @@
             const totalPoints = calculateTotalPoints();
             const rank = calculateRank(average);
             updateRank(rank, average, totalPoints);
+
+            // Chama a função updateID com o ID criado
+            const charID = calculateCharID();
+            updateID(charID);
 
             // Calcula e atualiza o total de Alma
             const almaInput = document.querySelector('#Alma input');
@@ -232,9 +237,6 @@ function updateTotalAlma() {
     almaH2.textContent = `${totalAlma} HP`;
     tierH2.style.marginRight = '3px';
 }
-
-
-
 
     // Função para calcular o total de Mana
     function calculateTotalMana(xp) {
@@ -474,7 +476,6 @@ function updateTotalConcentracao() {
     tierH2.style.marginRight = '3px';
 }
 
-
     // Função para calcular o total de Constituição
     function calculateTotalConstituicao(constituicaoInput, almaInput, forcaInput) {
         const totalConstituicao = constituicaoInput + (almaInput + forcaInput) / 2.285;
@@ -583,8 +584,6 @@ function updateTotalAgilidade(totalAgilidade) {
     tierH2.style.marginRight = '3px';
 }
 
-
-
     // Função para calcular o total de Recuperação
     function calculateTotalRecuperacao(recuperacaoInput, almaInput, menteInput, concentracaoInput) {
         const totalRecuperacao = recuperacaoInput + (almaInput + menteInput + concentracaoInput) / 3.427;
@@ -620,7 +619,6 @@ function updateTotalRecuperacao(totalRecuperacao) {
     totalH2.textContent = ` ${totalRecuperacao}pt`;
     tierH2.style.marginRight = '3px';
 }
-
 
     // Função para calcular o total de Imaterial
     function calculateTotalImaterial(imaterialInput,manaInput, menteInput, concentracaoInput) {
@@ -806,7 +804,6 @@ function updateTotalOlfato(totalOlfato) {
     tierH2.style.marginRight = '3px';
 }
 
-
     // Função para calcular o total de Tato
     function calculateTotalTato(tatoInput, menteInput, concentracaoInput) {
         const totalTato = tatoInput + (menteInput + concentracaoInput) / 2.66;
@@ -889,7 +886,15 @@ function updateTotalTato(totalTato) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     }
 
-
+    function formatNumber(num) {
+        if (num < 10) {
+          return `00${num}`;
+        } else if (num < 100) {
+          return `0${num}`;
+        } else {
+          return num.toString();
+        }
+      }
 
     // Chamadas iniciais para calcular e exibir valores
     const totalPoints = calculateTotalPoints();
@@ -920,19 +925,47 @@ function updateTotalTato(totalTato) {
     const totalConcentracao = calculateTotalConcentracao(parseInt(concentracaoInput.value));
     updateTotalConcentracao(totalConcentracao);
 
-    function updateRank(rank, average, totalPoints, statID) {
+// Função para calcular o ID com base nos valores dos inputs
+function calculateCharID() {
+    const almaInput = document.querySelector('#Alma input');
+    const forcaInput = document.querySelector('#Forca input');
+    const manaInput = document.querySelector('#Mana input');
+    const corridaInput = document.querySelector('#Corrida input');
+    const menteInput = document.querySelector('#Mente input');
+    const concentracaoInput = document.querySelector('#Concentracao input');
+    const constituicaoInput = document.querySelector('#Constituicao input');
+    const potenciaInput = document.querySelector('#Potencia input');
+    const agilidadeInput = document.querySelector('#Agilidade input');
+    const recuperacaoInput = document.querySelector('#Recuperacao input');
+    const imaterialInput = document.querySelector('#Imaterial input');
+    const espiritoInput = document.querySelector('#Espirito input');
+    const visaoInput = document.querySelector('#Visao input');
+    const audicaoInput = document.querySelector('#Audicao input');
+    const olfatoInput = document.querySelector('#Olfato input');
+    const tatoInput = document.querySelector('#Tato input');
+
+    if (window.innerWidth <= 768) {
+    const charID = `${formatNumber(parseInt(almaInput.value))}${formatNumber(parseInt(manaInput.value))}${formatNumber(parseInt(forcaInput.value))}${formatNumber(parseInt(corridaInput.value))}${formatNumber(parseInt(menteInput.value))}${formatNumber(parseInt(concentracaoInput.value))} ${formatNumber(parseInt(constituicaoInput.value))}${formatNumber(parseInt(potenciaInput.value))}${formatNumber(parseInt(agilidadeInput.value))}${formatNumber(parseInt(recuperacaoInput.value))}${formatNumber(parseInt(imaterialInput.value))}${formatNumber(parseInt(espiritoInput.value))}<br>${formatNumber(parseInt(visaoInput.value))}${formatNumber(parseInt(audicaoInput.value))}${formatNumber(parseInt(olfatoInput.value))}${formatNumber(parseInt(tatoInput.value))}`;
+    return charID;
+
+    } else {
+        const charID = `${formatNumber(parseInt(almaInput.value))}${formatNumber(parseInt(manaInput.value))}${formatNumber(parseInt(forcaInput.value))}${formatNumber(parseInt(corridaInput.value))}${formatNumber(parseInt(menteInput.value))}${formatNumber(parseInt(concentracaoInput.value))}/${formatNumber(parseInt(constituicaoInput.value))}${formatNumber(parseInt(potenciaInput.value))}${formatNumber(parseInt(agilidadeInput.value))}${formatNumber(parseInt(recuperacaoInput.value))}${formatNumber(parseInt(imaterialInput.value))}${formatNumber(parseInt(espiritoInput.value))}/${formatNumber(parseInt(visaoInput.value))}${formatNumber(parseInt(audicaoInput.value))}${formatNumber(parseInt(olfatoInput.value))}${formatNumber(parseInt(tatoInput.value))}`;
+        return charID;
+}
+}
+
+    function updateRank(rank, average, totalPoints) {
         if (window.innerWidth <= 768) {
             rankElement.innerHTML = `Rank ${rank} – Total de ${formatNumberWithCommas(totalPoints)}
              – Média de ${average.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}
-            <br>Poder de Luta Base de ${formatNumberWithCommas((totalPoints * 29.56989247).toFixed(0))}
-            <br>id: ${rank+totalPoints}`;
+            <br>Poder de Luta Base de ${formatNumberWithCommas((totalPoints * 29.56989247).toFixed(0))}`;
         } else {
             rankElement.textContent = `Rank ${rank} – Total de ${formatNumberWithCommas(totalPoints)}
              – Média de ${average.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}
-             \n – Poder de Luta Base de ${formatNumberWithCommas((totalPoints * 29.56989247).toFixed(0))}
-             \nid: ${rank+totalPoints}`;
+             \n – Poder de Luta Base de ${formatNumberWithCommas((totalPoints * 29.56989247).toFixed(0))}`;
         }
     }
-
-    // Chame a função para calcular o powerRating inicialmente
-    updateRank(rank, average, totalPoints);
+    
+function updateID(charID) {
+    idElement.innerHTML = `${charID}`;
+}
