@@ -1,3 +1,15 @@
+/*
+Alma == Soul
+Mana == Mana
+Força == Strength
+Corrida == Speed
+Mente == Mind
+Concentração == Concentration
+*/
+
+   
+   
+   
    // Obtém todas as tags <input> com a classe 'statnumber'
     const statNumberInputs = document.querySelectorAll('.statnumber');
     const rankElement = document.querySelector('#rankdisplay');
@@ -43,9 +55,7 @@
             const rank = calculateRank(average);
             updateRank(rank, average, totalPoints);
 
-            // Chama a função updateID com o ID criado
-            const charID = calculateCharID();
-            updateID(charID);
+
 
             // Calcula e atualiza o total de Alma
             const almaInput = document.querySelector('#Alma input');
@@ -170,6 +180,17 @@
                 parseInt(concentracaoInput.value)
             );
             updateTotalTato(totalTato);
+
+            // Chama a função updateID com o ID criado
+            const charID = calculateCharID();
+            updateID(charID);
+            inputs.forEach(input => {
+              input.value = charID;
+            });
+
+
+
+
 
         });
     });
@@ -945,7 +966,7 @@ function calculateCharID() {
     const tatoInput = document.querySelector('#Tato input');
 
     if (window.innerWidth <= 768) {
-    const charID = `${formatNumber(parseInt(almaInput.value))}${formatNumber(parseInt(manaInput.value))}${formatNumber(parseInt(forcaInput.value))}${formatNumber(parseInt(corridaInput.value))}${formatNumber(parseInt(menteInput.value))}${formatNumber(parseInt(concentracaoInput.value))} ${formatNumber(parseInt(constituicaoInput.value))}${formatNumber(parseInt(potenciaInput.value))}${formatNumber(parseInt(agilidadeInput.value))}${formatNumber(parseInt(recuperacaoInput.value))}${formatNumber(parseInt(imaterialInput.value))}${formatNumber(parseInt(espiritoInput.value))}<br>${formatNumber(parseInt(visaoInput.value))}${formatNumber(parseInt(audicaoInput.value))}${formatNumber(parseInt(olfatoInput.value))}${formatNumber(parseInt(tatoInput.value))}`;
+    const charID = `${formatNumber(parseInt(almaInput.value))}${formatNumber(parseInt(manaInput.value))}${formatNumber(parseInt(forcaInput.value))}${formatNumber(parseInt(corridaInput.value))}${formatNumber(parseInt(menteInput.value))}${formatNumber(parseInt(concentracaoInput.value))} ${formatNumber(parseInt(constituicaoInput.value))}${formatNumber(parseInt(potenciaInput.value))}${formatNumber(parseInt(agilidadeInput.value))}${formatNumber(parseInt(recuperacaoInput.value))}${formatNumber(parseInt(imaterialInput.value))}${formatNumber(parseInt(espiritoInput.value))} ${formatNumber(parseInt(visaoInput.value))}${formatNumber(parseInt(audicaoInput.value))}${formatNumber(parseInt(olfatoInput.value))}${formatNumber(parseInt(tatoInput.value))}`;
     return charID;
 
     } else {
@@ -953,6 +974,10 @@ function calculateCharID() {
         return charID;
 }
 }
+
+// Chame a função para inicializar os valores dos inputs a partir do valor inicial de "displayid"
+updateStatsFromId();
+
 
     function updateRank(rank, average, totalPoints) {
         if (window.innerWidth <= 768) {
@@ -966,6 +991,7 @@ function calculateCharID() {
         }
     }
     
-function updateID(charID) {
-    idElement.innerHTML = `${charID}`;
-}
+    function updateID(charID) {
+        const idElement = document.querySelector('#displayid');
+        idElement.textContent = charID;
+      }
