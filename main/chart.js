@@ -14,6 +14,15 @@
     const totalEspirito = parseFloat(document.querySelector('#Espirito .total-value').textContent);
 */
 
+
+// Função para calcular a média dos valores
+function calculatevalueAverage(values) {
+    const sum = values.reduce((acc, value) => acc + parseInt(value), 0);
+    return sum / values.length;
+    }
+
+    
+
 // Functions to get values from input elements
 function getInputValuesMain() {
     return [
@@ -65,6 +74,7 @@ function getInputValuesAll() {
 // Função para atualizar o gráfico com novos valores
 function updateChart() {
 const valuesMain = getInputValuesMain();
+const valueMax = Math.max(...valuesMain);
 const ctx = document.getElementById('chartMain').getContext('2d');
 
 if (window.chart) {
@@ -101,7 +111,7 @@ options: {
     scales: {
         r: {
             beginAtZero: true,
-            suggestedMax: 120,
+            suggestedMax: valueMax * 1.1,
             grid: {
                 color: 'rgba(0, 0, 0, 0.1)'
             },
@@ -119,82 +129,77 @@ options: {
 });
 }
 
-// Função para atualizar o gráfico de radar com novos valores
 function updateRadarChart() {
-const valuesMain = getInputValuesMain();
-const averageValue = calculateAverageValue(valuesMain); // Calcula a média dos valores
-const ctx = document.getElementById('chartRadar').getContext('2d');
+    const valuesMain = getInputValuesMain();
+    const valueMax = Math.max(...valuesMain);
+    const valueAverage = calculatevalueAverage(valuesMain);
+    const ctx = document.getElementById('chartRadar').getContext('2d');
 
-if (window.radarChart) {
-window.radarChart.destroy();
-}
+    if (window.radarChart) {
+        window.radarChart.destroy();
+    }
 
-window.radarChart = new Chart(ctx, {
-type: 'radar',
-data: {
-    labels: [
-        'Alma',
-        'Mana',
-        'Força',
-        'Corrida',
-        'Mente',
-        'Concentração',
-    ],
-    datasets: [
-        {
-            label: 'XP Total',
-            data: valuesMain,
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 0.7,
-            pointBackgroundColor: 'rgba(75, 192, 192, 1)',
-            pointBorderColor: '#fff',
-            pointRadius: 4,
+    window.radarChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: [
+                'Alma',
+                'Mana',
+                'Força',
+                'Corrida',
+                'Mente',
+                'Concentração',
+            ],
+            datasets: [
+                {
+                    label: 'XP Total',
+                    data: valuesMain,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 0.7,
+                    pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                    pointBorderColor: '#fff',
+                    pointRadius: 4,
+                },
+                {
+                    label: 'Média',
+                    data: Array(6).fill(valueAverage),
+                    backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                    borderColor: 'rgba(255, 0, 0, 1)',
+                    borderWidth: 0.7,
+                    pointBackgroundColor: 'rgba(255, 0, 0, 1)',
+                    pointBorderColor: '#fff',
+                    pointRadius: 4,
+                },
+            ],
         },
-        {
-            label: 'Média',
-            data: Array(6).fill(averageValue),
-            backgroundColor: 'rgba(255, 0, 0, 0.2)',
-            borderColor: 'rgba(255, 0, 0, 1)',
-            borderWidth: 0.7,
-            pointBackgroundColor: 'rgba(255, 0, 0, 1)',
-            pointBorderColor: '#fff',
-            pointRadius: 4,
-        },
-    ],
-},
-options: {
-    scales: {
-        r: {
-            beginAtZero: true,
-            suggestedMax: 10,
-            grid: {
-                color: 'rgba(0, 0, 0, 0.1)',
+        options: {
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    suggestedMax: valueMax * 1.1,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.1)',
+                    },
+                    angleLines: {
+                        color: 'rgba(0, 0, 0, 0.1)',
+                    },
+                },
             },
-            angleLines: {
-                color: 'rgba(0, 0, 0, 0.1)',
+            elements: {
+                line: {
+                    borderWidth: 2,
+                },
             },
         },
-    },
-    elements: {
-        line: {
-            borderWidth: 2,
-        },
-    },
-},
-});
-}
-
-// Função para calcular a média dos valores
-function calculateAverageValue(values) {
-const sum = values.reduce((acc, value) => acc + parseInt(value), 0);
-return sum / values.length;
+    });
 }
 
 // Função para atualizar o gráfico Sub com novos valores
 function updateSubChart() {
-    const ctx = document.getElementById('chartSub').getContext('2d');
     const valuesSub = getInputValuesSub();
+    const valueMax = Math.max(...valuesSub);
+    const ctx = document.getElementById('chartSub').getContext('2d');
     
     if (window.SubChart) {
         window.SubChart.destroy();
@@ -236,7 +241,7 @@ function updateSubChart() {
             scales: {
                 r: {
                     beginAtZero: true,
-                    suggestedMax: 120,
+                        suggestedMax: valueMax * 1.1,
                     grid: {
                         color: 'rgba(0, 0, 0, 0.1)'
                     },
@@ -256,9 +261,10 @@ function updateSubChart() {
 
 // Function to update the Result Chart
 function updateResultChart() {
-    const ctx = document.getElementById('chartResult').getContext('2d');
     const valuesAll = getInputValuesAll();
-    const averageValue = calculateAverageValue(valuesAll); // Calcula a média dos valores
+    const valueMax = Math.max(...valuesAll);
+    const valueAverage = calculatevalueAverage(valuesAll);
+    const ctx = document.getElementById('chartResult').getContext('2d');
 
     if (window.resultChart) {
         window.resultChart.destroy();
@@ -302,13 +308,13 @@ function updateResultChart() {
                 },
                 {
                     label: 'Média',
-                    data: Array(16).fill(averageValue),
+                    data: Array(16).fill(valueAverage),
                     backgroundColor: 'rgba(255, 0, 0, 0.2)',
                     borderColor: 'rgba(255, 0, 0, 1)',
                     borderWidth: 0.7,
                     pointBackgroundColor: 'rgba(255, 0, 0, 1)',
                     pointBorderColor: '#fff',
-                    pointRadius: 4,
+                    pointRadius: 3,
                 },
             ]
             },
@@ -316,7 +322,7 @@ function updateResultChart() {
                 scales: {
                     r: {
                         beginAtZero: true,
-                        suggestedMax: 120,
+                        suggestedMax: valueMax * 1.1,
                         grid: {
                             color: 'rgba(0, 0, 0, 0.1)'
                         },
@@ -334,9 +340,6 @@ function updateResultChart() {
     });
 }
 
-
-
-
 // Adicione ouvintes de eventos aos campos de entrada
 document.querySelectorAll('.statnumber').forEach(input => {
 input.addEventListener('input', updateChart);
@@ -350,3 +353,4 @@ updateChart();
 updateRadarChart();
 updateSubChart();
 updateResultChart();
+calculatevalueAverage();
