@@ -1,27 +1,9 @@
-//Apenas para fins de estudo.
-/*
-    const totalAlma = document.getElementById('Alma').querySelector('.statnumber').value;
-    const totalMana = document.getElementById('Mana').querySelector('.statnumber').value;
-    const totalForca = document.getElementById('Forca').querySelector('.statnumber').value;
-    const totalCorrida = document.getElementById('Corrida').querySelector('.statnumber').value;
-    const totalMente = document.getElementById('Mente').querySelector('.statnumber').value;
-    const totalConcentracao = document.getElementById('Concentracao').querySelector('.statnumber').value;
-    const totalConstituicao = parseFloat(document.querySelector('#Constituicao .total-value').textContent);
-    const totalPotencia = parseFloat(document.querySelector('#Potencia .total-value').textContent);
-    const totalAgilidade = parseFloat(document.querySelector('#Agilidade .total-value').textContent);
-    const totalRecuperacao = parseFloat(document.querySelector('#Recuperacao .total-value').textContent);
-    const totalImaterial = parseFloat(document.querySelector('#Imaterial .total-value').textContent);
-    const totalEspirito = parseFloat(document.querySelector('#Espirito .total-value').textContent);
-*/
-
-
 // Função para calcular a média dos valores
 function calculatevalueAverage(values) {
     const sum = values.reduce((acc, value) => acc + parseInt(value), 0);
     return sum / values.length;
     }
 
-    
 
 // Functions to get values from input elements
 function getInputValuesMain() {
@@ -67,9 +49,32 @@ function getInputValuesAll() {
         parseFloat(document.querySelector('#Visao .total-value').textContent),
         parseFloat(document.querySelector('#Audicao .total-value').textContent),
         parseFloat(document.querySelector('#Olfato .total-value').textContent),
-        parseFloat(document.querySelector('#Tato .total-value').textContent),
+        parseFloat(document.querySelector('#Olfato .total-value').textContent),
     ];
 }
+
+function getXP() {
+    return [
+        document.getElementById('Alma').querySelector('.statnumber').value,
+        document.getElementById('Mana').querySelector('.statnumber').value,
+        document.getElementById('Forca').querySelector('.statnumber').value,
+        document.getElementById('Corrida').querySelector('.statnumber').value,
+        document.getElementById('Mente').querySelector('.statnumber').value,
+        document.getElementById('Concentracao').querySelector('.statnumber').value,
+        document.getElementById('Constituicao').querySelector('.statnumber').value,
+        document.getElementById('Potencia').querySelector('.statnumber').value,
+        document.getElementById('Agilidade').querySelector('.statnumber').value,
+        document.getElementById('Recuperacao').querySelector('.statnumber').value,
+        document.getElementById('Imaterial').querySelector('.statnumber').value,
+        document.getElementById('Espirito').querySelector('.statnumber').value,
+        document.getElementById('Visao').querySelector('.statnumber').value,
+        document.getElementById('Audicao').querySelector('.statnumber').value,
+        document.getElementById('Olfato').querySelector('.statnumber').value,
+        document.getElementById('Olfato').querySelector('.statnumber').value,
+    ];
+}
+
+
 
 // Função para atualizar o gráfico com novos valores
 function updateChart() {
@@ -259,86 +264,171 @@ function updateSubChart() {
     });
 }
 
-// Function to update the Result Chart
+// Função para atualizar o gráfico Result com novos valores
 function updateResultChart() {
     const valuesAll = getInputValuesAll();
-    const valueMax = Math.max(...valuesAll);
-    const valueAverage = calculatevalueAverage(valuesAll);
     const ctx = document.getElementById('chartResult').getContext('2d');
+    const colors = [
+        '#0070ea',   // MainPhysical
+        '#73b6ff',   // SubPhysical
+        '#da2a6f99',   // Senses
+        '#b46bfe',  // SubMagical
+        '#8b17fe',   // MainMagical
+    ];
+
+    const valuesOrdered = [
+        valuesAll[0], valuesAll[2], valuesAll[3],   // MainPhysical
+        valuesAll[6], valuesAll[7], valuesAll[8], valuesAll[9],   // SubPhysical
+        valuesAll[12], valuesAll[13], valuesAll[14], valuesAll[15],   // Senses
+        valuesAll[10], valuesAll[11],  // SubMagical
+        valuesAll[1], valuesAll[4], valuesAll[5],   // MainMagical
+    ];
+
 
     if (window.resultChart) {
         window.resultChart.destroy();
     }
 
+
     window.resultChart = new Chart(ctx, {
-        type: 'radar',
+        type: 'doughnut',
         data: {
             labels: [
-                'Alma',
-                'Mana',
-                'Força',
-                'Corrida',
-                'Mente',
-                'Concentração',
-                'Constituição',
-                'Potência',
-                'Agilidade',
-                'Recuperação',
-                'Imaterial',
-                'Espírito',
-                'Visão',
-                'Audição',
-                'Olfato',
-                'Tato',
+                'Alma', 'Força', 'Corrida', 
+                'Constituição', 'Potência', 'Agilidade', 'Recuperação',
+                'Visão', 'Audição', 'Olfato', 'Tato',
+                'Imaterial', 'Espírito',
+                'Mana', 'Mente', 'Concentração',
             ],
             datasets: [
                 {
-                    label: 'XP Total',
-                    data: valuesAll,
-                    backgroundColor: 'rgba(168, 130, 200, 0.2)',
-                    borderColor: 'rgba(168, 130, 200, 1)',
-                    borderWidth: 0.7,
-                    pointBackgroundColor: 'rgba(168, 130, 200, 1)',
-                    pointBorderColor: '#fff',
-                    pointRadius: 4,
-                    pointHoverRadius: 6,
-                    tension: 0.1,
-                    fill: true,
-                    backgroundColor: 'rgba(168, 130, 200, 0.2)',
+                    data: valuesOrdered,
+                    backgroundColor: [
+                        colors[1],
+                        colors[1],
+                        colors[1],
+
+                        colors[1],
+                        colors[1], 
+                        colors[1], 
+                        colors[1],
+
+                        colors[2],
+                        colors[2],
+                        colors[2],
+                        colors[2],
+
+                        colors[3], 
+                        colors[3],
+                        
+                        colors[3], 
+                        colors[3], 
+                        colors[3],
+                    ],
+                    borderWidth: 1,
+                    hoverOffset: 4,
                 },
-                {
-                    label: 'Média',
-                    data: Array(16).fill(valueAverage),
-                    backgroundColor: 'rgba(255, 0, 0, 0.2)',
-                    borderColor: 'rgba(255, 0, 0, 1)',
-                    borderWidth: 0.7,
-                    pointBackgroundColor: 'rgba(255, 0, 0, 1)',
-                    pointBorderColor: '#fff',
-                    pointRadius: 3,
+            ],
+        },
+        options: {
+            plugins: {
+                legend: {
+                    position: 'right',
+                    labels: {
+                        boxWidth: 5,
+                        padding: 5,
+                    },
                 },
-            ]
             },
-            options: {
-                scales: {
-                    r: {
-                        beginAtZero: true,
-                        suggestedMax: valueMax * 1.1,
-                        grid: {
-                            color: 'rgba(0, 0, 0, 0.1)'
-                        },
-                        angleLines: {
-                            color: 'rgba(0, 0, 0, 0.1)'
-                        }
-                    }
-                },
-                elements: {
-                    line: {
-                        borderWidth: 2
-                    }
-                }
-            }
+        },
     });
 }
+
+function updateXPChart() {
+    const valuesAll = getXP();
+    const totalXP = 
+        parseFloat(valuesAll[0]) + 
+        parseFloat(valuesAll[1]) + 
+        parseFloat(valuesAll[2]) + 
+        parseFloat(valuesAll[3]) + 
+        parseFloat(valuesAll[4]) + 
+        parseFloat(valuesAll[5]) + 
+        parseFloat(valuesAll[6]) + 
+        parseFloat(valuesAll[7]) + 
+        parseFloat(valuesAll[8]) + 
+        parseFloat(valuesAll[9]) + 
+        parseFloat(valuesAll[10]) + 
+        parseFloat(valuesAll[11]) + 
+        parseFloat(valuesAll[12]) + 
+        parseFloat(valuesAll[13]) + 
+        parseFloat(valuesAll[14]) + 
+        parseFloat(valuesAll[15]);
+
+    if (window.xpChart) {
+        window.xpChart.destroy();
+    }
+
+    const ctx = document.getElementById('chartXP').getContext('2d');
+
+    // Define os valores mínimos necessários para cada rank
+    const rankMinimums = {
+        'Rank E': 0,
+        'Rank D': 522,
+        'Rank C': 1044,
+        'Rank B': 1566,
+        'Rank A': 2088,
+        'Rank S': 2610,
+        'Rank SS': 3132,
+        'Rank SSS': 3654,
+        'Rank Z': 4176,
+    };
+
+    // Cria um array de datasets com os valores mínimos
+    const datasets = Object.keys(rankMinimums).map(rank => ({
+        label: rank,
+        data: [rankMinimums[rank]],
+        backgroundColor: 'rgba(0, 0, 0, 0)', // Define uma cor transparente para os valores mínimos
+        borderColor: 'rgba(0, 0, 0, 0.5)', // Define uma cor para as linhas dos valores mínimos
+        borderWidth: 1,
+        pointRadius: 0, // Remove os pontos dos valores mínimos
+    }));
+
+    // Adiciona um dataset para a "XP Atual" do jogador
+    datasets.push({
+        label: 'XP Atual',
+        data: [totalXP],
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 0.7,
+        hoverBackgroundColor: 'rgba(75, 192, 192, 0.4)',
+    });
+
+    window.xpChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Pontuação Mínima'],
+            datasets: datasets,
+        },
+        options: {
+            indexAxis: 'y',
+            plugins: {
+                legend: {
+                    display: true,
+                }
+            },
+            scales: {
+                x: {
+                    stacked: true, // Empilha as barras na direção horizontal
+                },
+                y: {
+                    stacked: true, // Empilha as barras na direção vertical
+                },
+            },
+        }
+    });
+}
+
+
 
 // Adicione ouvintes de eventos aos campos de entrada
 document.querySelectorAll('.statnumber').forEach(input => {
@@ -346,6 +436,7 @@ input.addEventListener('input', updateChart);
 input.addEventListener('input', updateRadarChart);
 input.addEventListener('input', updateSubChart);
 input.addEventListener('input', updateResultChart);
+input.addEventListener('input', updateXPChart);
 });
 
 // Chame a função updateChart() inicialmente para criar o gráfico
@@ -353,4 +444,4 @@ updateChart();
 updateRadarChart();
 updateSubChart();
 updateResultChart();
-calculatevalueAverage();
+updateXPChart();
