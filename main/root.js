@@ -6,8 +6,6 @@ Corrida == Speed
 Mente == Mind
 Concentração == Concentration
 */
-
-   
    
    
    // Obtém todas as tags <input> com a classe 'statnumber'
