@@ -715,7 +715,7 @@ function updateTotalEspirito(totalEspirito) {
 
     // Função para calcular o total de Visao
     function calculateTotalVisao(visaoInput, menteInput, concentracaoInput) {
-        const totalVisao = visaoInput + (menteInput + concentracaoInput) / 2.285;
+        const totalVisao = visaoInput + (menteInput + concentracaoInput) / 2.666666667;
         if (totalVisao > 840){
             return parseFloat(totalVisao.toFixed(0));
         }
@@ -752,7 +752,7 @@ function updateTotalVisao(totalVisao) {
 
     // Função para calcular o total de Audição
     function calculateTotalAudicao(audicaoInput, menteInput, concentracaoInput) {
-        const totalAudicao = audicaoInput + (menteInput + concentracaoInput) / 2.285;
+        const totalAudicao = audicaoInput + (menteInput + concentracaoInput) / 2.666666667;
         if (totalAudicao > 840){
             return parseFloat(totalAudicao.toFixed(0));
         }
@@ -789,7 +789,7 @@ function updateTotalAudicao(totalAudicao) {
 
     // Função para calcular o total de Olfato
     function calculateTotalOlfato(olfatoInput, menteInput, concentracaoInput) {
-        const totalOlfato = olfatoInput + (menteInput + concentracaoInput) / 2.285;
+        const totalOlfato = olfatoInput + (menteInput + concentracaoInput) / 2.666666667;
         if (totalOlfato > 840){
             return parseFloat(totalOlfato.toFixed(0));
         }
@@ -825,7 +825,7 @@ function updateTotalOlfato(totalOlfato) {
 
     // Função para calcular o total de Tato
     function calculateTotalTato(tatoInput, menteInput, concentracaoInput) {
-        const totalTato = tatoInput + (menteInput + concentracaoInput) / 2.66;
+        const totalTato = tatoInput + (menteInput + concentracaoInput) / 2.666666667;
         if (totalTato > 720){
             return parseFloat(totalTato.toFixed(0));
         }
