@@ -879,26 +879,29 @@ function updateTotalTato(totalTato) {
         return total;
     }
 
-    function calculateRank(average) {
-        const rankMap = [
-            { min: 0, max: 86, rank: "E" },
-            { min: 87, max: 173, rank: "D" },
-            { min: 174, max: 260, rank: "C" },
-            { min: 261, max: 347, rank: "B" },
-            { min: 348, max: 434, rank: "A" },
-            { min: 435, max: 521, rank: "S" },
-            { min: 522, max: 608, rank: "SS" },
-            { min: 609, max: 695, rank: "SSS" },
-        ];
-    
-        for (const item of rankMap) {
-            if (average >= item.min && average <= item.max) {
-                return item.rank;
-            }
-        }
-    
-        return "Z";
-    }
+    function calculateRank(average) { 
+     const rankMap = [ 
+         { min: 0, max: 86, rank: "E" }, 
+         { min: 87, max: 173, rank: "D" }, 
+         { min: 174, max: 260, rank: "C" }, 
+         { min: 261, max: 347, rank: "B" }, 
+         { min: 348, max: 434, rank: "A" }, 
+         { min: 435, max: 521, rank: "S" }, 
+         { min: 522, max: 608, rank: "SS" }, 
+         { min: 609, max: 695, rank: "SSS" },
+         { min: 696, max: Number.POSITIVE_INFINITY, rank: "Z" }
+     ]; 
+
+     for (const item of rankMap) { 
+         if (average >= item.min && average <= item.max) { 
+             return item.rank; 
+         } 
+     } 
+
+     // Se chegou aqui, é porque não se encaixa em nenhum intervalo conhecido, então é "?".
+     return "?"; 
+}
+
     
 
     function formatNumberWithCommas(number) {
