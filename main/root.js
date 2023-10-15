@@ -899,7 +899,6 @@ function updateTotalTato(totalTato) {
     
         return "Z";
     }
-    
 
     function formatNumberWithCommas(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
@@ -963,19 +962,19 @@ function calculateCharID() {
     const olfatoInput = document.querySelector('#Olfato input');
     const tatoInput = document.querySelector('#Tato input');
 
-    if (window.innerWidth <= 768) {
-    const charID = `${formatNumber(parseInt(almaInput.value))}${formatNumber(parseInt(manaInput.value))}${formatNumber(parseInt(forcaInput.value))}${formatNumber(parseInt(corridaInput.value))}${formatNumber(parseInt(menteInput.value))}${formatNumber(parseInt(concentracaoInput.value))} ${formatNumber(parseInt(constituicaoInput.value))}${formatNumber(parseInt(potenciaInput.value))}${formatNumber(parseInt(agilidadeInput.value))}${formatNumber(parseInt(recuperacaoInput.value))}${formatNumber(parseInt(imaterialInput.value))}${formatNumber(parseInt(espiritoInput.value))} ${formatNumber(parseInt(visaoInput.value))}${formatNumber(parseInt(audicaoInput.value))}${formatNumber(parseInt(olfatoInput.value))}${formatNumber(parseInt(tatoInput.value))}`;
-    return charID;
-
-    } else {
-        const charID = `${formatNumber(parseInt(almaInput.value))}${formatNumber(parseInt(manaInput.value))}${formatNumber(parseInt(forcaInput.value))}${formatNumber(parseInt(corridaInput.value))}${formatNumber(parseInt(menteInput.value))}${formatNumber(parseInt(concentracaoInput.value))}/${formatNumber(parseInt(constituicaoInput.value))}${formatNumber(parseInt(potenciaInput.value))}${formatNumber(parseInt(agilidadeInput.value))}${formatNumber(parseInt(recuperacaoInput.value))}${formatNumber(parseInt(imaterialInput.value))}${formatNumber(parseInt(espiritoInput.value))}/${formatNumber(parseInt(visaoInput.value))}${formatNumber(parseInt(audicaoInput.value))}${formatNumber(parseInt(olfatoInput.value))}${formatNumber(parseInt(tatoInput.value))}`;
-        return charID;
-}
+        if (window.innerWidth <= 768) {
+            const charID = `${formatNumber(parseInt(almaInput.value))}${formatNumber(parseInt(manaInput.value))}${formatNumber(parseInt(forcaInput.value))}${formatNumber(parseInt(corridaInput.value))}${formatNumber(parseInt(menteInput.value))}${formatNumber(parseInt(concentracaoInput.value))} ${formatNumber(parseInt(constituicaoInput.value))}${formatNumber(parseInt(potenciaInput.value))}${formatNumber(parseInt(agilidadeInput.value))}${formatNumber(parseInt(recuperacaoInput.value))}${formatNumber(parseInt(imaterialInput.value))}${formatNumber(parseInt(espiritoInput.value))} ${formatNumber(parseInt(visaoInput.value))}${formatNumber(parseInt(audicaoInput.value))}${formatNumber(parseInt(olfatoInput.value))}${formatNumber(parseInt(tatoInput.value))}`;
+            return charID;
+        }
+        
+        else {
+            const charID = `${formatNumber(parseInt(almaInput.value))}${formatNumber(parseInt(manaInput.value))}${formatNumber(parseInt(forcaInput.value))}${formatNumber(parseInt(corridaInput.value))}${formatNumber(parseInt(menteInput.value))}${formatNumber(parseInt(concentracaoInput.value))}/${formatNumber(parseInt(constituicaoInput.value))}${formatNumber(parseInt(potenciaInput.value))}${formatNumber(parseInt(agilidadeInput.value))}${formatNumber(parseInt(recuperacaoInput.value))}${formatNumber(parseInt(imaterialInput.value))}${formatNumber(parseInt(espiritoInput.value))}/${formatNumber(parseInt(visaoInput.value))}${formatNumber(parseInt(audicaoInput.value))}${formatNumber(parseInt(olfatoInput.value))}${formatNumber(parseInt(tatoInput.value))}`;
+            return charID;
+        }
 }
 
 // Chame a função para inicializar os valores dos inputs a partir do valor inicial de "displayid"
 updateStatsFromId();
-
 
     function updateRank(rank, average, totalPoints) {
         if (window.innerWidth <= 768) {
