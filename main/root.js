@@ -1,14 +1,4 @@
-/*
-Alma == Soul
-Mana == Mana
-Força == Strength
-Corrida == Speed
-Mente == Mind
-Concentração == Concentration
-*/
-   
-   
-   // Obtém todas as tags <input> com a classe 'statnumber'
+     // Obtém todas as tags <input> com a classe 'statnumber'
     const statNumberInputs = document.querySelectorAll('.statnumber');
     const rankElement = document.querySelector('#rankdisplay');
     const idElement = document.querySelector('#displayid');
@@ -943,6 +933,46 @@ function updateTotalTato(totalTato) {
     const totalConcentracao = calculateTotalConcentracao(parseInt(concentracaoInput.value));
     updateTotalConcentracao(totalConcentracao);
 
+    const constituicaoInput = document.querySelector('#Constituicao input');
+    const totalConstituicao = 0
+    updateTotalConstituicao(totalConstituicao);
+
+    const potenciaInput = document.querySelector('#Potencia input');
+    const totalPotencia = 0;
+    updateTotalPotencia(totalPotencia);
+
+    const agilidadeInput = document.querySelector('#Agilidade input');
+    const totalAgilidade = 0;
+    updateTotalAgilidade(totalAgilidade);
+
+    const recuperacaoInput = document.querySelector('#Recuperacao input');
+    const totalRecuperacao = 0;
+    updateTotalRecuperacao(totalRecuperacao);
+
+    const imaterialInput = document.querySelector('#Imaterial input');
+    const totalImaterial = 0;
+    updateTotalImaterial(totalImaterial);
+
+    const espiritoInput = document.querySelector('#Espirito input');
+    const totalEspirito = 0;
+    updateTotalEspirito(totalEspirito);
+
+    const visaoInput = document.querySelector('#Visao input');
+    const totalVisao = 0;
+    updateTotalVisao(totalVisao);
+
+    const audicaoInput = document.querySelector('#Audicao input');
+    const totalAudicao = 0;
+    updateTotalAudicao(totalAudicao);
+
+    const olfatoInput = document.querySelector('#Olfato input');
+    const totalOlfato = 0;
+    updateTotalOlfato(totalOlfato);
+
+    const tatoInput = document.querySelector('#Tato input');
+    const totalTato = 0;
+    updateTotalTato(totalTato);
+
 // Função para calcular o ID com base nos valores dos inputs
 function calculateCharID() {
     const almaInput = document.querySelector('#Alma input');
@@ -972,9 +1002,6 @@ function calculateCharID() {
             return charID;
         }
 }
-
-// Chame a função para inicializar os valores dos inputs a partir do valor inicial de "displayid"
-updateStatsFromId();
 
     function updateRank(rank, average, totalPoints) {
         if (window.innerWidth <= 768) {

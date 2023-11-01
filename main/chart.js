@@ -8,73 +8,76 @@ function calculatevalueAverage(values) {
 // Functions to get values from input elements
 function getInputValuesMain() {
     return [
-        document.getElementById('Alma').querySelector('.statnumber').value,
-        document.getElementById('Mana').querySelector('.statnumber').value,
-        document.getElementById('Forca').querySelector('.statnumber').value,
-        document.getElementById('Corrida').querySelector('.statnumber').value,
-        document.getElementById('Mente').querySelector('.statnumber').value,
-        document.getElementById('Concentracao').querySelector('.statnumber').value,
+        document.getElementById('Alma').querySelector('.statnumber').value || 0,
+        document.getElementById('Mana').querySelector('.statnumber').value || 0,
+        document.getElementById('Forca').querySelector('.statnumber').value || 0,
+        document.getElementById('Corrida').querySelector('.statnumber').value || 0,
+        document.getElementById('Mente').querySelector('.statnumber').value || 0,
+        document.getElementById('Concentracao').querySelector('.statnumber').value || 0,
     ];
 }
 
 function getInputValuesSub() {
-    return [
-        parseFloat(document.querySelector('#Constituicao .total-value').textContent),
-        parseFloat(document.querySelector('#Potencia .total-value').textContent),
-        parseFloat(document.querySelector('#Agilidade .total-value').textContent),
-        parseFloat(document.querySelector('#Recuperacao .total-value').textContent),
-        parseFloat(document.querySelector('#Imaterial .total-value').textContent),
-        parseFloat(document.querySelector('#Espirito .total-value').textContent),
-        parseFloat(document.querySelector('#Visao .total-value').textContent),
-        parseFloat(document.querySelector('#Audicao .total-value').textContent),
-        parseFloat(document.querySelector('#Olfato .total-value').textContent),
-        parseFloat(document.querySelector('#Tato .total-value').textContent),
+    const values = [
+        document.querySelector('#Constituicao .total-value'),
+        document.querySelector('#Potencia .total-value'),
+        document.querySelector('#Agilidade .total-value'),
+        document.querySelector('#Recuperacao .total-value'),
+        document.querySelector('#Imaterial .total-value'),
+        document.querySelector('#Espirito .total-value'),
+        document.querySelector('#Visao .total-value'),
+        document.querySelector('#Audicao .total-value'),
+        document.querySelector('#Olfato .total-value'),
+        document.querySelector('#Tato .total-value'),
     ];
+
+    return values.map(value => (value && value.textContent) ? parseFloat(value.textContent) : 0);
 }
 
 function getInputValuesAll() {
-    return [
-        document.getElementById('Alma').querySelector('.statnumber').value,
-        document.getElementById('Mana').querySelector('.statnumber').value,
-        document.getElementById('Forca').querySelector('.statnumber').value,
-        document.getElementById('Corrida').querySelector('.statnumber').value,
-        document.getElementById('Mente').querySelector('.statnumber').value,
-        document.getElementById('Concentracao').querySelector('.statnumber').value,
-        parseFloat(document.querySelector('#Constituicao .total-value').textContent),
-        parseFloat(document.querySelector('#Potencia .total-value').textContent),
-        parseFloat(document.querySelector('#Agilidade .total-value').textContent),
-        parseFloat(document.querySelector('#Recuperacao .total-value').textContent),
-        parseFloat(document.querySelector('#Imaterial .total-value').textContent),
-        parseFloat(document.querySelector('#Espirito .total-value').textContent),
-        parseFloat(document.querySelector('#Visao .total-value').textContent),
-        parseFloat(document.querySelector('#Audicao .total-value').textContent),
-        parseFloat(document.querySelector('#Olfato .total-value').textContent),
-        parseFloat(document.querySelector('#Olfato .total-value').textContent),
+    const values = [
+        document.getElementById('Alma').querySelector('.statnumber'),
+        document.getElementById('Mana').querySelector('.statnumber'),
+        document.getElementById('Forca').querySelector('.statnumber'),
+        document.getElementById('Corrida').querySelector('.statnumber'),
+        document.getElementById('Mente').querySelector('.statnumber'),
+        document.getElementById('Concentracao').querySelector('.statnumber'),
+        document.querySelector('#Constituicao .total-value'),
+        document.querySelector('#Potencia .total-value'),
+        document.querySelector('#Agilidade .total-value'),
+        document.querySelector('#Recuperacao .total-value'),
+        document.querySelector('#Imaterial .total-value'),
+        document.querySelector('#Espirito .total-value'),
+        document.querySelector('#Visao .total-value'),
+        document.querySelector('#Audicao .total-value'),
+        document.querySelector('#Olfato .total-value'),
+        document.querySelector('#Tato .total-value'),
     ];
+
+    return values.map(value => (value && value.textContent) ? parseFloat(value.textContent) : 0);
 }
+
 
 function getXP() {
     return [
-        document.getElementById('Alma').querySelector('.statnumber').value,
-        document.getElementById('Mana').querySelector('.statnumber').value,
-        document.getElementById('Forca').querySelector('.statnumber').value,
-        document.getElementById('Corrida').querySelector('.statnumber').value,
-        document.getElementById('Mente').querySelector('.statnumber').value,
-        document.getElementById('Concentracao').querySelector('.statnumber').value,
-        document.getElementById('Constituicao').querySelector('.statnumber').value,
-        document.getElementById('Potencia').querySelector('.statnumber').value,
-        document.getElementById('Agilidade').querySelector('.statnumber').value,
-        document.getElementById('Recuperacao').querySelector('.statnumber').value,
-        document.getElementById('Imaterial').querySelector('.statnumber').value,
-        document.getElementById('Espirito').querySelector('.statnumber').value,
-        document.getElementById('Visao').querySelector('.statnumber').value,
-        document.getElementById('Audicao').querySelector('.statnumber').value,
-        document.getElementById('Olfato').querySelector('.statnumber').value,
-        document.getElementById('Olfato').querySelector('.statnumber').value,
+        document.getElementById('Alma').querySelector('.statnumber').value || 0,
+        document.getElementById('Mana').querySelector('.statnumber').value || 0,
+        document.getElementById('Forca').querySelector('.statnumber').value || 0,
+        document.getElementById('Corrida').querySelector('.statnumber').value || 0,
+        document.getElementById('Mente').querySelector('.statnumber').value || 0,
+        document.getElementById('Concentracao').querySelector('.statnumber').value || 0,
+        document.getElementById('Constituicao').querySelector('.statnumber').value || 0,
+        document.getElementById('Potencia').querySelector('.statnumber').value || 0,
+        document.getElementById('Agilidade').querySelector('.statnumber').value || 0,
+        document.getElementById('Recuperacao').querySelector('.statnumber').value || 0,
+        document.getElementById('Imaterial').querySelector('.statnumber').value || 0,
+        document.getElementById('Espirito').querySelector('.statnumber').value || 0,
+        document.getElementById('Visao').querySelector('.statnumber').value || 0,
+        document.getElementById('Audicao').querySelector('.statnumber').value || 0,
+        document.getElementById('Olfato').querySelector('.statnumber').value || 0,
+        document.getElementById('Tato').querySelector('.statnumber').value || 0,
     ];
 }
-
-
 
 // Função para atualizar o gráfico com novos valores
 function updateChart() {
@@ -432,11 +435,11 @@ function updateXPChart() {
 
 // Adicione ouvintes de eventos aos campos de entrada
 document.querySelectorAll('.statnumber').forEach(input => {
-input.addEventListener('input', updateChart);
-input.addEventListener('input', updateRadarChart);
-input.addEventListener('input', updateSubChart);
-input.addEventListener('input', updateResultChart);
-input.addEventListener('input', updateXPChart);
+    input.addEventListener('input', updateChart);
+    input.addEventListener('input', updateRadarChart);
+    input.addEventListener('input', updateSubChart);
+    input.addEventListener('input', updateResultChart);
+    input.addEventListener('input', updateXPChart);
 });
 
 // Chame a função updateChart() inicialmente para criar o gráfico
